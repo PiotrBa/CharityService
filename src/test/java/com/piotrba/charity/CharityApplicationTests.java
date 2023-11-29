@@ -1,4 +1,4 @@
-package com.coderslab.charity;
+package com.piotrba.charity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

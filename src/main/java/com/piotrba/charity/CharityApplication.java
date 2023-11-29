@@ -1,4 +1,4 @@
-package com.coderslab.charity;
+package com.piotrba.charity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
