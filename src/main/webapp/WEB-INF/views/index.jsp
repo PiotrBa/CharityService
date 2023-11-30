@@ -108,30 +108,18 @@
             You can check what they do.</p>
 
         <ul class="help--slides-items">
+            <c:forEach items="${intitutionsList}" var="institution" varStatus="loopStatus">
+                <c:if test="${loopStatus.index % 2 == 0}">
             <li>
+                </c:if>
                 <div class="col">
-                    <div class="title">The "Caring for Health" Foundation</div>
-                    <div class="subtitle">Goal and mission: Helping children from poor families.</div>
+                    <div class="title">"${institution.name}" Foundation</div>
+                    <div class="subtitle">Goal and mission: ${institution.description}.</div>
                 </div>
-
-                <div class="col">
-                    <div class="title">Foundation "And Whom?"</div>
-                    <div class="subtitle">Mission and goal: Helping awaken children from a coma.</div>
-                </div>
+                <c:if test="${loopStatus.index}">
             </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Foundation "For Children"</div>
-                    <div class="subtitle">Goal and mission: Helping people in difficult life situations.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Foundation "Without a Home"</div>
-                    <div class="subtitle">Goal and mission: Assistance for individuals without a place of residence.</div>
-                </div>
-
-            </li>
-
+            </c:if>
+            </c:forEach>
         </ul>
     </div>
 
