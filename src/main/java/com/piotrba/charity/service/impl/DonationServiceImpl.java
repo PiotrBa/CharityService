@@ -36,7 +36,6 @@ public class DonationServiceImpl implements DonationService{
         Optional<Donation> optionalDonation = donationRepository.findById(id);
         if (optionalDonation.isPresent()){
             Donation donation = optionalDonation.get();
-            donation.setAmount(newDonation.getAmount());
             donation.setQuantity(newDonation.getQuantity());
             donation.setCategories(newDonation.getCategories());
             donation.setInstitutions(newDonation.getInstitutions());
@@ -58,11 +57,6 @@ public class DonationServiceImpl implements DonationService{
 
     @Override
     public Integer sumAllQuantities() {
-        return donationRepository.sumAllAmount();
-    }
-
-    @Override
-    public Integer sumAllAmount() {
         return donationRepository.sumAllQuantities();
     }
 

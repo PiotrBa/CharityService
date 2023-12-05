@@ -82,7 +82,7 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Step <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+        <form:form modelAttribute="donation" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Mark what you want to donate:</h3>
@@ -125,7 +125,7 @@
                 <div class="form-group form-group--checkbox">
                     <c:forEach items="${institutionList}" var="institution">
                         <label style="margin-bottom: 20px">
-                            <form:radiobutton path="donation.institutions" name="${institution.name}" value="${institution.id}" id="institution"/>
+                            <form:radiobutton path="institutions" name="${institution.name}" value="${institution.id}" id="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">Foundation: ${institution.name}</div>
@@ -150,30 +150,30 @@
                     <div class="form-section--column">
                         <h4>Pickup address</h4>
                         <div class="form-group form-group--inline">
-                            <label> Street <form:input type="text" path="donation.street" id="street"/> </label>
+                            <label> Street <form:input type="text" path="street" id="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> City <form:input type="text" path="donation.city" id="city"/> </label>
+                            <label> City <form:input type="text" path="city" id="city"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Zip code <form:input path="donation.zipCode" id="zipCode"/></label>
+                            <label> Zip code <form:input path="zipCode" id="zipCode"/></label>
                         </div>
                     </div>
 
                     <div class="form-section--column">
                         <h4>Pickup time and data</h4>
                         <div class="form-group form-group--inline">
-                            <label> Date <form:input path="donation.pickUpDate" id="pickUpDate" /> </label>
+                            <label> Date <form:input path="pickUpDate" id="pickUpDate" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Time <form:input path="donation.pickUpTime" id="pickUpTime" /> </label>
+                            <label> Time <form:input path="pickUpTime" id="pickUpTime" /> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label>Notes for the courier<form:textarea path="donation.pickUpComment" id="pickUpComment" rows="5"></form:textarea></label>
+                            <label>Notes for the courier<form:textarea path="pickUpComment" id="pickUpComment" rows="5"></form:textarea></label>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                     <button type="submit" class="btn">Confirm</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 
