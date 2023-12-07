@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Donation Form</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
 <header class="header--form-page">
-    <nav class="container container--70">
+    <nav class="container container--90">
         <ul class="nav--actions">
             <li class="logged-user">
                 Welcome Agata
@@ -107,7 +107,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Number of 60l bags:
-                        <input type="number" path="quantity" step="1" min="1" id="quantity"/>
+                        <form:input type="number" path="quantity" step="1" min="1" id="quantity"/>
                     </label>
                 </div>
 
