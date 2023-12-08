@@ -2,7 +2,6 @@ package com.piotrba.charity.service;
 
 import com.piotrba.charity.entity.Institution;
 
-import javax.crypto.spec.OAEPParameterSpec;
 import java.util.List;
 import java.util.Optional;
 
