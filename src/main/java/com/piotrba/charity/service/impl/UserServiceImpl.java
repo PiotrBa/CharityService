@@ -1,6 +1,8 @@
 package com.piotrba.charity.service.impl;
 
+import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
+import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.UserService;
 import lombok.AllArgsConstructor;
@@ -16,6 +18,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final DonationRepository donationRepository;
 
     @Override
     public List<User> findAllUsers() {
@@ -50,6 +53,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        List<Donation> donations = donationRepository.findByusername(user.getUsername());
+        for (Donation donation:donations) {
+            donationRepository.delete(donation);
+        }
+        userRepository.delete(user);
     }
 }
