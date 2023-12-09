@@ -16,8 +16,8 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="" class="btn btn--small btn--without-border">Log in</a></li>
-            <li><a href="#" class="btn btn--small btn--highlighted">Sign up</a></li>
+            <li><a href="security/login" class="btn btn--small btn--without-border">Log in</a></li>
+            <li><a href="security/register" class="btn btn--small btn--highlighted">Sign up</a></li>
         </ul>
 
         <ul>
