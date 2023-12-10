@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        List<Donation> donations = donationRepository.findByusername(user.getUsername());
+        List<Donation> donations = donationRepository.findByUserUsername(user.getUsername());
         for (Donation donation:donations) {
             donationRepository.delete(donation);
         }

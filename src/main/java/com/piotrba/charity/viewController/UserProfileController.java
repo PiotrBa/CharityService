@@ -26,7 +26,7 @@ public class UserProfileController {
     public String getProfileView(Model model, Principal principal){
         String userName = principal.getName();
         model.addAttribute("user", userRepository.getByUsername(userName));
-        model.addAttribute("donations", donationRepository.findByusername(userName));
+        model.addAttribute("donations", donationRepository.findByUserUsername(userName));
         return "user/profile";
     }
 

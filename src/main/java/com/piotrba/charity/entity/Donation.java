@@ -34,6 +34,9 @@ public class Donation {
     private String street;
     private String city;
     private String zipCode;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
