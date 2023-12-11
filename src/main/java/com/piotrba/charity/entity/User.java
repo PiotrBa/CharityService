@@ -3,6 +3,7 @@ package com.piotrba.charity.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -25,6 +26,13 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "email")
+    @Email
+    private String email;
+
+    @Column(name = "mobile_number")
+    private Integer mobileNumber;
 
     @Column(nullable = false)
     private String role;
