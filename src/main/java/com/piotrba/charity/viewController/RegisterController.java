@@ -16,13 +16,13 @@ public class RegisterController {
 
     private final UserService userService;
 
-    @GetMapping("/register/user")
+    @GetMapping("/user")
     public String registerUserView(Model model){
         model.addAttribute("user", new User());
         return "/security/register";
     }
 
-    @PostMapping("/register/user")
+    @PostMapping("/user")
     public String registerUser(User user){
         userService.registerUser(user);
         return "redirect:/security/login";
