@@ -1,4 +1,4 @@
-package com.piotrba.charity.viewController;
+package com.piotrba.charity.security;
 
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.service.UserService;

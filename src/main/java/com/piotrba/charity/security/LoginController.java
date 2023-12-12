@@ -1,4 +1,4 @@
-package com.piotrba.charity.viewController;
+package com.piotrba.charity.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
