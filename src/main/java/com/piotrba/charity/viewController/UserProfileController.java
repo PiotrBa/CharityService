@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/profile")
+@RequestMapping("/user-profile")
 public class UserProfileController {
 
     private final UserRepository userRepository;
@@ -27,7 +27,7 @@ public class UserProfileController {
         String userName = principal.getName();
         model.addAttribute("user", userRepository.getByUsername(userName));
         model.addAttribute("donations", donationRepository.findByUserUsername(userName));
-        return "user/profile";
+        return "user-profile";
     }
 
     @GetMapping("/edit")
@@ -36,13 +36,13 @@ public class UserProfileController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "user/profile";
+        return "user-profile";
     }
 
     @PostMapping("/edit")
     public String editProfile(User user, @RequestParam Long id){
         userService.updateUser(id, user);
-        return "redirect: /profile";
+        return "redirect: /user-profile";
     }
 
     @GetMapping("/delete")
