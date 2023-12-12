@@ -15,7 +15,7 @@
     <nav class="container container--90">
         <ul class="nav--actions">
             <li class="logged-user">
-                Welcome Agata
+                Welcome ${user.username}
                 <ul class="dropdown">
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">My collections</a></li>
