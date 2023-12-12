@@ -1,6 +1,8 @@
 package com.piotrba.charity.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -10,6 +12,8 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +36,7 @@ public class User {
     private String email;
 
     @Column(name = "mobile_number")
-    private Integer mobileNumber;
+    private String mobileNumber;
 
     @Column(nullable = false)
     private String role;
