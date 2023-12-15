@@ -21,7 +21,7 @@
         </ul>
 
         <ul>
-            <li><a href="/login" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/form" class="btn btn--without-border active">Start</a></li>
             <li><a href="#" class="btn btn--without-border">What is it about?</a></li>
             <li><a href="#" class="btn btn--without-border">About us</a></li>
             <li><a href="#" class="btn btn--without-border">Foundations and organizations</a></li>
