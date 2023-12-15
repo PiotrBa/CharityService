@@ -64,4 +64,14 @@ public class DonationServiceImpl implements DonationService{
     public Long countAllDonations() {
         return donationRepository.count();
     }
+
+    @Override
+    public Long countDonationsByUser(String username) {
+        return donationRepository.countDonationsByUserUsername(username);
+    }
+
+    @Override
+    public Integer sumQuantitiesByUser(String username) {
+        return donationRepository.sumQuantitiesByUserUsername(username);
+    }
 }

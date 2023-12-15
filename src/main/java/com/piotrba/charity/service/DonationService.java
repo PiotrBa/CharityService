@@ -14,4 +14,8 @@ public interface DonationService {
     void deleteDonation(Long id);
     Integer sumAllQuantities();
     Long countAllDonations();
+    Long countDonationsByUser(String username);
+
+    Integer sumQuantitiesByUser(String username);
+
 }
