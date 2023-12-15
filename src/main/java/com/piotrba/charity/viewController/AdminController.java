@@ -32,25 +32,27 @@ public class AdminController {
     private final CategoryService categoryService;
 
     @GetMapping()
-    public String getAdminProfileView(Model model, Principal principal){
+    public String getAdminProfileView(Model model, Principal principal, User user){
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
-        model.addAttribute("donation", donationRepository.findAll());
-        model.addAttribute("institution", institutionRepository.findAll());
-        model.addAttribute("category", categoryRepository.findAll());
-        return "user/admin-profile";
+        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("donation", donationRepository.findByUserUsername(user.getUsername()));
+        model.addAttribute("donations", donationRepository.findAll());
+        model.addAttribute("institutions", institutionRepository.findAll());
+        model.addAttribute("categories", categoryRepository.findAll());
+        return "admin/admin-profile-users";
     }
 
     @GetMapping("/admin/add")
     public String addUserView(Model model){
         model.addAttribute("admin", new User());
-        return "user/admin-profile";
+        return "admin/admin-profile-users";
     }
 
     @PostMapping("/admin/add")
     public String addUser(User user){
         user.setRole("ROLE_ADMIN");
         userService.registerUser(user);
-        return "redirect:user/admin-profile";
+        return "redirect:/user/admin-profile-users";
     }
 
     @GetMapping("/user/update")
@@ -59,13 +61,13 @@ public class AdminController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "user/admin-profile";
+        return "admin/admin-profile-users";
     }
 
     @PostMapping("/user/update")
     public String editUser(User user, @RequestParam Long id){
         userService.updateUser(id, user);
-        return "redirect:user/admin-profile";
+        return "redirect:/user/admin-profile-users";
     }
 
     @GetMapping("/user/delete")
@@ -74,13 +76,13 @@ public class AdminController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "user/admin-profile";
+        return "admin/admin-profile-users";
     }
 
     @PostMapping("/user/delete")
     public String deleteUser(@RequestParam Long id){
         userService.deleteUser(id);
-        return "redirect:user/admin-profile";
+        return "redirect:/user/admin-profile-users";
     }
 
 
@@ -88,7 +90,7 @@ public class AdminController {
     @GetMapping("/institution/add")
     public String addInstitutionView(Model model){
         model.addAttribute("institution", new Institution());
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/institution/add")
@@ -103,7 +105,7 @@ public class AdminController {
         if (optionalInstitution.isPresent()){
            model.addAttribute("institution", optionalInstitution.get());
         }
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/institution/update")
@@ -118,7 +120,7 @@ public class AdminController {
         if (optionalInstitution.isPresent()){
             model.addAttribute("institution", optionalInstitution.get());
         }
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/institution/delete")
@@ -131,7 +133,7 @@ public class AdminController {
     @GetMapping("/category/add")
     public String addCategoryView(Model model){
         model.addAttribute("category", new Category());
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/category/add")
@@ -146,7 +148,7 @@ public class AdminController {
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
         }
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/category/update")
@@ -161,7 +163,7 @@ public class AdminController {
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
         }
-        return "user/admin-profile";
+        return "admin-profile-users";
     }
 
     @PostMapping("/category/delete")
