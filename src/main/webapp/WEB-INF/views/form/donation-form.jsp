@@ -25,7 +25,7 @@
         </ul>
 
         <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
+            <li><a href="homepage" class="btn btn--without-border active">Back to homepage</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">What is it about?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">About us</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Foundations and organizations</a></li>
