@@ -25,9 +25,9 @@ public class AuthLoginController {
         }
 
         if (isAdmin) {
-            response.sendRedirect("/admin-profile");
+            response.sendRedirect("admin/admin-profile-users");
         } else {
-            response.sendRedirect("/form");
+            response.sendRedirect("/user/user-profile");
         }
     }
 }

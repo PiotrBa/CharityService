@@ -27,8 +27,11 @@ public class DataLoader implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        User user = new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, new LinkedHashSet<>());
-        userRepository.save(user);
+        List<User> usersList = Arrays.asList(
+                new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, new LinkedHashSet<>()),
+                new User(null, "emma", passwordEncoder.encode("1234"), "Emma", "Wath", "emma@gmail.com", "75123456234",  "ROLE_USER", true, new LinkedHashSet<>())
+        );
+        userRepository.saveAll(usersList);
 
         List<Institution> institutionList = Arrays.asList(
                 new Institution(1L, "British Red Cross", "Humanitarian organization providing emergency assistance.", null),
