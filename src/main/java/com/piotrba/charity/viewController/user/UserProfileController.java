@@ -1,4 +1,4 @@
-package com.piotrba.charity.viewController;
+package com.piotrba.charity.viewController.user;
 
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.DonationRepository;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/user/user-profile")
+@RequestMapping("/user-profile")
 public class UserProfileController {
 
     private final UserRepository userRepository;
@@ -27,6 +27,7 @@ public class UserProfileController {
         String userName = principal.getName();
         model.addAttribute("user", userRepository.getByUsername(userName));
         model.addAttribute("donations", donationRepository.findByUserUsername(userName));
+        model.addAttribute("userDonations", userService.getUserDonations(userName));
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
         return "user/user-profile";
@@ -38,7 +39,7 @@ public class UserProfileController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "/user/user-profile";
+        return "user/user-profile";
     }
 
     @PostMapping("/edit")
@@ -53,7 +54,7 @@ public class UserProfileController {
        if (userOptional.isPresent()){
            model.addAttribute("user", userOptional.get());
        }
-        return "user/delete";
+        return "user-profile-delete";
     }
 
     @PostMapping("/delete")
@@ -61,9 +62,4 @@ public class UserProfileController {
         userService.deleteUser(id);
         return "redirect:/index";
     }
-
-
-
-
-
 }

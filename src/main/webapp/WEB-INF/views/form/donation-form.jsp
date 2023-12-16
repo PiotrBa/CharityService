@@ -17,15 +17,14 @@
             <li class="logged-user">
                 Welcome ${user.username}
                 <ul class="dropdown">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">My collections</a></li>
-                    <li><a href="#">Log out</a></li>
+                    <li><a href="user-profile">My profile</a></li>
+                    <li><a href="/login">Log out</a></li>
                 </ul>
             </li>
         </ul>
 
         <ul>
-            <li><a href="homepage" class="btn btn--without-border active">Back to homepage</a></li>
+            <li><a href="user-homepage" class="btn btn--without-border active">My home</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">What is it about?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">About us</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Foundations and organizations</a></li>
