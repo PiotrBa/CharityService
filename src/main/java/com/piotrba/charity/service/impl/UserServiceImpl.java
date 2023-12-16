@@ -64,4 +64,9 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.delete(user);
     }
+
+    @Override
+    public List<Donation> getUserDonations(String username) {
+        return donationRepository.findByUserUsername(username);
+    }
 }

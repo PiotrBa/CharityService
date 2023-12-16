@@ -1,5 +1,6 @@
 package com.piotrba.charity.service;
 
+import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface UserService {
     User registerUser(User user);
     Optional<User> updateUser(Long id, User user);
     void deleteUser(Long id);
+    List<Donation> getUserDonations(String username);
 }
