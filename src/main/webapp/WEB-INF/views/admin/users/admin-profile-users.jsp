@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="select" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,12 +50,9 @@
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
                         <td>${user.mobileNumber}</td>
-                        <td>${user.userDonations}</td>
+                        <td>${user.userDonations.size()}</td>
                         <td>${user.role}</td>
                         <td>${user.active}</td>
-                        <td class="btn">
-                            <a href="/user/update?id=${user.id}">Update</a>
-                        </td>
                         <td class="btn">
                             <a href="/user/delete?id=${user.id}">Delete</a>
                         </td>
