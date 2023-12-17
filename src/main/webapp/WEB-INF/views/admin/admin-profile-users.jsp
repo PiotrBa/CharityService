@@ -29,34 +29,40 @@
         </ul>
     </nav>
     <section class="form--steps-container">
-        <table>
-            <tr>
-                <th>First Name</th>
-                <th>Last name</th>
-                <th>Email</th>
-                <th>Mobile number</th>
-                <th>Donations</th>
-                <th>Role</th>
-                <th>Active</th>
-            </tr>
-            <c:forEach items="${users}" var="user">
+        <c:if test="${empty users}">
+            <p>No users found.</p>
+        </c:if>
+        <c:if test="${not empty users}">
+            <table>
                 <tr>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.email}</td>
-                    <td>${user.mobileNumber}</td>
-                    <td>${user.userDonations}</td>
-                    <td>${user.role}</td>
-                    <td>${user.active}</td>
-                    <td class="btn">
-                        <a href="/user/update?id=${user.id}">Update</a>
-                    </td>
-                    <td class="btn">
-                        <a href="/user/delete?id=${user.id}">Delete</a>
-                    </td>
+                    <th>First Name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Mobile number</th>
+                    <th>Donations</th>
+                    <th>Role</th>
+                    <th>Active</th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${users}" var="user">
+                    <tr>
+                        <td>${user.firstName}</td>
+                        <td>${user.lastName}</td>
+                        <td>${user.email}</td>
+                        <td>${user.mobileNumber}</td>
+                        <td>${user.userDonations}</td>
+                        <td>${user.role}</td>
+                        <td>${user.active}</td>
+                        <td class="btn">
+                            <a href="/user/update?id=${user.id}">Update</a>
+                        </td>
+                        <td class="btn">
+                            <a href="/user/delete?id=${user.id}">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+
     </section>
 </header>
 </body>

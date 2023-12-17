@@ -33,7 +33,6 @@
     <c:if test="${empty donations}">
       <p>No donations found.</p>
     </c:if>
-
     <c:if test="${not empty donations}">
       <table>
         <tr>
