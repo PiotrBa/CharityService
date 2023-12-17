@@ -28,13 +28,13 @@ public class AdminUsersController {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("donation", donationRepository.findByUserUsername(user.getUsername()));
         model.addAttribute("donations", donationRepository.findAll());
-        return "admin/admin-profile-users";
+        return "admin/users/admin-profile-users";
     }
 
     @GetMapping("/admin/add")
     public String addUserView(Model model){
         model.addAttribute("admin", new User());
-        return "admin/admin-profile-users";
+        return "admin/users/admin-profile-users";
     }
 
     @PostMapping("/admin/add")
@@ -50,7 +50,7 @@ public class AdminUsersController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/admin-profile-users";
+        return "admin/users/admin-profile-users";
     }
 
     @PostMapping("/user/update")
@@ -65,7 +65,7 @@ public class AdminUsersController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/admin-profile-users";
+        return "admin/users/admin-profile-users";
     }
 
     @PostMapping("/user/delete")

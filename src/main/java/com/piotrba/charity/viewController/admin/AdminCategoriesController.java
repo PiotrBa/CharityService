@@ -29,48 +29,48 @@ public class AdminCategoriesController {
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
-        return "admin/admin-profile-categories";
+        return "admin/categories/admin-profile-categories";
     }
 
-    @GetMapping("/category/add")
+    @GetMapping("/add")
     public String addCategoryView(Model model){
         model.addAttribute("category", new Category());
-        return "admin/admin-profile-categories";
+        return "admin/categories/admin-profile-categories-add";
     }
 
-    @PostMapping("/category/add")
+    @PostMapping("/add")
     public String addCategory(Category category){
         categoryService.saveCategory(category);
-        return "redirect:admin/admin-profile-categories";
+        return "redirect:/admin-profile-categories";
     }
 
-    @GetMapping("/category/update")
+    @GetMapping("/update")
     public String editCategoryView(Model model, @RequestParam Long id){
         Optional<Category> categoryOptional = categoryService.findCategoryById(id);
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
         }
-        return "admin/admin-profile-categories";
+        return "admin/categories/admin-profile-categories-edit";
     }
 
-    @PostMapping("/category/update")
+    @PostMapping("/update")
     public String editCategory(Category category, @RequestParam Long id){
         categoryService.updateCategory(id, category);
-        return "redirect:admin/admin-profile-categories";
+        return "redirect:/admin-profile-categories";
     }
 
-    @GetMapping("/category/delete")
+    @GetMapping("/delete")
     public String deleteCategoryView(Model model, @RequestParam Long id){
         Optional<Category> categoryOptional = categoryService.findCategoryById(id);
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
         }
-        return "admin/admin-profile-categories";
+        return "admin/categories/admin-profile-categories-delete";
     }
 
-    @PostMapping("/category/delete")
+    @PostMapping("/delete")
     public String deleteCategory(@RequestParam Long id){
         categoryService.deleteCategory(id);
-        return "redirect:admin/admin-profile-categoriese";
+        return "redirect:/admin-profile-categoriese";
     }
 }

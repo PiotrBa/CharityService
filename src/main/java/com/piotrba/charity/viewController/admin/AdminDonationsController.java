@@ -23,6 +23,6 @@ public class AdminDonationsController {
     public String showForm(Model model, Principal principal){
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("donations", donationRepository.findAll());
-        return "admin/admin-profile-donations";
+        return "admin/donations/admin-profile-donations";
     }
 }
