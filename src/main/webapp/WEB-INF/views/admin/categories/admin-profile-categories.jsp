@@ -24,11 +24,11 @@
         </ul>
       </li>
     </ul>
-    <ul>
-      <h2>Categories</h2>
-    </ul>
   </nav>
+  <h2 class="centered-h2-with-icon">Categories</h2>
   <section class="form--steps-container">
+    <div class="table-container">
+      <div class="table-and-buttons-container">
     <c:if test="${empty categories}">
       <p>No categories found.</p>
     </c:if>
@@ -43,16 +43,18 @@
         <c:forEach items="${categories}" var="category">
           <tr>
             <td>${category.name}</td>
-            <td class="btn">
+            <td class="buttons-container">
               <a href="/categories/update?id=${category.id}">Update</a>
             </td>
-            <td class="btn">
+            <td class="buttons-container">
               <a href="/categories/delete?id=${category.id}">Delete</a>
             </td>
           </tr>
         </c:forEach>
       </table>
     </c:if>
+      </div>
+    </div>
   </section>
 </header>
 </body>

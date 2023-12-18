@@ -25,11 +25,11 @@
                 </ul>
             </li>
         </ul>
-        <ul>
-            <h2>Users</h2>
-        </ul>
     </nav>
+    <h2 class="centered-h2-with-icon">Users</h2>
     <section class="form--steps-container">
+        <div class="table-and-buttons-container">
+        <div class="table-container">
         <c:if test="${empty users}">
             <p>No users found.</p>
         </c:if>
@@ -53,14 +53,15 @@
                         <td>${user.userDonations.size()}</td>
                         <td>${user.role}</td>
                         <td>${user.active}</td>
-                        <td class="btn">
+                        <td class="buttons-container">
                             <a href="/user/delete?id=${user.id}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
         </c:if>
-
+        </div>
+        </div>
     </section>
 </header>
 </body>

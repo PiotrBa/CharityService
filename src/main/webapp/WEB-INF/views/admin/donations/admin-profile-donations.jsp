@@ -25,11 +25,10 @@
         </ul>
       </li>
     </ul>
-    <ul>
-      <h2>Donations</h2>
-    </ul>
   </nav>
+  <h2 class="centered-h2-with-icon">Donations</h2>
   <section class="form--steps-container">
+    <div class="table-container">
     <c:if test="${empty donations}">
       <p>No donations found.</p>
     </c:if>
@@ -61,6 +60,7 @@
         </c:forEach>
       </table>
     </c:if>
+    </div>
   </section>
 </header>
 </body>

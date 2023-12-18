@@ -24,11 +24,10 @@
         </ul>
       </li>
     </ul>
-    <ul>
-      <h2>Institutions</h2>
-    </ul>
   </nav>
+  <h2 class="centered-h2-with-icon">Institutions</h2>
   <section class="form--steps-container">
+    <div class="table-container">
     <c:if test="${empty institutions}">
       <p>No institutions found.</p>
     </c:if>
@@ -44,7 +43,7 @@
         <c:forEach items="${institutions}" var="institution">
           <tr>
             <td>${institution.name}</td>
-            <td>${institution.donations}</td>
+            <td>${institution.description}</td>
             <td class="btn">
               <a href="/institution/update?id=${institution.id}">Update</a>
             </td>
@@ -54,6 +53,7 @@
           </tr>
         </c:forEach>
       </table>
+    </div>
     </c:if>
   </section>
 </header>

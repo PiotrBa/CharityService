@@ -1,4 +1,76 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,300i,400|Open+Sans:300,400,600&subset=latin-ext");
+
+/*
+Header decoration for admin pages
+==================================================================
+*/
+
+.centered-h2-with-icon {
+  text-align: center;
+  position: relative;
+}
+
+.centered-h2-with-icon::after {
+  content: "";
+  display: block;
+  width: 256px;
+  height: 40px;
+  background-image: url('../images/decoration.svg');
+  background-size: contain;
+  left: 50%;
+  margin: auto;
+}
+
+/*
+Table for admin-user
+==================================================================
+*/
+.table-container {
+  width: 80%;
+  margin: auto;
+}
+
+.table-and-buttons-container {
+  display: flex;
+  align-items: stretch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  color: #3c3c3c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #3c3c3c;
+  background-color: #f9f9f9;
+}
+
+table th {
+  font-weight: bold;
+  background-color: #ebebeb;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.btn {
+  display: block;
+  height: calc(100% / 1);
+}
+
+
+
+
 /* Document
    ========================================================================== */
 /**
