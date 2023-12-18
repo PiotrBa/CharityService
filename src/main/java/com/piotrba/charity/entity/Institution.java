@@ -21,6 +21,4 @@ public class Institution {
     private Long id;
     private String name;
     private String description;
-    @OneToMany
-    private List<Donation> donations;
 }
