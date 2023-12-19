@@ -19,6 +19,7 @@ Header decoration for admin pages
   background-size: contain;
   left: 50%;
   margin: auto;
+  z-index: -1;
 }
 
 /*
@@ -521,6 +522,7 @@ h2:after {
 /* line 30, scss/modules/_base.scss */
 .container--90 {
   width: 90vw;
+  height: 15%;
 }
 
 /* line 36, scss/modules/_base.scss */
