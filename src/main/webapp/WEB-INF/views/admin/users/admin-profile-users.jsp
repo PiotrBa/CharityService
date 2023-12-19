@@ -26,8 +26,8 @@
             </li>
         </ul>
     </nav>
-    <h2 class="centered-h2-with-icon">Users</h2>
     <section class="form--steps-container">
+        <h2 class="centered-h2-with-icon">Users</h2>
         <div class="table-and-buttons-container">
         <div class="table-container">
         <c:if test="${empty users}">

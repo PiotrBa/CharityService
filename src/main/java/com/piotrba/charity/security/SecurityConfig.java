@@ -18,7 +18,7 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .antMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                 .antMatchers("/homepage").permitAll()
                 .antMatchers("/form").permitAll()
                 .antMatchers("/login").permitAll()

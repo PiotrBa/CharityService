@@ -29,6 +29,7 @@
   <h2 class="centered-h2-with-icon">Donations</h2>
   <section class="form--steps-container">
     <div class="table-container">
+      <div class="table-and-buttons-container">
     <c:if test="${empty donations}">
       <p>No donations found.</p>
     </c:if>
@@ -60,6 +61,7 @@
         </c:forEach>
       </table>
     </c:if>
+      </div>
     </div>
   </section>
 </header>
