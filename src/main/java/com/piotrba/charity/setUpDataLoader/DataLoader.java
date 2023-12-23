@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -28,8 +29,8 @@ public class DataLoader implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         List<User> usersList = Arrays.asList(
-                new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, new LinkedHashSet<>()),
-                new User(null, "emma", passwordEncoder.encode("1234"), "Emma", "Wath", "emma@gmail.com", "75123456234",  "ROLE_USER", true, new LinkedHashSet<>())
+                new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, new ArrayList<>()),
+                new User(null, "emma", passwordEncoder.encode("1234"), "Emma", "Wath", "emma@gmail.com", "75123456234",  "ROLE_USER", true, new ArrayList<>())
         );
         userRepository.saveAll(usersList);
 
