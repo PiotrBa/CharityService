@@ -164,11 +164,7 @@
                     <div class="form-section--column">
                         <h4>Pickup time and data</h4>
                         <div class="form-group form-group--inline">
-                            <label> Date <form:input path="pickUpDate" id="pickUpDate" /> </label>
-                        </div>
-
-                        <div class="form-group form-group--inline">
-                            <label> Time <form:input path="pickUpTime" id="pickUpTime" /> </label>
+                            <label> Date <form:input type="datetime-local" path="pickUpDateAndTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -210,12 +206,11 @@
                         <div class="form-section--column">
                             <h4>Pickup address:</h4>
                             <ul>
-                                <li>68 Bridge</li>
-                                <li>London</li>
-                                <li>LLLLL</li>
-                                <li>123 456 789</li>
-
-
+                                <li>${donation.street}</li>
+                                <li>${donation.city}</li>
+                                <li>${donation.zipCode}</li>
+                                <li>${donation.pickUpDateAndTime}</li>
+                                <li>${donation.pickUpComment}</li>
                             </ul>
                         </div>
                     </div>

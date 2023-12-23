@@ -59,34 +59,33 @@
           </tr>
         </table>
       </div>
+      <br>
       <div>
-        <c:if test="${not empty userDonations}">
+        <c:if test="${not empty user.userDonations}">
           <table>
             <tr>
               <th>Quantity</th>
               <th>Category</th>
               <th>Institution</th>
-              <th>Pick Up Date</th>
-              <th>Pick Up Time</th>
+              <th>Pick Up Date and Time</th>
               <th>Pick Up Comment</th>
             </tr>
-            <c:forEach items="userDonations" var="userDonations">
+            <c:forEach items="${user.userDonations}" var="userDonation">
               <tr>
-                <td>${userDonations.quantity}</td>
+                <td>${userDonation.quantity}</td>
                 <td>
-                  <c:forEach var="category" items="${userDonations.categories}" varStatus="status">
+                  <c:forEach var="category" items="${userDonation.categories}" varStatus="status">
                     ${category.name}<c:if test="${not status.last}">, </c:if>
                   </c:forEach>
                 </td>
-                <td>${userDonations.institutions.user}</td>
-                <td><fmt:formatDate value="${userDonations.pickUpDate}" pattern="yyyy-MM-dd" /></td>
-                <td><fmt:formatDate value="${userDonations.pickUpTime}" pattern="HH:mm" /></td>
-                <td>${userDonations.pickUpComment}</td>
+                <td>${userDonation.institutions.name}</td>
+                <td>${userDonation.createPickApFormatted}</td>
+                <td>${userDonation.pickUpComment}</td>
               </tr>
             </c:forEach>
           </table>
         </c:if>
-        <c:if test="${empty userDonations}">
+        <c:if test="${empty user.userDonations}">
           <p>You have not made any donations yet.</p>
         </c:if>
       </div>
@@ -97,14 +96,14 @@
 <section class="stats">
   <div class="container container--85">
     <div class="stats--item">
-      <em>${sumQuantities}</em>
+      <em>${sumUserQuantities}</em>
       <h3>Your donated bags</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
         tempora!</p>
     </div>
 
     <div class="stats--item">
-      <em>${countDonations}</em>
+      <em>${countUserDonations}</em>
       <h3>Your gifts given</h3>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
         quam.</p>
