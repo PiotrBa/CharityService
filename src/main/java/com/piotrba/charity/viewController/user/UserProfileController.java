@@ -28,8 +28,8 @@ public class UserProfileController {
         model.addAttribute("user", userRepository.getByUsername(userName));
         model.addAttribute("donations", donationRepository.findByUserUsername(userName));
         model.addAttribute("userDonations", userService.getUserDonations(userName));
-        model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
-        model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
+        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(userName));
+        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
         return "user/user-profile";
     }
 

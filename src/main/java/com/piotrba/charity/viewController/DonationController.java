@@ -1,6 +1,8 @@
 package com.piotrba.charity.viewController;
 
 import com.piotrba.charity.entity.Donation;
+import com.piotrba.charity.entity.User;
+import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.CategoryService;
 import com.piotrba.charity.service.DonationService;
@@ -22,6 +24,7 @@ public class DonationController {
     private final CategoryService categoryService;
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final DonationRepository donationRepository;
     private final UserRepository userRepository;
 
     @GetMapping("/form")
@@ -34,8 +37,15 @@ public class DonationController {
     }
 
     @PostMapping("/form")
-    public String saveForm(Donation donation){
+    public String saveForm(Principal principal, Donation donation, Model model){
         donationService.saveDonation(donation);
+        String userName = principal.getName();
+        if (userName != null) {
+            User user = userRepository.getWithDonationsByUsername(userName);
+            user.getUserDonations().add(donation);
+            userRepository.save(user);
+            model.addAttribute("loggedUser", userRepository.getByUsername(userName));
+        }
         return "redirect:/form-confirmation";
     }
 }
