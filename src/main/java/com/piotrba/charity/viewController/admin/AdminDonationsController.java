@@ -21,8 +21,9 @@ public class AdminDonationsController {
 
     @GetMapping()
     public String showForm(Model model, Principal principal){
-        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
-        model.addAttribute("donations", donationRepository.findAll());
+        String userName = principal.getName();
+        model.addAttribute("user", userRepository.getByUsername(userName));
+        model.addAttribute("donations", donationRepository.findAllWithUser());
         return "admin/donations/admin-profile-donations";
     }
 }

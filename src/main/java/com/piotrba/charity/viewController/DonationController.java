@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -38,13 +39,14 @@ public class DonationController {
 
     @PostMapping("/form")
     public String saveForm(Principal principal, Donation donation, Model model){
-        donationService.saveDonation(donation);
         String userName = principal.getName();
         if (userName != null) {
-            User user = userRepository.getWithDonationsByUsername(userName);
-            user.getUserDonations().add(donation);
-            userRepository.save(user);
-            model.addAttribute("loggedUser", userRepository.getByUsername(userName));
+            Optional<User> userOptional = Optional.ofNullable(userRepository.getByUsername(userName));
+            if (userOptional.isPresent()) {
+                donationService.saveDonation(donation, userOptional.get().getId());
+                model.addAttribute("loggedUser", userOptional.get());
+            } else {
+            }
         }
         return "redirect:/form-confirmation";
     }

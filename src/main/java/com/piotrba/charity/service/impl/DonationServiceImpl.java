@@ -1,7 +1,9 @@
 package com.piotrba.charity.service.impl;
 
 import com.piotrba.charity.entity.Donation;
+import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.DonationRepository;
+import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.DonationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import java.util.Optional;
 public class DonationServiceImpl implements DonationService{
 
     private final DonationRepository donationRepository;
+    private final UserRepository userRepository;
 
 
     @Override
@@ -27,8 +30,14 @@ public class DonationServiceImpl implements DonationService{
     }
 
     @Override
-    public Donation saveDonation(Donation donation) {
-        return donationRepository.save(donation);
+    public Donation saveDonation(Donation donation, Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()){
+            donation.setUser(userOptional.get());
+            return donationRepository.save(donation);
+        }else {
+            throw new RuntimeException("User not found");
+        }
     }
 
     @Override

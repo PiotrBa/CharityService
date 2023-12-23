@@ -9,7 +9,7 @@ public interface DonationService {
 
     List<Donation> findAllDonations();
     Optional<Donation> findDonationsById(Long id);
-    Donation saveDonation(Donation donation);
+    Donation saveDonation(Donation donation, Long userId);
     Optional<Donation> updateDonation(Long id, Donation donation);
     void deleteDonation(Long id);
     Integer sumAllQuantities();
