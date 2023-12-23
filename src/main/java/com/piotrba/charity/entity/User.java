@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -44,11 +44,11 @@ public class User {
     @Column(nullable = false)
     private Boolean active = false;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_donation",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "donation_id", referencedColumnName = "id")
     )
-    private Set<Donation> userDonations = new LinkedHashSet<>();
+    private List<Donation> userDonations = new ArrayList<>();
 
 }
