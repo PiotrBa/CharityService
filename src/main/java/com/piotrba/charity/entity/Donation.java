@@ -35,7 +35,7 @@ public class Donation {
     private String street;
     private String city;
     private String zipCode;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")

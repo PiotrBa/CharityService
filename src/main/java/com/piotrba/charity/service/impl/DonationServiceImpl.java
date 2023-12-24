@@ -70,7 +70,7 @@ public class DonationServiceImpl implements DonationService{
 
     @Override
     public Long countAllDonations() {
-        return donationRepository.count();
+            return donationRepository.count();
     }
 
     @Override

@@ -48,7 +48,7 @@
         </tr>
         <c:forEach items="${donations}" var="donation">
           <tr>
-            <td>${donation.user.firstName}</td>
+            <td>${donation.user.firstName} ${donation.user.lastName}</td>
             <td>${donation.quantity}</td>
             <td>${donation.street}</td>
             <td>${donation.city}</td>

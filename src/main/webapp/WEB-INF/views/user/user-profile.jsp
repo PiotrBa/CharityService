@@ -61,7 +61,7 @@
       </div>
       <br>
       <div>
-        <c:if test="${not empty user.userDonations}">
+        <c:if test="${not empty donations}">
           <table>
             <tr>
               <th>Quantity</th>
@@ -70,7 +70,7 @@
               <th>Pick Up Date and Time</th>
               <th>Pick Up Comment</th>
             </tr>
-            <c:forEach items="${user.userDonations}" var="userDonation">
+            <c:forEach items="${donations}" var="userDonation">
               <tr>
                 <td>${userDonation.quantity}</td>
                 <td>
@@ -85,7 +85,7 @@
             </c:forEach>
           </table>
         </c:if>
-        <c:if test="${empty user.userDonations}">
+        <c:if test="${empty donations}">
           <p>You have not made any donations yet.</p>
         </c:if>
       </div>

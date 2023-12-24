@@ -45,10 +45,6 @@ public class User {
     private Boolean active = false;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_donation",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "donation_id", referencedColumnName = "id")
-    )
     private List<Donation> userDonations = new ArrayList<>();
 
 }
