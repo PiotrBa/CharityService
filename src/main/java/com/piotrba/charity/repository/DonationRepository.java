@@ -22,5 +22,4 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("SELECT d FROM Donation d")
     @EntityGraph(attributePaths = {"user"})
     List<Donation> findAllWithUser();
-
 }

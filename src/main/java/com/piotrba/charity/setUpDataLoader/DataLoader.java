@@ -38,7 +38,8 @@ public class DataLoader implements CommandLineRunner{
                 new Institution(2L, "Cancer Research UK", "Charity dedicated to cancer research."),
                 new Institution(3L, "Great Ormond Street Hospital Charity", "Supporting a hospital for children's healthcare."),
                 new Institution(4L, "RSPCA", "Organization working for animal welfare."),
-                new Institution(5L, "Mind", "Charity focused on mental health support and care.")
+                new Institution(5L, "Mind", "Charity focused on mental health support and care."),
+                new Institution(6L, "The National Trust", "Charity focused on preserving historical places and natural beauty in the UK.")
         );
         institutionRepository.saveAll(institutionList);
 
