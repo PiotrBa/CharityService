@@ -3,6 +3,7 @@ package com.piotrba.charity.viewController.user;
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
+import com.piotrba.charity.service.InstitutionService;
 import com.piotrba.charity.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ public class UserProfileController {
     private final UserRepository userRepository;
     private final DonationRepository donationRepository;
     private final UserService userService;
+    private final InstitutionService institutionService;
 
 
     @GetMapping()
@@ -29,6 +31,7 @@ public class UserProfileController {
         model.addAttribute("donations", donationRepository.findByUserUsername(userName));
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
         return "user/user-profile";
     }
 

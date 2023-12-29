@@ -2,6 +2,7 @@ package com.piotrba.charity.viewController.user;
 
 import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
+import com.piotrba.charity.service.InstitutionService;
 import com.piotrba.charity.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class UserHomePageController {
 
     private final UserRepository userRepository;
     private final DonationRepository donationRepository;
-    private final UserService userService;
+    private final InstitutionService institutionService;
 
     @GetMapping()
     public String getProfileView(Model model, Principal principal){
@@ -27,6 +28,7 @@ public class UserHomePageController {
         model.addAttribute("donations", donationRepository.findByUserUsername(userName));
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
         return "user/user-homepage";
     }
 }

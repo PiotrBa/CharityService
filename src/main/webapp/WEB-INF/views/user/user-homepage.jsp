@@ -26,11 +26,11 @@
         </ul>
 
         <ul>
-            <li><a href="/form" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">What is it about?</a></li>
-            <li><a href="#" class="btn btn--without-border">About us</a></li>
-            <li><a href="#" class="btn btn--without-border">Foundations and organizations</a></li>
-            <li><a href="#" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/form/donation-form" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/user-homepage/#steps" class="btn btn--without-border">What is it about?</a></li>
+            <li><a href="/user-homepage/#about-us" class="btn btn--without-border">About us</a></li>
+            <li><a href="/user-homepage/#help" class="btn btn--without-border">Foundations and organizations</a></li>
+            <li><a href="/user-homepage/#contact" class="btn btn--without-border">Contact</a></li>
         </ul>
     </nav>
 
@@ -63,7 +63,7 @@
     </div>
 </section>
 
-<section class="steps">
+<section id="steps" class="steps">
     <h2>Just 4 simple steps</h2>
 
     <div class="steps--container">
@@ -92,7 +92,7 @@
     <a href="/form" class="btn btn--large">START!</a>
 </section>
 
-<section class="about-us">
+<section id="about-us" class="about-us">
     <div class="about-us--text">
         <h2>About us</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
@@ -103,7 +103,7 @@
     </div>
 </section>
 
-<section class="help">
+<section id="help" class="help">
     <h2>Who do we help?</h2>
 
     <!-- SLIDE 1 -->
@@ -112,7 +112,7 @@
             You can check what they do.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${intitutionsList}" var="institution" varStatus="loopStatus">
+            <c:forEach items="${institutionsList}" var="institution" varStatus="loopStatus">
                 <c:if test="${loopStatus.index % 2 == 0}">
                     <li>
                 </c:if>
@@ -120,7 +120,7 @@
                     <div class="title">"${institution.name}" Foundation</div>
                     <div class="subtitle">Goal and mission: ${institution.description}.</div>
                 </div>
-                <c:if test="${loopStatus.index}">
+                <c:if test="${loopStatus.last || loopStatus.index % 2 == 1}">
                     </li>
                 </c:if>
             </c:forEach>
@@ -130,7 +130,7 @@
 </section>
 
 <footer>
-    <div class="contact">
+    <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
         <form class="form--contact">

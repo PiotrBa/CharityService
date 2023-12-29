@@ -24,11 +24,11 @@
         </ul>
 
         <ul>
-            <li><a href="user-homepage" class="btn btn--without-border active">My home</a></li>
-            <li><a href="index.html#steps" class="btn btn--without-border">What is it about?</a></li>
-            <li><a href="index.html#about-us" class="btn btn--without-border">About us</a></li>
-            <li><a href="index.html#help" class="btn btn--without-border">Foundations and organizations</a></li>
-            <li><a href="index.html#contact" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/form" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/user-homepage/#steps" class="btn btn--without-border">What is it about?</a></li>
+            <li><a href="/user-homepage/#about-us" class="btn btn--without-border">About us</a></li>
+            <li><a href="/user-homepage/#help" class="btn btn--without-border">Foundations and organizations</a></li>
+            <li><a href="/user-homepage/#contact" class="btn btn--without-border">Contact</a></li>
         </ul>
     </nav>
 
@@ -97,6 +97,8 @@
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Next</button>
                 </div>
+                <input type="hidden" id="hiddenCategories" name="hiddenCategories" />
+
             </div>
 
             <!-- STEP 2 -->
@@ -114,6 +116,8 @@
                     <button type="button" class="btn prev-step">Back</button>
                     <button type="button" class="btn next-step">Next</button>
                 </div>
+                <input type="hidden" id="hiddenQuantity" name="hiddenQuantity" />
+
             </div>
 
 
@@ -139,6 +143,8 @@
                     <button type="button" class="btn prev-step">Back</button>
                     <button type="button" class="btn next-step">Next</button>
                 </div>
+                <input type="hidden" id="hiddenInstitution" name="hiddenInstitution" />
+
             </div>
 
             <!-- STEP 5 -->
@@ -159,6 +165,12 @@
                         <div class="form-group form-group--inline">
                             <label> Zip code <form:input path="zipCode" id="zipCode"/></label>
                         </div>
+                        <input type="hidden" id="hiddenStreet" name="hiddenStreet" />
+                        <input type="hidden" id="hiddenCity" name="hiddenCity" />
+                        <input type="hidden" id="hiddenZipCode" name="hiddenZipCode" />
+                        <input type="hidden" id="hiddenPickUpDateAndTime" name="hiddenPickUpDateAndTime" />
+                        <input type="hidden" id="hiddenPickUpComment" name="hiddenPickUpComment" />
+
                     </div>
 
                     <div class="form-section--column">
@@ -189,14 +201,17 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text"
-                                >4 bags of clothes in good condition for children</span
-                                >
+                                >${donation.quantity} bags of
+                                    <c:forEach items="${donation.categories}" var="category">
+                                    <c:out value="${category.name}" />
+                                </c:forEach>
+                                </span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >For the "I Have a Dream" foundation in London</span
+                                >For the "${donation.institutions.name}" foundation in London</span
                                 >
                             </li>
                         </ul>
@@ -226,7 +241,7 @@
 </section>
 
 <footer>
-    <div class="contact">
+    <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
         <form class="form--contact">
