@@ -58,7 +58,7 @@
             <td>${user.username}</td>
             <td>********</td>
             <td>
-              <a href="user-profile-edit=${user.id}"> Edit</a>
+              <a href="/user-profile/edit?id=${user.id}"> Edit</a>
             </td>
           </tr>
         </table>

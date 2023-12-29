@@ -41,19 +41,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> updateUser(Long id, User newUser) {
         Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.setFirstName(newUser.getFirstName());
             user.setLastName(newUser.getLastName());
             user.setEmail(newUser.getEmail());
             user.setMobileNumber(newUser.getMobileNumber());
-            user.setRole(newUser.getRole());
+            user.setRole("ROLE_USER");
+            user.setActive(true);
             user.setUsername(newUser.getUsername());
-            user.setPassword(newUser.getPassword());
+            if (newUser.getPassword() != null && !newUser.getPassword().isEmpty()) {
+                user.setPassword(passwordEncoder.encode(newUser.getPassword()));
+            }
             return Optional.of(userRepository.save(user));
         }
         return Optional.empty();
     }
+
 
     @Override
     public void deleteUser(Long id) {

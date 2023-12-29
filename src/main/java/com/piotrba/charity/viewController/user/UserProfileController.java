@@ -41,13 +41,13 @@ public class UserProfileController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "user/user-profile";
+        return "user/user-profile-edit";
     }
 
     @PostMapping("/edit")
     public String editProfile(User user, @RequestParam Long id){
         userService.updateUser(id, user);
-        return "redirect: /user-profile";
+        return "redirect:/user-profile";
     }
 
     @GetMapping("/delete")
