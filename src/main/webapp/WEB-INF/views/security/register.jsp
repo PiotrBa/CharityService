@@ -33,7 +33,7 @@
     <div class="slogan container container--90">
         <div class="form-container">
             <h2>Registration</h2>
-            <form:form method="post" modelAttribute="user" action="/user-profile/edit?id=${user.id}" class="form-edit-user">
+            <form:form method="post" modelAttribute="user">
                 <div class="form-column">
                     <div class="form-group">
                         <label style="text-align: center;" for="firstName">First name:</label>

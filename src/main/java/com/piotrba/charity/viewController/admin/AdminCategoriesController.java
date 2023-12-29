@@ -33,7 +33,8 @@ public class AdminCategoriesController {
     }
 
     @GetMapping("/add")
-    public String addCategoryView(Model model){
+    public String addCategoryView(Model model, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("category", new Category());
         return "admin/categories/admin-profile-categories-add";
     }
@@ -45,7 +46,8 @@ public class AdminCategoriesController {
     }
 
     @GetMapping("/update")
-    public String editCategoryView(Model model, @RequestParam Long id){
+    public String editCategoryView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<Category> categoryOptional = categoryService.findCategoryById(id);
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
@@ -60,7 +62,8 @@ public class AdminCategoriesController {
     }
 
     @GetMapping("/delete")
-    public String deleteCategoryView(Model model, @RequestParam Long id){
+    public String deleteCategoryView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<Category> categoryOptional = categoryService.findCategoryById(id);
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());

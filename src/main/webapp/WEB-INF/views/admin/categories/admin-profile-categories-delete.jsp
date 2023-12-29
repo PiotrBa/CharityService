@@ -25,12 +25,6 @@
             </li>
         </ul>
     </nav>
-<%--    <section class="form--steps-container">--%>
-<%--        <form:form method="post" modelAttribute="category">--%>
-<%--            <p>Do you want to delete the ${category.name} category?</p>--%>
-<%--            <form:button>Yes</form:button> | <form:button><a href="admin-profile-categories">No</a></form:button>--%>
-<%--        </form:form>--%>
-<%--    </section>--%>
     <div class="slogan container container--90">
         <div class="form-container">
             <form:form method="post" modelAttribute="category" class="form-edit-user">
