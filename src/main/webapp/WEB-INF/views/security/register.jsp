@@ -23,42 +23,50 @@
 
         <ul>
             <li><a href="/form" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">What is it about?</a></li>
-            <li><a href="#" class="btn btn--without-border">About us</a></li>
-            <li><a href="#" class="btn btn--without-border">Foundations and organizations</a></li>
-            <li><a href="#" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/register/user/#steps" class="btn btn--without-border">What is it about?</a></li>
+            <li><a href="/register/user/#about-us" class="btn btn--without-border">About us</a></li>
+            <li><a href="/register/user/#help" class="btn btn--without-border">Foundations and organizations</a></li>
+            <li><a href="/register/user/#contact" class="btn btn--without-border">Contact</a></li>
         </ul>
     </nav>
 
     <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                <form:form method="post" modelAttribute="user">
-                    <div>
-                        User name: <form:input path="username"/>
+        <div class="form-container">
+            <h2>Registration</h2>
+            <form:form method="post" modelAttribute="user" action="/user-profile/edit?id=${user.id}" class="form-edit-user">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label style="text-align: center;" for="firstName">First name:</label>
+                        <form:input path="firstName" id="firstName" class="form-control"/>
                     </div>
-                    <div>
-                        Password: <form:input path="password"/>
+                    <div class="form-group">
+                        <label style="text-align: center;" for="email">Email:</label>
+                        <form:input path="email" id="email" class="form-control"/>
                     </div>
-                    <div>
-                        First name: <form:input path="firstName"/>
+                    <div class="form-group">
+                        <label style="text-align: center;" for="username">User name:</label>
+                        <form:input path="username" id="username" class="form-control"/>
                     </div>
-                    <div>
-                        Last name: <form:input path="lastName"/>
-                    </div>
-                    <div>
-                        Mobile number: +44<form:input path="mobileNumber"/>
-                    </div>
-                    <div>
-                        Email: <form:input path="email"/>
-                    </div>
-                    <br>
-                    <form:button>Sign up</form:button>
-                </form:form>
-                <div>
-                    <a href="/login">Log in</a>
                 </div>
-            </h1>
+                <div class="form-column">
+                    <div class="form-group">
+                        <label style="text-align: center;" for="lastName">Last name:</label>
+                        <form:input path="lastName" id="lastName" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label style="text-align: center;" for="mobileNumber">Mobile number:</label>
+                        <form:input path="mobileNumber" id="mobileNumber" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" class="form-control"/>
+                    </div>
+                </div>
+                <div style="text-align: center;" class="form-buttons">
+                    <form:button class="btn">Sign up</form:button>
+                    <a href="/homepage" class="btn btn-secondary">Back</a>
+                </div>
+            </form:form>
         </div>
     </div>
 </header>
@@ -82,7 +90,7 @@
     </div>
 </section>
 
-<section class="steps">
+<section id="steps" class="steps">
     <h2>Just 4 simple steps</h2>
 
     <div class="steps--container">
@@ -108,10 +116,10 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Sign up</a>
+    <a href="/register" class="btn btn--large">Sign up</a>
 </section>
 
-<section class="about-us">
+<section id="about-us" class="about-us">
     <div class="about-us--text">
         <h2>About us</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
@@ -122,7 +130,7 @@
     </div>
 </section>
 
-<section class="help">
+<section id="help" class="help">
     <h2>Who do we help?</h2>
 
     <!-- SLIDE 1 -->
@@ -131,7 +139,7 @@
             You can check what they do.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${intitutionsList}" var="institution" varStatus="loopStatus">
+            <c:forEach items="${institutionsList}" var="institution" varStatus="loopStatus">
                 <c:if test="${loopStatus.index % 2 == 0}">
                     <li>
                 </c:if>
@@ -139,7 +147,7 @@
                     <div class="title">"${institution.name}" Foundation</div>
                     <div class="subtitle">Goal and mission: ${institution.description}.</div>
                 </div>
-                <c:if test="${loopStatus.index}">
+                <c:if test="${loopStatus.last || loopStatus.index % 2 == 1}">
                     </li>
                 </c:if>
             </c:forEach>
@@ -149,7 +157,7 @@
 </section>
 
 <footer>
-    <div class="contact">
+    <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
         <form class="form--contact">

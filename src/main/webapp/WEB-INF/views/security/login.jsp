@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="com">
 <head>
@@ -22,23 +23,31 @@
 
         <ul>
             <li><a href="/form" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">What is it about?</a></li>
-            <li><a href="#" class="btn btn--without-border">About us</a></li>
-            <li><a href="#" class="btn btn--without-border">Foundations and organizations</a></li>
-            <li><a href="#" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/login/#steps" class="btn btn--without-border">What is it about?</a></li>
+            <li><a href="/login/#about-us" class="btn btn--without-border">About us</a></li>
+            <li><a href="/login/#help" class="btn btn--without-border">Foundations and organizations</a></li>
+            <li><a href="/login/#contact" class="btn btn--without-border">Contact</a></li>
         </ul>
     </nav>
 
     <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                <form method="post" action="/login">
-                    User name: <input type="text" name="username"/> Password: <input type="password" name="password"/>
-                    <button type="submit">Login</button><br/>
-                    <br>
-                </form>
-                <a href="register/user">Register</a><br>
-            </h1>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form method="post" action="/login">
+                <div class="form-group">
+                    <label for="username">User name:</label>
+                    <input type="text" name="username" id="username" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label style="text-align: -webkit-left;" for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control"/>
+                </div>
+                <div class="form-buttons" style="text-align: center;">
+                    <button type="submit" class="btn">Login</button>
+                    <a href="/register/user" class="btn btn-secondary">Sign up</a>
+                </div>
+            </form>
+
         </div>
     </div>
 </header>
@@ -62,7 +71,7 @@
     </div>
 </section>
 
-<section class="steps">
+<section id="steps" class="steps">
     <h2>Just 4 simple steps</h2>
 
     <div class="steps--container">
@@ -88,10 +97,10 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Sign up</a>
+    <a href="/register/user" class="btn btn--large">Sign up</a>
 </section>
 
-<section class="about-us">
+<section id="about-us" class="about-us">
     <div class="about-us--text">
         <h2>About us</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
@@ -102,7 +111,7 @@
     </div>
 </section>
 
-<section class="help">
+<section id="help" class="help">
     <h2>Who do we help?</h2>
 
     <!-- SLIDE 1 -->
@@ -111,7 +120,7 @@
             You can check what they do.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${intitutionsList}" var="institution" varStatus="loopStatus">
+            <c:forEach items="${institutionsList}" var="institution" varStatus="loopStatus">
                 <c:if test="${loopStatus.index % 2 == 0}">
                     <li>
                 </c:if>
@@ -119,7 +128,7 @@
                     <div class="title">"${institution.name}" Foundation</div>
                     <div class="subtitle">Goal and mission: ${institution.description}.</div>
                 </div>
-                <c:if test="${loopStatus.index}">
+                <c:if test="${loopStatus.last || loopStatus.index % 2 == 1}">
                     </li>
                 </c:if>
             </c:forEach>
@@ -129,7 +138,7 @@
 </section>
 
 <footer>
-    <div class="contact">
+    <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
         <form class="form--contact">

@@ -30,7 +30,7 @@ public class DonationController {
         model.addAttribute("institutionList", institutionService.findAllInstitutions());
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("donation", new Donation());
-        return "form/donation-form";
+        return "/form/donation-form";
     }
 
     @PostMapping("/form")
@@ -46,5 +46,11 @@ public class DonationController {
             }
         }
         return "redirect:/form-confirmation";
+    }
+
+    @GetMapping("/form-confirmation")
+    public String donationConfirmation(Model model, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
+        return "form/form-confirmation";
     }
 }
