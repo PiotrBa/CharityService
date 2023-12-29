@@ -48,6 +48,8 @@ public class UserServiceImpl implements UserService {
             user.setEmail(newUser.getEmail());
             user.setMobileNumber(newUser.getMobileNumber());
             user.setRole(newUser.getRole());
+            user.setUsername(newUser.getUsername());
+            user.setPassword(newUser.getPassword());
             return Optional.of(userRepository.save(user));
         }
         return Optional.empty();
