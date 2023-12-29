@@ -50,7 +50,7 @@ public class AdminCategoriesController {
         if (categoryOptional.isPresent()){
             model.addAttribute("category", categoryOptional.get());
         }
-        return "admin/categories/admin-profile-categories-edit";
+        return "/admin/categories/admin-profile-categories-edit";
     }
 
     @PostMapping("/update")
@@ -71,6 +71,6 @@ public class AdminCategoriesController {
     @PostMapping("/delete")
     public String deleteCategory(@RequestParam Long id){
         categoryService.deleteCategory(id);
-        return "redirect:/admin-profile-categoriese";
+        return "redirect:/admin-profile-categories";
     }
 }

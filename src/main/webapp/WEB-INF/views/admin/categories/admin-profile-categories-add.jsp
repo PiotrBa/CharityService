@@ -24,16 +24,24 @@
                 </ul>
             </li>
         </ul>
-        <ul>
-            <h2>Categories</h2>
-        </ul>
     </nav>
-    <section class="form--steps-container">
-        <form:form method="post" modelAttribute="category">
-            Category name: <form:input path="name"/>
-            <form:button>Add</form:button>
-        </form:form>
-    </section>
+    <div class="slogan container container--90">
+        <div class="form-container">
+            <h2>Add category</h2>
+            <form:form method="post" modelAttribute="category" class="form-edit-user">
+            <div class="form-column">
+                <div class="form-group">
+                    <label style="text-align: center;" for="name">Category name:</label>
+                    <form:input path="name" id="name" class="form-control"/>
+                </div>
+                <div style="text-align: center;" class="form-buttons">
+                    <form:button class="btn">Save</form:button>
+                    <a href="/admin-profile-categories" class="btn btn-secondary">Back</a>
+                </div>
+                </form:form>
+            </div>
+        </div>
+    </div>
 </header>
 </body>
 </html>

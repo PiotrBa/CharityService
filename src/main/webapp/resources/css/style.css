@@ -132,6 +132,42 @@ table th {
   background-color: #45a049;
 }
 
+/*
+Table for  categories
+==================================================================
+*/
+.table-container-categories {
+  width: 32%;
+  margin: auto;
+}
+
+.table-container-categories table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.4rem;
+  color: #3c3c3c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container-categories th,
+.table-container-categories td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #3c3c3c;
+  background-color: #f9f9f9;
+}
+
+.table-container-categories th {
+  font-weight: bold;
+  background-color: #ebebeb;
+}
+
+.table-container-categories .buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 
 
