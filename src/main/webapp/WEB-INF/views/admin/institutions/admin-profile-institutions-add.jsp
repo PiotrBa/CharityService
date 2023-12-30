@@ -24,17 +24,28 @@
                 </ul>
             </li>
         </ul>
-        <ul>
-            <h2>Institutions</h2>
-        </ul>
     </nav>
-    <section class="form--steps-container">
-        <form:form method="post" modelAttribute="institution">
-            Name: <form:input path="name"/>
-            Description: <form:input path="description"/>
-            <form:button>Add</form:button>
-        </form:form>
-    </section>
+    <div class="slogan container container--90">
+        <div class="form-container form-institution-extended">
+            <h2>Add institution</h2>
+            <form:form method="post" modelAttribute="institution" class="form-edit-user">
+            <div class="form-column">
+                <div class="form-group">
+                    <label style="text-align: center;" for="name">Institution name:</label>
+                    <form:input path="name" id="name" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label style="text-align: center;" for="description">Institution description:</label>
+                    <form:textarea path="description" id="description" class="form-control" rows="6" cols="70"/>
+                </div>
+                <div style="text-align: center;" class="form-buttons">
+                    <form:button class="btn">Save</form:button>
+                    <a href="/admin-profile-institutions" class="btn btn-secondary">Back</a>
+                </div>
+                </form:form>
+            </div>
+        </div>
+    </div>
 </header>
 </body>
 </html>

@@ -24,16 +24,22 @@
         </ul>
       </li>
     </ul>
-    <ul>
-      <h2>Institutions</h2>
-    </ul>
   </nav>
-  <section class="form--steps-container">
-    <form:form method="post" modelAttribute="institution">
-      <p>Do you want to delete the ${institution.name} institution?</p>
-      <form:button>Yes</form:button> | <form:button><a href="admin-profile-institutions">No</a></form:button>
-    </form:form>
-  </section>
+  <div class="slogan container container--90">
+    <div class="form-container">
+      <form:form method="post" modelAttribute="institution" class="form-edit-user">
+      <div class="form-column">
+        <h1>Do you want to delete the ${institution.name} institution?</h1><br>
+        <br>
+        <p>The deletion of ${institution.name} will result in the removal of donations associated with it.</p>
+        <div style="text-align: center;" class="form-buttons">
+          <form:button class="btn">Yes</form:button>
+          <a href="/admin-profile-institutions" class="btn btn-secondary">No</a>
+        </div>
+        </form:form>
+      </div>
+    </div>
+  </div>
 </header>
 </body>
 </html>

@@ -1,7 +1,10 @@
 package com.piotrba.charity.service.impl;
 
+import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.Institution;
+import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.InstitutionRepository;
+import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.InstitutionService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import java.util.Optional;
 public class InstitutionServiceImpl implements InstitutionService {
 
     private final InstitutionRepository institutionRepository;
+    private final DonationRepository donationRepository;
 
     @Override
     public List<Institution> findAllInstitutions() {
@@ -44,6 +48,14 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public void deleteInstitution(Long id) {
-        institutionRepository.deleteById(id);
+        Institution institution = institutionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Institution not found"));
+
+        List<Donation> donations = donationRepository.findByInstitutions_Id(id);
+        for (Donation donation : donations) {
+            donationRepository.delete(donation);
+        }
+        institutionRepository.delete(institution);
     }
+
 }

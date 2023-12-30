@@ -32,45 +32,48 @@ public class AdminInstitutionsController {
         return "admin/institutions/admin-profile-institutions";
     }
 
-    @GetMapping("/institution/add")
-    public String addInstitutionView(Model model){
+    @GetMapping("/add")
+    public String addInstitutionView(Model model, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("institution", new Institution());
-        return "admin/institutions/admin-profile-institutions";
+        return "admin/institutions/admin-profile-institutions-add";
     }
 
-    @PostMapping("/institution/add")
+    @PostMapping("/add")
     public String addInstitution(Institution institution){
         institutionService.saveInstitution(institution);
-        return "redirect:admin/admin-profile-institutions";
+        return "redirect:/admin-profile-institutions";
     }
 
-    @GetMapping("/institution/update")
-    public String editInstitutionView(Model model, @RequestParam Long id){
+    @GetMapping("/update")
+    public String editInstitutionView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<Institution> optionalInstitution = institutionService.findInstitutionsById(id);
         if (optionalInstitution.isPresent()){
             model.addAttribute("institution", optionalInstitution.get());
         }
-        return "admin/institutions/admin-profile-institutions";
+        return "admin/institutions/admin-profile-institutions-edit";
     }
 
-    @PostMapping("/institution/update")
+    @PostMapping("/update")
     public String editInstitution(Institution institution, @RequestParam Long id){
         institutionService.updateInstitution(id, institution);
-        return "redirect:admin/admin-profile-institutions";
+        return "redirect:/admin-profile-institutions";
     }
 
-    @GetMapping("/institution/delete")
-    public String deleteInstitutionView(Model model, @RequestParam Long id){
+    @GetMapping("/delete")
+    public String deleteInstitutionView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<Institution> optionalInstitution = institutionService.findInstitutionsById(id);
         if (optionalInstitution.isPresent()){
             model.addAttribute("institution", optionalInstitution.get());
         }
-        return "admin/institutions/admin-profile-institutions";
+        return "admin/institutions/admin-profile-institutions-delete";
     }
 
-    @PostMapping("/institution/delete")
+    @PostMapping("/delete")
     public String deleteInstitution(@RequestParam Long id){
         institutionService.deleteInstitution(id);
-        return "redirect:admin/admin-profile-institutions";
+        return "redirect:/admin-profile-institutions";
     }
 }

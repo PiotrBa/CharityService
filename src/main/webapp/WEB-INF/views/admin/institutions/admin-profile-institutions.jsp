@@ -33,7 +33,7 @@
     </c:if>
     <c:if test="${not empty institutions}">
       <ul class="btn">
-        <a href="/institution/add">Add</a>
+        <a href="/admin-profile-institutions/add">Add</a>
       </ul>
       <table>
         <tr>
@@ -45,10 +45,10 @@
             <td>${institution.name}</td>
             <td>${institution.description}</td>
             <td class="btn">
-              <a href="/institution/update?id=${institution.id}">Update</a>
+              <a href="/admin-profile-institutions/update?id=${institution.id}">Update</a>
             </td>
             <td class="btn">
-              <a href="/institution/delete?id=${institution.id}">Delete</a>
+              <a href="/admin-profile-institutions/delete?id=${institution.id}">Delete</a>
             </td>
           </tr>
         </c:forEach>
