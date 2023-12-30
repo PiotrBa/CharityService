@@ -27,7 +27,7 @@
     </nav>
     <div class="slogan container container--90">
         <div class="form-container">
-            <h2>Edit category name</h2>
+            <h2>Edit category</h2>
             <form:form method="post" modelAttribute="category" class="form-edit-user">
             <div class="form-column">
                 <div class="form-group">

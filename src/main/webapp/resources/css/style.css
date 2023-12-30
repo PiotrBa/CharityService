@@ -169,7 +169,13 @@ Table for  categories
   justify-content: space-around;
 }
 
-
+/*
+Extended width of text fields for institution forms
+ */
+.form-institution-extended {
+  max-width: 800px;
+  width: 100%;
+}
 
 
 
