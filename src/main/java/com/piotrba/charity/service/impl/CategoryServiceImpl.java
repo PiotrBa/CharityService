@@ -1,11 +1,12 @@
 package com.piotrba.charity.service.impl;
 
 import com.piotrba.charity.entity.Category;
+import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.repository.CategoryRepository;
+import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final DonationRepository donationRepository;
 
     @Override
     public List<Category> findAllCategories() {
@@ -44,6 +46,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteCategory(Long id) {
-        categoryRepository.deleteById(id);
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        List<Donation> donations = donationRepository.findByCategories_Id(id);
+        for (Donation donation : donations) {
+            donationRepository.delete(donation);
+        }
+        categoryRepository.delete(category);
     }
+
 }

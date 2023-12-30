@@ -29,7 +29,9 @@
         <div class="form-container">
             <form:form method="post" modelAttribute="category" class="form-edit-user">
             <div class="form-column">
-                <h1>Do you want to delete the ${category.name} category?</h1>
+                <h1>Do you want to delete the ${category.name} category?</h1><br>
+                <br>
+                <p>The deletion of ${category.name} will result in the removal of donations associated with it.</p>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Yes</form:button>
                     <a href="/admin-profile-categories" class="btn btn-secondary">No</a>
