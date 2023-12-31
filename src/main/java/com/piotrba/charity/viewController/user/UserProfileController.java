@@ -26,17 +26,19 @@ public class UserProfileController {
 
     @GetMapping()
     public String getProfileView(Model model, Principal principal){
-        String userName = principal.getName();
-        model.addAttribute("user", userRepository.getByUsername(userName));
-        model.addAttribute("donations", donationRepository.findByUserUsername(userName));
-        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(userName));
-        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
+        model.addAttribute("donations", donationRepository.findByUserUsername(principal.getName()));
+        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
+        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
         return "user/user-profile";
     }
 
     @GetMapping("/edit")
-    public String editProfileView(Model model, @RequestParam Long id){
+    public String editProfileView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
+        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
@@ -51,7 +53,10 @@ public class UserProfileController {
     }
 
     @GetMapping("/delete")
-    public String deleteProfileView(Model model, @RequestParam Long id){
+    public String deleteProfileView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
+        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
        Optional<User> userOptional = userRepository.findById(id);
        if (userOptional.isPresent()){
            model.addAttribute("user", userOptional.get());

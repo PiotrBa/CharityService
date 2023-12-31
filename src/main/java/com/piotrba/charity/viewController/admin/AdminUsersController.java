@@ -40,21 +40,6 @@ public class AdminUsersController {
         return "admin/users/admin-profile-users";
     }
 
-
-
-    @GetMapping("/admin/add")
-    public String addUserView(Model model){
-        model.addAttribute("admin", new User());
-        return "admin/users/admin-profile-users";
-    }
-
-    @PostMapping("/admin/add")
-    public String addUser(User user){
-        user.setRole("ROLE_ADMIN");
-        userService.registerUser(user);
-        return "redirect:/user/admin-profile-users";
-    }
-
     @GetMapping("/user/update")
     public String editUserView(Model model, @RequestParam Long id){
         Optional<User> userOptional = userService.findUserById(id);
