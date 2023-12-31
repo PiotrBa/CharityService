@@ -1,6 +1,7 @@
 package com.piotrba.charity.security;
 
 import com.piotrba.charity.entity.User;
+import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.DonationService;
 import com.piotrba.charity.service.InstitutionService;
 import com.piotrba.charity.service.UserService;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/register")
@@ -19,6 +22,7 @@ public class RegisterController {
     private final UserService userService;
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final UserRepository userRepository;
 
     @GetMapping("/user")
     public String registerUserView(Model model){
@@ -33,5 +37,18 @@ public class RegisterController {
     public String registerUser(User user){
         userService.registerUser(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/admin")
+    public String registerAdminView(Model model, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
+        model.addAttribute("newAdmin", new User());
+        return "/security/register-admin";
+    }
+
+    @PostMapping("/admin")
+    public String registerAdmin(User user){
+        userService.registerAdmin(user);
+        return "redirect:/admin-profile-users";
     }
 }

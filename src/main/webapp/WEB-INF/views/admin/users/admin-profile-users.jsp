@@ -30,6 +30,9 @@
         <h2 class="centered-h2-with-icon">Users</h2>
         <div class="table-and-buttons-container">
         <div class="table-container">
+            <ul class="btn">
+                <a href="/register/admin">Add New Admin</a>
+            </ul>
         <c:if test="${empty users}">
             <p>No users found.</p>
         </c:if>

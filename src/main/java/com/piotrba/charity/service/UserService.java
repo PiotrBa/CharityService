@@ -11,6 +11,7 @@ public interface UserService {
     List<User> findAllUsers();
     Optional<User> findUserById(Long id);
     User registerUser(User user);
+    User registerAdmin(User user);
     Optional<User> updateUser(Long id, User user);
     void deleteUser(Long id);
     List<Donation> getUserDonations(String username);

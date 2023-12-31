@@ -39,6 +39,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User registerAdmin(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("ROLE_ADMIN");
+        user.setActive(true);
+        return userRepository.save(user);
+    }
+
+    @Override
     public Optional<User> updateUser(Long id, User newUser) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
