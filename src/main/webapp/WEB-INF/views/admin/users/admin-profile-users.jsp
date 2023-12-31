@@ -50,7 +50,7 @@
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
                         <td>${user.mobileNumber}</td>
-                        <td>${user.userDonations.size()}</td>
+                        <td>${userDonationsSum[user.id]}</td>
                         <td>${user.role}</td>
                         <td>${user.active}</td>
                         <td class="buttons-container">

@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -23,13 +27,20 @@ public class AdminUsersController {
 
 
     @GetMapping()
-    public String getAdminProfileView(Model model, Principal principal, User user){
+    public String getAdminProfileView(Model model, Principal principal){
+        List<User> users = userRepository.findAll();
+        Map<Long, Integer> userDonationsSum = new HashMap<>();
+        for (User user : users) {
+            Integer sum = Math.toIntExact(donationRepository.countDonationsByUserUsername(user.getUsername()));
+            userDonationsSum.put(user.getId(), sum);
+        }
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
-        model.addAttribute("users", userRepository.findAll());
-        model.addAttribute("donation", donationRepository.findByUserUsername(user.getUsername()));
-        model.addAttribute("donations", donationRepository.findAll());
+        model.addAttribute("users", users);
+        model.addAttribute("userDonationsSum", userDonationsSum);
         return "admin/users/admin-profile-users";
     }
+
+
 
     @GetMapping("/admin/add")
     public String addUserView(Model model){
