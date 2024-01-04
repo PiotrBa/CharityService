@@ -44,10 +44,10 @@
           <tr>
             <td>${institution.name}</td>
             <td>${institution.description}</td>
-            <td class="btn">
+            <td class="buttons-container">
               <a href="/admin-profile-institutions/update?id=${institution.id}">Update</a>
             </td>
-            <td class="btn">
+            <td class="buttons-container">
               <a href="/admin-profile-institutions/delete?id=${institution.id}">Delete</a>
             </td>
           </tr>

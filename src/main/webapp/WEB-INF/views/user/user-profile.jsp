@@ -97,7 +97,7 @@
           </table>
         </c:if>
         <c:if test="${empty donations}">
-          <p>You have not made any donations yet.</p>
+          <h1>You have not made any donations yet.</h1>
         </c:if>
       </div>
     </div>

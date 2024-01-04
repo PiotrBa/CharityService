@@ -31,7 +31,7 @@
     <div class="table-container">
       <div class="table-and-buttons-container">
     <c:if test="${empty donations}">
-      <p>No donations found.</p>
+      <h1>No donations found</h1>
     </c:if>
     <c:if test="${not empty donations}">
       <table>
