@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
@@ -40,33 +39,35 @@ public class AdminUsersController {
         return "admin/users/admin-profile-users";
     }
 
-    @GetMapping("/user/update")
-    public String editUserView(Model model, @RequestParam Long id){
+    @GetMapping("/update")
+    public String editUserView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/users/admin-profile-users";
+        return "admin/users/admin-profile-users-edit";
     }
 
-    @PostMapping("/user/update")
+    @PostMapping("/update")
     public String editUser(User user, @RequestParam Long id){
-        userService.updateUser(id, user);
-        return "redirect:/user/admin-profile-users";
+        userService.updateUserByAdmin(id, user);
+        return "redirect:/admin-profile-users";
     }
 
-    @GetMapping("/user/delete")
-    public String deleteUserView(Model model, @RequestParam Long id){
+    @GetMapping("/delete")
+    public String deleteUserView(Model model, @RequestParam Long id, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/users/admin-profile-users";
+        return "admin/users/admin-profile-users-delete";
     }
 
-    @PostMapping("/user/delete")
+    @PostMapping("/delete")
     public String deleteUser(@RequestParam Long id){
         userService.deleteUser(id);
-        return "redirect:/user/admin-profile-users";
+        return "redirect:/admin-profile-users";
     }
 }

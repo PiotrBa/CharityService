@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/homepage")
                 .and()
                 .build();
     }
