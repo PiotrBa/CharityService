@@ -181,6 +181,7 @@
 
                         <div class="form-group form-group--inline">
                             <label> Notes for the courier <form:textarea path="pickUpComment" id="pickUpComment" rows="5"></form:textarea></label>
+                            <h4 style="color: red;">Don't forget to provide your phone number<br> to the courier in the note!</h4>
                         </div>
                     </div>
                 </div>
