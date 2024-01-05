@@ -169,13 +169,33 @@ document.addEventListener("DOMContentLoaded", function() {
         return document.querySelector(el)
       }
 
+      function formatDate(dateString) {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+
+      function formatTime(dateString) {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        return `${hours}:${minutes}`;
+      }
+
       const categoryList = [];
-      const street = getElement('#street')
-      const city = getElement('#city')
-      const zipCode = getElement('#zipCode')
-      const pickUpDateAndTime = getElement('#pickUpDateAndTime')
-      const pickUpComment = getElement('#pickUpComment')
-      const deliveryData = [street, city, zipCode, pickUpDateAndTime, pickUpComment]
+      const streetValue = getElement('#street').value;
+      const cityValue = getElement('#city').value;
+      const zipCodeValue = getElement('#zipCode').value;
+      const pickUpDateAndTimeValue = getElement('#pickUpDateAndTime').value;
+      const formattedDate = formatDate(pickUpDateAndTimeValue);
+      const formattedTime = formatTime(pickUpDateAndTimeValue);
+      const pickUpCommentValue = getElement('#pickUpComment').value;
+
+      const deliveryData = [streetValue, cityValue, zipCodeValue, formattedDate, formattedTime, pickUpCommentValue];
 
       const summaryQuantity = getElement('#quantity').value
       const summaryCategories = getElement('.summary-category');
@@ -189,16 +209,16 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       categories.forEach(el => {
         categoryList.push(el.nextElementSibling.nextElementSibling.textContent);
-        summaryCategories.textContent = summaryQuantity + " " + bagText + ", of: " + categoryList;
+        summaryCategories.textContent = summaryQuantity + " " + bagText + ", of: " + categoryList + " ";
       });
       const radioInput = getElement('#institution:checked')
       if (radioInput) {
         summaryInstitution.textContent = radioInput.closest('label').querySelector('.title').textContent
       }
-      const pickUpDetails = document.querySelectorAll('.pickUpDetails')
-      for (let i = 0; i < pickUpDetails.length; i++) {
-        pickUpDetails[i].textContent = deliveryData[i].value
-      }
+      const pickUpDetails = document.querySelectorAll('.pickUpDetails');
+      pickUpDetails.forEach((detail, index) => {
+        detail.textContent = deliveryData[index];
+      });
     }
   }
 

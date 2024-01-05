@@ -222,7 +222,8 @@
 
                     <div class="form-section--column">
                         <ul>
-                            <li class="pickUpDetails">Choose a date and time.</li>
+                            <li class="pickUpDetails">Choose a date.</li>
+                            <li class="pickUpDetails">Choose a time.</li>
                             <li class="pickUpDetails">Enter a comment for the courier.</li>
                         </ul>
                     </div>
