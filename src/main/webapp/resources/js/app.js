@@ -164,9 +164,44 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
-    }
 
+      function getElement(el) {
+        return document.querySelector(el)
+      }
+
+      const categoryList = [];
+      const street = getElement('#street')
+      const city = getElement('#city')
+      const zipCode = getElement('#zipCode')
+      const pickUpDateAndTime = getElement('#pickUpDateAndTime')
+      const pickUpComment = getElement('#pickUpComment')
+      const deliveryData = [street, city, zipCode, pickUpDateAndTime, pickUpComment]
+
+      const summaryQuantity = getElement('#quantity').value
+      const summaryCategories = getElement('.summary-category');
+      const summaryInstitution = getElement('.summary-institution');
+      const categories = document.querySelectorAll('#category:checked');
+      let bagText = ''
+      if (summaryQuantity === "1") {
+        bagText = 'bag'
+      } else if (summaryQuantity > 1 && summaryQuantity <= 4) {
+        bagText = 'bags'
+      }
+      categories.forEach(el => {
+        categoryList.push(el.nextElementSibling.nextElementSibling.textContent);
+        summaryCategories.textContent = summaryQuantity + " " + bagText + ", of: " + categoryList;
+      });
+      const radioInput = getElement('#institution:checked')
+      if (radioInput) {
+        summaryInstitution.textContent = radioInput.closest('label').querySelector('.title').textContent
+      }
+      const pickUpDetails = document.querySelectorAll('.pickUpDetails')
+      for (let i = 0; i < pickUpDetails.length; i++) {
+        pickUpDetails[i].textContent = deliveryData[i].value
+      }
+    }
   }
+
   const form = document.querySelector(".form--steps");
   if (form !== null) {
     new FormSteps(form);

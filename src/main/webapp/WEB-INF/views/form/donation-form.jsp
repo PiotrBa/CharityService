@@ -176,11 +176,11 @@
                     <div class="form-section--column">
                         <h4>Pickup time and data</h4>
                         <div class="form-group form-group--inline">
-                            <label> Date <form:input type="datetime-local" path="pickUpDateAndTime"/> </label>
+                            <label> Date <form:input type="datetime-local" path="pickUpDateAndTime" id="pickUpDateAndTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label>Notes for the courier<form:textarea path="pickUpComment" id="pickUpComment" rows="5"></form:textarea></label>
+                            <label> Notes for the courier <form:textarea path="pickUpComment" id="pickUpComment" rows="5"></form:textarea></label>
                         </div>
                     </div>
                 </div>
@@ -190,52 +190,50 @@
                 </div>
             </div>
 
-            <!-- STEP 6 -->
-            <div data-step="5">
-                <h3>Summary of your donation</h3>
+        <!-- STEP 6 -->
+        <div data-step="5">
+            <h3>Confirm your details:</h3>
+            <div class="summary">
+                <div class="form-section">
+                    <ul>
+                        <li>
+                            <span class="icon icon-bag"></span>
+                            <span class="summary--text summary-category"
+                            >Select bags and categories.</span
+                            >
+                        </li>
 
-                <div class="summary">
-                    <div class="form-section">
-                        <h4>You are donating:</h4>
+                        <li>
+                            <span class="icon icon-hand"></span>
+                            <span class="summary--text summary-institution"
+                            >Choose a foundation.</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-section form-section--columns">
+                    <div class="form-section--column">
                         <ul>
-                            <li>
-                                <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >${donation.quantity} bags of
-                                    <c:forEach items="${donation.categories}" var="category">
-                                    <c:out value="${category.name}" />
-                                </c:forEach>
-                                </span>
-                            </li>
-
-                            <li>
-                                <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >For the "${donation.institutions.name}" foundation in London</span
-                                >
-                            </li>
+                            <li class="pickUpDetails">Enter the street name.</li>
+                            <li class="pickUpDetails">Enter the city name.</li>
+                            <li class="pickUpDetails">Enter the postcode.</li>
                         </ul>
                     </div>
 
-                    <div class="form-section form-section--columns">
-                        <div class="form-section--column">
-                            <h4>Pickup address:</h4>
-                            <ul>
-                                <li>${donation.street}</li>
-                                <li>${donation.city}</li>
-                                <li>${donation.zipCode}</li>
-                                <li>${donation.pickUpDateAndTime}</li>
-                                <li>${donation.pickUpComment}</li>
-                            </ul>
-                        </div>
+                    <div class="form-section--column">
+                        <ul>
+                            <li class="pickUpDetails">Choose a date and time.</li>
+                            <li class="pickUpDetails">Enter a comment for the courier.</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Back</button>
-                    <button type="submit" class="btn">Confirm</button>
-                </div>
             </div>
+
+            <div class="form-group form-group--buttons">
+                <button type="button" class="btn prev-step">Back</button>
+                <button type="submit" class="btn">Confirm</button>
+            </div>
+        </div>
         </form:form>
     </div>
 </section>
