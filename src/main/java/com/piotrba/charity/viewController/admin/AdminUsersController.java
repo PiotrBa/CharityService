@@ -10,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @AllArgsConstructor
@@ -26,18 +23,33 @@ public class AdminUsersController {
 
 
     @GetMapping()
-    public String getAdminProfileView(Model model, Principal principal){
+    public String getAdminProfileView(Model model, Principal principal) {
         List<User> users = userRepository.findAll();
+        List<User> admins = new ArrayList<>();
+        List<User> regularUsers = new ArrayList<>();
+
+        for (User user : users) {
+            if (user.getRole().equals("ROLE_ADMIN")) {
+                admins.add(user);
+            } else if (user.getRole().equals("ROLE_USER")) {
+                regularUsers.add(user);
+            }
+        }
+
         Map<Long, Integer> userDonationsSum = new HashMap<>();
         for (User user : users) {
             Integer sum = Math.toIntExact(donationRepository.countDonationsByUserUsername(user.getUsername()));
             userDonationsSum.put(user.getId(), sum);
         }
-        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
-        model.addAttribute("users", users);
+
+        model.addAttribute("currentUser", userRepository.getByUsername(principal.getName()));
+        model.addAttribute("admins", admins);
+        model.addAttribute("users", regularUsers);
         model.addAttribute("userDonationsSum", userDonationsSum);
+
         return "admin/users/admin-profile-users";
     }
+
 
     @GetMapping("/update")
     public String editUserView(Model model, @RequestParam Long id, Principal principal){
@@ -51,7 +63,7 @@ public class AdminUsersController {
 
     @PostMapping("/update")
     public String editUser(User user, @RequestParam Long id){
-        userService.updateUserByAdmin(id, user);
+        userService.updateUser(id, user);
         return "redirect:/admin-profile-users";
     }
 
