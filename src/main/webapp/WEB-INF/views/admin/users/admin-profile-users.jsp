@@ -27,12 +27,50 @@
         </ul>
     </nav>
     <section class="form--steps-container">
+        <h2 class="centered-h2-with-icon">Administrators</h2>
+        <div class="table-and-buttons-container">
+            <div class="table-container">
+                <ul class="btn">
+                    <a href="/register/admin">Add New Admin</a>
+                </ul>
+                <c:if test="${empty admins}">
+                    <p>No admins found.</p>
+                </c:if>
+                <c:if test="${not empty admins}">
+                    <table>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last name</th>
+                            <th>Email</th>
+                            <th>Mobile number</th>
+                            <th>Donations</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                        </tr>
+                        <c:forEach items="${admins}" var="admin">
+                            <tr>
+                                <td>${admin.firstName}</td>
+                                <td>${admin.lastName}</td>
+                                <td>${admin.email}</td>
+                                <td>${admin.mobileNumber}</td>
+                                <td>${userDonationsSum[admin.id]}</td>
+                                <td>${admin.role}</td>
+                                <td>${admin.active}</td>
+                                <td class="buttons-container">
+                                    <a href="/admin-profile-users/update?id=${admin.id}">Edit</a>
+                                </td>
+                                <td class="buttons-container">
+                                    <a href="/admin-profile-users/delete?id=${admin.id}">Delete</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
+            </div>
+        </div>
         <h2 class="centered-h2-with-icon">Users</h2>
         <div class="table-and-buttons-container">
         <div class="table-container">
-            <ul class="btn">
-                <a href="/register/admin">Add New Admin</a>
-            </ul>
         <c:if test="${empty users}">
             <p>No users found.</p>
         </c:if>
@@ -57,7 +95,10 @@
                         <td>${user.role}</td>
                         <td>${user.active}</td>
                         <td class="buttons-container">
-                            <a href="/user/delete?id=${user.id}">Delete</a>
+                            <a href="/admin-profile-users/update?id=${user.id}">Edit</a>
+                        </td>
+                        <td class="buttons-container">
+                            <a href="/admin-profile-users/delete?id=${user.id}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
