@@ -5,6 +5,8 @@ import com.piotrba.charity.repository.InstitutionRepository;
 import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.InstitutionService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +22,15 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AdminInstitutionsController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminInstitutionsController.class);
+
     private final UserRepository userRepository;
     private final InstitutionRepository institutionRepository;
     private final InstitutionService institutionService;
 
     @GetMapping()
     public String getAdminProfileView(Model model, Principal principal){
+        logger.info("Accessing admin profile institutions page");
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("institutions", institutionRepository.findAll());
@@ -41,12 +46,14 @@ public class AdminInstitutionsController {
 
     @PostMapping("/add")
     public String addInstitution(Institution institution){
+        logger.info("Adding new institution: {}", institution.getName());
         institutionService.saveInstitution(institution);
         return "redirect:/admin-profile-institutions";
     }
 
     @GetMapping("/update")
     public String editInstitutionView(Model model, @RequestParam Long id, Principal principal){
+        logger.info("Editing institution with ID: {}", id);
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<Institution> optionalInstitution = institutionService.findInstitutionsById(id);
         if (optionalInstitution.isPresent()){
@@ -57,6 +64,7 @@ public class AdminInstitutionsController {
 
     @PostMapping("/update")
     public String editInstitution(Institution institution, @RequestParam Long id){
+        logger.info("Updating institution with ID: {}", id);
         institutionService.updateInstitution(id, institution);
         return "redirect:/admin-profile-institutions";
     }
@@ -73,6 +81,7 @@ public class AdminInstitutionsController {
 
     @PostMapping("/delete")
     public String deleteInstitution(@RequestParam Long id){
+        logger.info("Deleting institution with ID: {}", id);
         institutionService.deleteInstitution(id);
         return "redirect:/admin-profile-institutions";
     }

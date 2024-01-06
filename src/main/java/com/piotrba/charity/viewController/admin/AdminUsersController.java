@@ -5,6 +5,8 @@ import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.UserService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,13 +19,15 @@ import java.util.*;
 @RequestMapping("/admin-profile-users")
 public class AdminUsersController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminUsersController.class);
+
     private final UserRepository userRepository;
     private final UserService userService;
     private final DonationRepository donationRepository;
 
-
     @GetMapping()
     public String getAdminProfileView(Model model, Principal principal) {
+        logger.info("Accessing admin profile users page");
         List<User> users = userRepository.findAll();
         List<User> admins = new ArrayList<>();
         List<User> regularUsers = new ArrayList<>();
@@ -50,9 +54,9 @@ public class AdminUsersController {
         return "admin/users/admin-profile-users";
     }
 
-
     @GetMapping("/update")
     public String editUserView(Model model, @RequestParam Long id, Principal principal){
+        logger.info("Editing user with ID: {}", id);
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
@@ -63,12 +67,14 @@ public class AdminUsersController {
 
     @PostMapping("/update")
     public String editUser(User user, @RequestParam Long id){
+        logger.info("Updating user with ID: {}", id);
         userService.updateUser(id, user);
         return "redirect:/admin-profile-users";
     }
 
     @GetMapping("/delete")
     public String deleteUserView(Model model, @RequestParam Long id, Principal principal){
+        logger.info("Deleting user view for ID: {}", id);
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
@@ -79,6 +85,7 @@ public class AdminUsersController {
 
     @PostMapping("/delete")
     public String deleteUser(@RequestParam Long id){
+        logger.info("Deleting user with ID: {}", id);
         userService.deleteUser(id);
         return "redirect:/admin-profile-users";
     }
