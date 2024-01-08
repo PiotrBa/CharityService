@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Profile</title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+    <link rel="stylesheet" href="<c:url value='/resources/css/style.css'/>"/>
 </head>
 <body>
 <header class="header--form-page">
@@ -28,40 +28,46 @@
     <div class="slogan container container--90">
         <div class="form-container">
             <h2>Edit User Profile</h2>
-            <form:form method="post" modelAttribute="user" action="/user-profile/edit?id=${user.id}" class="form-edit-user">
+            <form:form method="post" modelAttribute="user" action="/admin-profile-users/update?id=${user.id}" class="form-edit-user">
                 <div class="form-column">
                     <div class="form-group">
-                        <label style="text-align: center;" for="firstName">First name:</label>
+                        <label for="firstName">First name:</label>
                         <form:input path="firstName" id="firstName" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label style="text-align: center;" for="email">Email:</label>
+                        <label for="email">Email:</label>
                         <form:input path="email" id="email" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label style="text-align: center;" for="username">User name:</label>
+                        <label for="username">User name:</label>
                         <form:input path="username" id="username" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label style="text-align: center;" for="role">Role:</label>
-                        <form:input path="role" id="role" class="form-control"/>
+                        <label for="role">Role:</label>
+                        <div class="form-group--radio">
+                            <form:radiobutton path="role" value="ROLE_ADMIN" label="Admin"/>
+                            <form:radiobutton path="role" value="ROLE_USER" label="User"/>
+                        </div>
                     </div>
                 </div>
                 <div class="form-column">
                     <div class="form-group">
-                        <label style="text-align: center;" for="lastName">Last name:</label>
+                        <label for="lastName">Last name:</label>
                         <form:input path="lastName" id="lastName" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label style="text-align: center;" for="mobileNumber">Mobile number:</label>
+                        <label for="mobileNumber">Mobile number:</label>
                         <form:input path="mobileNumber" id="mobileNumber" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label style="text-align: center;" for="active">Active:</label>
-                        <form:checkbox path="active" id="active" class="form-control"/>
+                        <label for="active">Active:</label>
+                        <div class="form-group--radio">
+                            <form:radiobutton path="active" value="true" label="Yes"/>
+                            <form:radiobutton path="active" value="false" label="No"/>
+                        </div>
                     </div>
                 </div>
-                <div style="text-align: center;" class="form-buttons">
+                <div class="form-buttons" style="text-align: center;">
                     <form:button class="btn">Save</form:button>
                     <a href="/admin-profile-users" class="btn btn-secondary">Back</a>
                 </div>

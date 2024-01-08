@@ -31,7 +31,6 @@ public class AdminUsersController {
         List<User> users = userRepository.findAll();
         List<User> admins = new ArrayList<>();
         List<User> regularUsers = new ArrayList<>();
-
         for (User user : users) {
             if (user.getRole().equals("ROLE_ADMIN")) {
                 admins.add(user);
@@ -39,24 +38,21 @@ public class AdminUsersController {
                 regularUsers.add(user);
             }
         }
-
         Map<Long, Integer> userDonationsSum = new HashMap<>();
         for (User user : users) {
             Integer sum = Math.toIntExact(donationRepository.countDonationsByUserUsername(user.getUsername()));
             userDonationsSum.put(user.getId(), sum);
         }
-
         model.addAttribute("currentUser", userRepository.getByUsername(principal.getName()));
         model.addAttribute("admins", admins);
         model.addAttribute("users", regularUsers);
         model.addAttribute("userDonationsSum", userDonationsSum);
-
         return "admin/users/admin-profile-users";
     }
 
     @GetMapping("/update")
     public String editUserView(Model model, @RequestParam Long id, Principal principal){
-        logger.info("Editing user with ID: {}", id);
+        logger.info("Editing user view with ID: {}", id);
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()){
@@ -68,7 +64,7 @@ public class AdminUsersController {
     @PostMapping("/update")
     public String editUser(User user, @RequestParam Long id){
         logger.info("Updating user with ID: {}", id);
-        userService.updateUser(id, user);
+        userService.updateUserByAdmin(id, user);
         return "redirect:/admin-profile-users";
     }
 

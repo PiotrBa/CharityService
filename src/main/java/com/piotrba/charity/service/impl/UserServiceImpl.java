@@ -6,9 +6,7 @@ import com.piotrba.charity.repository.DonationRepository;
 import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -58,38 +56,34 @@ public class UserServiceImpl implements UserService {
             user.setLastName(newUser.getLastName());
             user.setEmail(newUser.getEmail());
             user.setMobileNumber(newUser.getMobileNumber());
+            user.setRole("ROLE_USER");
+            user.setActive(true);
             user.setUsername(newUser.getUsername());
-
-            if (isCurrentUser(user.getUsername()) && newUser.getPassword() != null && !newUser.getPassword().isEmpty()) {
+            if (newUser.getPassword() != null && !newUser.getPassword().isEmpty()) {
                 user.setPassword(passwordEncoder.encode(newUser.getPassword()));
             }
-
-            if (isAdmin()) {
-                user.setRole(newUser.getRole());
-                user.setActive(newUser.getActive());
-            }
-
             return Optional.of(userRepository.save(user));
         }
         return Optional.empty();
     }
 
-    private boolean isCurrentUser(String username) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication != null && username.equals(authentication.getName());
+    @Override
+    public Optional<User> updateUserByAdmin(Long id, User newUser) {
+        Optional<User> optionalUserByAdmin = userRepository.findById(id);
+        if (optionalUserByAdmin.isPresent()) {
+            User user = optionalUserByAdmin.get();
+            user.setFirstName(newUser.getFirstName());
+            user.setLastName(newUser.getLastName());
+            user.setEmail(newUser.getEmail());
+            user.setMobileNumber(newUser.getMobileNumber());
+            user.setRole(newUser.getRole());
+            user.setActive(newUser.getActive());
+            user.setUsername(newUser.getUsername());
+            return Optional.of(userRepository.save(user));
+        }
+        return Optional.empty();
     }
 
-    private boolean isAdmin() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getAuthorities() != null) {
-            for (GrantedAuthority authority : authentication.getAuthorities()) {
-                if ("ROLE_ADMIN".equals(authority.getAuthority())) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     @Override
     public void deleteUser(Long id) {

@@ -13,6 +13,7 @@ public interface UserService {
     User registerUser(User user);
     User registerAdmin(User user);
     Optional<User> updateUser(Long id, User user);
+    Optional<User> updateUserByAdmin(Long id, User user);
     void deleteUser(Long id);
     List<Donation> getUserDonations(String username);
 }
