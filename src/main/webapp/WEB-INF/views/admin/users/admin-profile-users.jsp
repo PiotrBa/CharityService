@@ -44,7 +44,6 @@
                             <th>Email</th>
                             <th>Mobile number</th>
                             <th>Donations</th>
-                            <th>Role</th>
                             <th>Active</th>
                         </tr>
                         <c:forEach items="${admins}" var="admin">
@@ -54,7 +53,6 @@
                                 <td>${admin.email}</td>
                                 <td>${admin.mobileNumber}</td>
                                 <td>${userDonationsSum[admin.id]}</td>
-                                <td>${admin.role}</td>
                                 <td>${admin.active}</td>
                                 <td class="buttons-container">
                                     <a href="/admin-profile-users/update?id=${admin.id}">Edit</a>
@@ -82,7 +80,6 @@
                     <th>Email</th>
                     <th>Mobile number</th>
                     <th>Donations</th>
-                    <th>Role</th>
                     <th>Active</th>
                 </tr>
                 <c:forEach items="${users}" var="user">
@@ -92,7 +89,6 @@
                         <td>${user.email}</td>
                         <td>${user.mobileNumber}</td>
                         <td>${userDonationsSum[user.id]}</td>
-                        <td>${user.role}</td>
                         <td>${user.active}</td>
                         <td class="buttons-container">
                             <a href="/admin-profile-users/update?id=${user.id}">Edit</a>

@@ -23,6 +23,8 @@ public class SecurityConfig {
                 .antMatchers("/form").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register/user").permitAll()
+                .antMatchers("/user-homepage").hasRole("USER")
+                .antMatchers("/user-profile/**").hasRole("USER")
                 .antMatchers("/admin-profile-categories/**").hasRole("ADMIN")
                 .antMatchers("/admin-profile-donations/**").hasRole("ADMIN")
                 .antMatchers("/admin-profile-institutions/**").hasRole("ADMIN")
