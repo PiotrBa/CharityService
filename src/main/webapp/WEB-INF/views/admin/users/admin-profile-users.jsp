@@ -30,9 +30,6 @@
         <h2 class="centered-h2-with-icon">Administrators</h2>
         <div class="table-and-buttons-container">
             <div class="table-container">
-                <ul class="btn">
-                    <a href="/register/admin">Add New Admin</a>
-                </ul>
                 <c:if test="${empty admins}">
                     <p>No admins found.</p>
                 </c:if>

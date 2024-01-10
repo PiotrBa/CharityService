@@ -32,7 +32,7 @@
       <p>No institutions found.</p>
     </c:if>
     <c:if test="${not empty institutions}">
-      <ul class="btn">
+      <ul class="btn1">
         <a href="/admin-profile-institutions/add">Add</a>
       </ul>
       <table>

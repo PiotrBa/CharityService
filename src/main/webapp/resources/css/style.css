@@ -184,8 +184,9 @@ Styling of 'Role' and 'Active' Radio Buttons in Admin's User Edit Form
 .form-group--radio {
   display: flex;
   align-items: center;
+  padding: 10px 20px;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
 }
 
 .form-group--radio label {
@@ -211,6 +212,31 @@ Styling of 'Role' and 'Active' Radio Buttons in Admin's User Edit Form
   color: white;
   border-color: gold;
 }
+
+/*
+Style for 'Add New Institution' Button
+==========================================================================
+*/
+.btn1 {
+  background-color: #f9f9f9;
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 1em 1.666em;
+  border: 1px solid #3c3c3c;
+  text-align: center;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn1:hover {
+  background-color: #f9f9f9;
+  color: white;
+  border-color: gold;
+}
+
+
+
+
 
 
 
