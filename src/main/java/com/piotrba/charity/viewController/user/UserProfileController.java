@@ -61,6 +61,7 @@ public class UserProfileController {
     @GetMapping("/delete")
     public String deleteProfileView(Model model, @RequestParam Long id, Principal principal) {
         logger.info("Viewing delete profile for user ID: {}", id);
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
@@ -68,13 +69,13 @@ public class UserProfileController {
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
         }
-        return "user-profile-delete";
+        return "user/user-profile-delete";
     }
 
     @PostMapping("/delete")
     public String deleteProfile(@RequestParam Long id) {
         logger.info("Deleting profile for user ID: {}", id);
         userService.deleteUser(id);
-        return "redirect:/index";
+        return "redirect:/homepage";
     }
 }

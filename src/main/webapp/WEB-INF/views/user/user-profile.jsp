@@ -31,6 +31,7 @@
       <li><a href="/user-profile/#about-us" class="btn btn--without-border">About us</a></li>
       <li><a href="/user-profile/#help" class="btn btn--without-border">Foundations and organizations</a></li>
       <li><a href="/user-profile/#contact" class="btn btn--without-border">Contact</a></li>
+      <li><a href="/user-profile/delete?id=${user.id}" class="btn btn--without-border">Delete Account</a></li>
     </ul>
   </nav>
 

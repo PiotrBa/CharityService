@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="com">
 <head>
@@ -36,15 +37,20 @@
     </nav>
 
     <div class="slogan container container--90">
-        <div class="slogan--item">
-            <h1>
-                Thank you for being with us ${user.firstName}!<br/>
-                Put unwanted things in trusted hands
-            </h1>
+        <div class="form-container">
+            <form:form method="post" modelAttribute="user">
+            <div class="form-column">
+                <h1>${user.firstName}, are you sure you want to delete your account?</h1><br>
+                <h1>We would love for you to stay with us. :)</h1>
+                <div style="text-align: center;" class="form-buttons">
+                    <form:button class="btn">Yes</form:button>
+                    <a href="/user-profile" class="btn btn-secondary">No</a>
+                </div>
+                </form:form>
+            </div>
         </div>
     </div>
 </header>
-
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
