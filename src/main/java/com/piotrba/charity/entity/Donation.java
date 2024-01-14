@@ -48,4 +48,6 @@ public class Donation {
         return formatter.format(pickUpDateAndTime);
     }
     private String pickUpComment;
+    private Boolean awaitingApproval;
+    private Boolean packageReceived;
 }

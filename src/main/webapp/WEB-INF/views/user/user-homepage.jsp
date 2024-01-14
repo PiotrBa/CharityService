@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="com">
 <head>
@@ -37,10 +38,48 @@
 
     <div class="slogan container container--90">
         <div class="slogan--item">
-            <h1>
-                Thank you for being with us ${user.firstName}!<br/>
-                Put unwanted things in trusted hands
-            </h1>
+            <c:if test="${empty donationsToReceived}">
+                <h1>
+                    Thank you for being with us ${user.firstName}!<br/>
+                    Put unwanted things in trusted hands
+                </h1>
+            </c:if>
+            <c:if test="${not empty donationsToReceived}">
+                <div class="form-container">
+                    <h2>Your donation</h2>
+                    <c:forEach items="${donationsToReceived}" var="donation">
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label>${donation.street}</label>
+                            </div>
+                            <div class="form-group">
+                                <label>City: ${donation.city}</label>
+                            </div>
+                            <div class="form-group">
+                                <label>ZipCode: ${donation.zipCode}</label>
+                            </div>
+                        </div>
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label>Date: ${donation.pickUpDateAndTime}</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Time: ${donation.pickUpDateAndTime}</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Comment for courier: ${donation.pickUpComment}</label>
+                            </div>
+                        </div>
+                        <div class="form-buttons" style="text-align: center;">
+                            <form action="/user-homepage" method="post">
+                                <input type="hidden" name="id" value="${donation.id}" />
+                                <input type="submit" value="Package Received" class="btn" />
+                            </form>
+                            <a href="/user-profile/delete?id=${donation.id}" class="btn btn-secondary">Delete donation</a>
+                        </div>
+                    </c:forEach>
+                </div>
+            </c:if>
         </div>
     </div>
 </header>

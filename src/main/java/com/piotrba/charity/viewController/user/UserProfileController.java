@@ -31,7 +31,7 @@ public class UserProfileController {
     public String getProfileView(Model model, Principal principal) {
         logger.info("Accessing user profile for user: {}", principal.getName());
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
-        model.addAttribute("donations", donationRepository.findByUserUsername(principal.getName()));
+        model.addAttribute("donations", donationRepository.findDonationsByUserWithApprovalAndPackageReceived(principal.getName()));
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
@@ -76,6 +76,6 @@ public class UserProfileController {
     public String deleteProfile(@RequestParam Long id) {
         logger.info("Deleting profile for user ID: {}", id);
         userService.deleteUser(id);
-        return "redirect:/homepage";
+        return "redirect:/user-homepage";
     }
 }

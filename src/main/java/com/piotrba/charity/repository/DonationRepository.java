@@ -17,7 +17,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     @Query("SELECT SUM(d.quantity) FROM Donation d WHERE d.user.username = :username")
     Integer sumQuantitiesByUserUsername(String username);
-    List<Donation> findByUserUsername(String username);
 
     @Query("SELECT d FROM Donation d")
     @EntityGraph(attributePaths = {"user"})
@@ -25,4 +24,11 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     List<Donation> findByCategories_Id(Long categoryId);
     List<Donation> findByInstitutions_Id(Long institutionId);
+
+    @Query("SELECT d FROM Donation d WHERE d.user.username = :username AND d.awaitingApproval = true AND d.packageReceived = true")
+    List<Donation> findDonationsByUserWithApprovalAndPackageReceived(String username);
+
+    @Query("SELECT d FROM Donation d WHERE d.user.username = :username AND d.awaitingApproval = true AND d.packageReceived = false")
+    List<Donation> findDonationsByUserWithApprovalAndPackageNotReceived(String username);
+
 }

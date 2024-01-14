@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        List<Donation> donations = donationRepository.findByUserUsername(user.getUsername());
+        List<Donation> donations = donationRepository.findDonationsByUserWithApprovalAndPackageReceived(user.getUsername());
         for (Donation donation:donations) {
             donationRepository.delete(donation);
         }
@@ -99,6 +99,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Donation> getUserDonations(String username) {
-        return donationRepository.findByUserUsername(username);
+        return donationRepository.findDonationsByUserWithApprovalAndPackageReceived(username);
     }
 }

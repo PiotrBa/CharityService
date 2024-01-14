@@ -34,11 +34,28 @@ public class DonationServiceImpl implements DonationService{
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()){
             donation.setUser(userOptional.get());
+            donation.setAwaitingApproval(true);
+            donation.setPackageReceived(false);
             return donationRepository.save(donation);
         }else {
             throw new RuntimeException("User not found");
         }
     }
+
+    @Override
+    public Donation setPackageReceived(Long id) {
+        Optional<Donation> donationOptional = donationRepository.findById(id);
+        if (donationOptional.isPresent()) {
+            Donation existingDonation = donationOptional.get();
+            existingDonation.setPackageReceived(true);
+            return donationRepository.save(existingDonation);
+        } else {
+            throw new RuntimeException("Donation not found with ID: " + id);
+        }
+    }
+
+
+
 
     @Override
     public Optional<Donation> updateDonation(Long id, Donation newDonation) {
