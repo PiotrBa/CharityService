@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -40,9 +37,16 @@ public class UserHomePageController {
         return "user/user-homepage";
     }
 
-    @PostMapping()
+    @PostMapping("/package-received")
     public String packageReceived(@RequestParam Long id) {
         donationService.setPackageReceived(id);
         return "redirect:/user-homepage";
     }
+
+    @PostMapping("/delete-donation")
+    public String deleteDonation(@RequestParam Long id){
+        donationService.deleteDonation(id);
+        return "redirect:/user-homepage";
+    }
+
 }

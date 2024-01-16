@@ -234,6 +234,25 @@ Style for 'Add New Institution' Button
   border-color: gold;
 }
 
+/*
+Submit buttons side by side
+==========================================================================
+*/
+.form-buttons-inline {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/*
+Font size for special places
+==========================================================================
+*/
+.custom-font-size {
+  font-size: 20px;
+}
+
 
 
 

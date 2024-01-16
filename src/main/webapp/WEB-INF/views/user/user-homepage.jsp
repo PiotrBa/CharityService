@@ -2,7 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 <!DOCTYPE html>
 <html lang="com">
 <head>
@@ -50,32 +52,36 @@
                     <c:forEach items="${donationsToReceived}" var="donation">
                         <div class="form-column">
                             <div class="form-group">
-                                <label>${donation.street}</label>
+                                <label class="custom-font-size">Street: ${donation.street}</label>
                             </div>
                             <div class="form-group">
-                                <label>City: ${donation.city}</label>
+                                <label class="custom-font-size">City: ${donation.city}</label>
                             </div>
                             <div class="form-group">
-                                <label>ZipCode: ${donation.zipCode}</label>
+                                <label class="custom-font-size">ZipCode: ${donation.zipCode}</label>
                             </div>
                         </div>
                         <div class="form-column">
                             <div class="form-group">
-                                <label>Date: ${donation.pickUpDateAndTime}</label>
+                                <label class="custom-font-size">Date: ${donation.pickUpDateAndTime}</label>
                             </div>
                             <div class="form-group">
-                                <label>Time: ${donation.pickUpDateAndTime}</label>
+                                <label class="custom-font-size">Time: ${donation.pickUpDateAndTime}</label>
                             </div>
                             <div class="form-group">
-                                <label>Comment for courier: ${donation.pickUpComment}</label>
+                                <label class="custom-font-size">Comment for courier: ${donation.pickUpComment}</label>
                             </div>
                         </div>
-                        <div class="form-buttons" style="text-align: center;">
-                            <form action="/user-homepage" method="post">
+
+                        <div class="form-buttons-inline" style="text-align: center;">
+                            <form:form action="/user-homepage/package-received" method="post" modelAttribute="donationsToReceived">
                                 <input type="hidden" name="id" value="${donation.id}" />
-                                <input type="submit" value="Package Received" class="btn" />
-                            </form>
-                            <a href="/user-profile/delete?id=${donation.id}" class="btn btn-secondary">Delete donation</a>
+                                <form:button type="submit" class="btn">Package Received</form:button>
+                            </form:form>
+                            <form:form action="/user-homepage/delete-donation" method="post" modelAttribute="donationsToReceived">
+                                <input type="hidden" name="id" value="${donation.id}" />
+                                <form:button type="submit" class="btn btn-secondary">Delete Donation</form:button>
+                            </form:form>
                         </div>
                     </c:forEach>
                 </div>
