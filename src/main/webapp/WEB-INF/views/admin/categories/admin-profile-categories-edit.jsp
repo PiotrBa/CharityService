@@ -38,7 +38,7 @@
                 <form:button class="btn">Save</form:button>
                 <a href="/admin-profile-categories" class="btn btn-secondary">Back</a>
             </div>
-        </form:form>
+                </form:form>
             </div>
         </div>
     </div>
