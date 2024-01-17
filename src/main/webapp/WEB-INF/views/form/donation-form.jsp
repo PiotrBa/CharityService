@@ -80,7 +80,6 @@
 
     <div class="form--steps-container">
         <div class="form--steps-counter">Step <span>1</span>/4</div>
-
         <form:form modelAttribute="donation" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
@@ -168,7 +167,8 @@
                         <input type="hidden" id="hiddenStreet" name="hiddenStreet" />
                         <input type="hidden" id="hiddenCity" name="hiddenCity" />
                         <input type="hidden" id="hiddenZipCode" name="hiddenZipCode" />
-                        <input type="hidden" id="hiddenPickUpDateAndTime" name="hiddenPickUpDateAndTime" />
+                        <input type="hidden" id="hiddenPickUpDate" name="hiddenPickUpDate" />
+                        <input type="hidden" id="hiddenPickUpTime" name="hiddenPickUpTime" />
                         <input type="hidden" id="hiddenPickUpComment" name="hiddenPickUpComment" />
 
                     </div>
@@ -176,7 +176,8 @@
                     <div class="form-section--column">
                         <h4>Pickup time and data</h4>
                         <div class="form-group form-group--inline">
-                            <label> Date <form:input type="datetime-local" path="pickUpDateAndTime" id="pickUpDateAndTime"/> </label>
+                            <label> Date <form:input type="date" path="pickUpDate" id="pickUpDate"/> </label>
+                            <label> Time <form:input type="time" path="pickUpTime" id="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">

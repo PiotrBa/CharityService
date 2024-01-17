@@ -58,15 +58,15 @@
                                 <label class="custom-font-size">City: ${donation.city}</label>
                             </div>
                             <div class="form-group">
-                                <label class="custom-font-size">ZipCode: ${donation.zipCode}</label>
+                                <label class="custom-font-size">Post Code: ${donation.zipCode}</label>
                             </div>
                         </div>
                         <div class="form-column">
                             <div class="form-group">
-                                <label class="custom-font-size">Date: ${donation.pickUpDateAndTime}</label>
+                                <label class="custom-font-size">Date: ${donation.createPickApDateFormatted}</label>
                             </div>
                             <div class="form-group">
-                                <label class="custom-font-size">Time: ${donation.pickUpDateAndTime}</label>
+                                <label class="custom-font-size">Time: ${donation.createPickApTimeFormatted}</label>
                             </div>
                             <div class="form-group">
                                 <label class="custom-font-size">Comment for courier: ${donation.pickUpComment}</label>

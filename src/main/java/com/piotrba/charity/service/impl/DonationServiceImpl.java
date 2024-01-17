@@ -68,7 +68,8 @@ public class DonationServiceImpl implements DonationService{
             donation.setStreet(newDonation.getStreet());
             donation.setCity(newDonation.getCity());
             donation.setZipCode(newDonation.getZipCode());
-            donation.setPickUpDateAndTime(newDonation.getPickUpDateAndTime());
+            donation.setPickUpDate(newDonation.getPickUpDate());
+            donation.setPickUpTime(newDonation.getPickUpTime());
             donation.setPickUpComment(newDonation.getPickUpComment());
             return Optional.of(donationRepository.save(donation));
         }

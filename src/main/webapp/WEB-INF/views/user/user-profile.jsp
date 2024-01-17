@@ -76,7 +76,8 @@
               <th>Post code</th>
               <th>Category</th>
               <th>Institution</th>
-              <th>Pick Up Date and Time</th>
+              <th>Pick Up Date</th>
+              <th>Pick Up Time</th>
               <th>Pick Up Comment</th>
             </tr>
             <c:forEach items="${donations}" var="userDonation">
@@ -91,7 +92,8 @@
                   </c:forEach>
                 </td>
                 <td>${userDonation.institutions.name}</td>
-                <td>${userDonation.createPickApFormatted}</td>
+                <td>${userDonation.createPickApDateFormatted}</td>
+                <td>${userDonation.createPickApTimeFormatted}</td>
                 <td>${userDonation.pickUpComment}</td>
               </tr>
             </c:forEach>
