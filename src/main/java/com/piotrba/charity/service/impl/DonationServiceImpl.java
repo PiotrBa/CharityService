@@ -17,6 +17,7 @@ public class DonationServiceImpl implements DonationService{
 
     private final DonationRepository donationRepository;
     private final UserRepository userRepository;
+    private final EmailSenderServiceImpl emailSenderService;
 
 
     @Override
@@ -33,9 +34,11 @@ public class DonationServiceImpl implements DonationService{
     public Donation saveDonation(Donation donation, Long userId) {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()){
-            donation.setUser(userOptional.get());
+            User user = userOptional.get();
+            donation.setUser(user);
             donation.setAwaitingApproval(true);
             donation.setPackageReceived(false);
+            emailSenderService.sendConfirmationEmail(user.getEmail());
             return donationRepository.save(donation);
         }else {
             throw new RuntimeException("User not found");
