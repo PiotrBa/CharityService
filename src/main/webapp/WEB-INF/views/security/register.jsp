@@ -58,7 +58,7 @@
                         <form:input path="mobileNumber" id="mobileNumber" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password:</label>
+                        <label style="text-align: center;" for="password">Password:</label>
                         <input type="password" id="password" name="password" class="form-control"/>
                     </div>
                 </div>

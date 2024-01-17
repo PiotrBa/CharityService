@@ -34,14 +34,14 @@
         <div class="form-container">
             <h2>Login</h2>
             <form method="post" action="/login">
-                <div class="form-group">
+                <div class="form-section--columns">
                     <label for="username">User name:</label>
                     <input type="text" name="username" id="username" class="form-control"/>
                 </div>
-                <div class="form-group">
+                <div class="form-section--columns">
                     <label style="text-align: -webkit-left;" for="password">Password:</label>
                     <input type="password" name="password" id="password" class="form-control"/>
-                </div>
+                </div><br>
                 <div class="form-buttons" style="text-align: center;">
                     <button type="submit" class="btn">Login</button>
                     <a href="/register/user" class="btn btn-secondary">Sign up</a>
