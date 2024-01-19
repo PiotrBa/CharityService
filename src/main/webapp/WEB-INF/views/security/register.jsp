@@ -31,36 +31,23 @@
     </nav>
 
     <div class="slogan container container--90">
-        <div class="form-container">
+        <div class="login-style">
             <h2>Registration</h2>
             <form:form method="post" modelAttribute="user">
-                <div class="form-column">
-                    <div class="form-group">
-                        <label style="text-align: center;" for="firstName">First name:</label>
-                        <form:input path="firstName" id="firstName" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label style="text-align: center;" for="email">Email:</label>
-                        <form:input path="email" id="email" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label style="text-align: center;" for="username">User name:</label>
-                        <form:input path="username" id="username" class="form-control"/>
-                    </div>
+                <div class="section--columns">
+                    <form:input placeholder="First name" path="firstName" id="firstName"/>
+
+                    <form:input placeholder="Last name" path="lastName" id="lastName"/>
                 </div>
-                <div class="form-column">
-                    <div class="form-group">
-                        <label style="text-align: center;" for="lastName">Last name:</label>
-                        <form:input path="lastName" id="lastName" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label style="text-align: center;" for="mobileNumber">Mobile number:</label>
-                        <form:input path="mobileNumber" id="mobileNumber" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label style="text-align: center;" for="password">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control"/>
-                    </div>
+                <div class="section--columns">
+                    <form:input placeholder="Email" path="email" id="email"/>
+
+                    <form:input placeholder="Mobile number" path="mobileNumber" id="mobileNumber"/>
+                </div>
+                <div class="section--columns">
+                    <form:input placeholder="User name" path="username" id="username"/>
+
+                    <input placeholder="Password" type="password" id="password" name="password"/>
                 </div>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Sign up</form:button>

@@ -31,18 +31,19 @@
     </nav>
 
     <div class="slogan container container--90">
-        <div class="form-container">
+        <div class="login-style">
             <h2>Login</h2>
             <form method="post" action="/login">
-                <div class="form-section--columns">
-                    <label for="username">User name:</label>
-                    <input type="text" name="username" id="username" class="form-control"/>
+                <div class="section--columns">
+                    <input placeholder="User name" type="text" name="username" id="username"/>
+
+                    <input placeholder="Password" type="password" name="password" id="password"/>
                 </div>
-                <div class="form-section--columns">
-                    <label style="text-align: -webkit-left;" for="password">Password:</label>
-                    <input type="password" name="password" id="password" class="form-control"/>
-                </div><br>
-                <div class="form-buttons" style="text-align: center;">
+<%--                <div class="section--columns">--%>
+<%--                    <label for="password">Password:</label>--%>
+<%--                    <input placeholder="Password" type="password" name="password" id="password"/>--%>
+<%--                </div>--%>
+                <div class="form-buttons">
                     <button type="submit" class="btn">Login</button>
                     <a href="/register/user" class="btn btn-secondary">Sign up</a>
                 </div>
