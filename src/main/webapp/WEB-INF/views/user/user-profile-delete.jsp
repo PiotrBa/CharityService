@@ -37,17 +37,19 @@
     </nav>
 
     <div class="slogan container container--90">
-        <div class="form-container">
+        <div class="login-style">
             <form:form method="post" modelAttribute="user">
-            <div class="form-column">
-                <h1>${user.firstName}, are you sure you want to delete your account?</h1><br>
-                <h1>We would love for you to stay with us. :)</h1>
+                <div class="section--columns">
+                    <h1>${user.firstName}, are you sure you want to delete your account?</h1><br>
+                </div>
+                <div class="section--columns">
+                    <h1>We would love for you to stay with us. :)</h1>
+                </div>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Yes</form:button>
                     <a href="/user-profile" class="btn btn-secondary">No</a>
                 </div>
                 </form:form>
-            </div>
         </div>
     </div>
 </header>

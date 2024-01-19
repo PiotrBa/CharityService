@@ -36,36 +36,25 @@
   </nav>
 
   <div class="slogan container container--90">
-    <div class="slogan--item">
-      <h1>
-        You are ${user.firstName} on your profile.<br/>
-        Here you can check your details and the list of donations you have made!
-      </h1>
-      <div>
-        <table>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Mobile number</th>
-            <th>User name</th>
-            <th>Password</th>
-          </tr>
-          <tr>
-            <td>${user.firstName}</td>
-            <td>${user.lastName}</td>
-            <td>${user.email}</td>
-            <td>${user.mobileNumber}</td>
-            <td>${user.username}</td>
-            <td>********</td>
-            <td>
-              <a href="/user-profile/edit?id=${user.id}"> Edit</a>
-            </td>
-          </tr>
-        </table>
+    <div class="login-style">
+      <h2>Your details</h2>
+      <div class="section--columns">
+        ${user.firstName}
+        ${user.lastName}
       </div>
-      <br>
-      <div>
+      <div class="section--columns">
+        ${user.email}
+        ${user.mobileNumber}
+      </div>
+      <div class="section--columns">
+        ${user.username}
+      </div>
+      <div "form-buttons">
+        <a href="/user-profile/edit?id=${user.id}"> Edit</a>
+      </div>
+  </div>
+  <div class="slogan container container--90">
+      <div class="table-container">
         <c:if test="${not empty donations}">
           <h1>Your donations</h1>
           <table>
