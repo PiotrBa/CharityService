@@ -26,24 +26,20 @@
         </ul>
     </nav>
     <div class="slogan container container--90">
-        <div class="form-container form-institution-extended">
+        <div class="login-style">
             <h2>Add institution</h2>
-            <form:form method="post" modelAttribute="institution" class="form-edit-user">
-            <div class="form-column">
-                <div class="form-group">
-                    <label style="text-align: center;" for="name">Institution name:</label>
-                    <form:input path="name" id="name" class="form-control"/>
+            <form:form method="post" modelAttribute="institution">
+                <div class="section--columns">
+                    <form:input placeholder="Institution name" path="name" id="name"/>
                 </div>
-                <div class="form-group">
-                    <label style="text-align: center;" for="description">Institution description:</label>
-                    <form:textarea path="description" id="description" class="form-control" rows="6" cols="70"/>
+                <div class="section--columns">
+                    <form:textarea placeholder="Description" path="description" id="description" rows="6" cols="70"/>
                 </div>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Save</form:button>
                     <a href="/admin-profile-institutions" class="btn btn-secondary">Back</a>
                 </div>
-                </form:form>
-            </div>
+            </form:form>
         </div>
     </div>
 </header>
