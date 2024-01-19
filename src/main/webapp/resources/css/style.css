@@ -22,64 +22,67 @@ Header decoration for admin pages
   z-index: -1;
 }
 
-/* Styl dla formularza logowania */
+/*
+Form style for login
+==================================================================
+*/
 .login-style {
-  background-color: #f9f9f9; /* Tło formularza */
-  border-radius: 8px; /* Zaokrąglenie rogów */
-  padding: 20px; /* Wewnętrzny odstęp */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień dla kontenera */
-  max-width: 800px; /* Maksymalna szerokość formularza */
-  margin: 0 auto; /* Wyśrodkowanie kontenera w poziomie */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .login-style h2 {
-  color: #3c3c3c; /* Kolor nagłówka */
-  margin-bottom: 40px; /* Odległość nagłówka od elementów formularza */
+  color: #3c3c3c;
+  margin-bottom: 40px;
 }
 
 .login-style .section--columns {
-  display: flex; /* Użycie Flexbox */
-  justify-content: center; /* Wyrównanie do środka */
-  align-items: center; /* Centrowanie w pionie */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .login-style .section--columns label {
-  margin-right: 10px; /* Odstęp między etykietą a inputem */
+  margin-right: 10px;
 }
 
 .login-style input[type="text"],
 .login-style input[type="textarea"],
 .login-style input[type="password"] {
-  flex-grow: 1; /* Input zajmuje dostępną przestrzeń */
-  padding: 10px; /* Wewnętrzny odstęp w polu */
-  border: 1px solid #ddd; /* Obramowanie pola */
-  border-radius: 4px; /* Zaokrąglenie rogów pola */
-  font-size: 15px; /* Rozmiar czcionki */
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
 }
 
 .login-style .form-buttons {
   display: flex;
-  justify-content: flex-start; /* Wyrównanie przycisków do lewej */
+  justify-content: flex-start;
   width: 100%;
-  margin-top: 20px; /* Odległość przycisków od inputów */
+  margin-top: 20px;
 }
 
 .login-style input[type="submit"] {
-  padding: 10px; /* Wewnętrzny odstęp przycisku */
-  background-color: #4CAF50; /* Kolor tła przycisku */
-  color: white; /* Kolor tekstu */
-  border: none; /* Brak obramowania */
-  border-radius: 4px; /* Zaokrąglenie rogów przycisku */
-  cursor: pointer; /* Kursor 'ręka' */
-  transition: background-color 0.3s; /* Animacja zmiany koloru */
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .login-style input[type="submit"]:hover {
-  background-color: #45a049; /* Kolor tła przycisku przy najechaniu */
+  background-color: #45a049;
 }
 
 
