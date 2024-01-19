@@ -26,20 +26,17 @@
         </ul>
     </nav>
     <div class="slogan container container--90">
-        <div class="form-container">
+        <div class="login-style">
             <h2>Add category</h2>
-            <form:form method="post" modelAttribute="category" class="form-edit-user">
-            <div class="form-column">
-                <div class="form-group">
-                    <label style="text-align: center;" for="name">Category name:</label>
-                    <form:input path="name" id="name" class="form-control"/>
+            <form:form method="post" modelAttribute="category">
+                <div class="section--columns">
+                    <form:input placeholder="Category name" path="name" id="name"/>
                 </div>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Save</form:button>
                     <a href="/admin-profile-categories" class="btn btn-secondary">Back</a>
                 </div>
-                </form:form>
-            </div>
+            </form:form>
         </div>
     </div>
 </header>
