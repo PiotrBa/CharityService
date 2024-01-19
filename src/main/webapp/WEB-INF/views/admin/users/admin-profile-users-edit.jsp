@@ -26,47 +26,28 @@
         </ul>
     </nav>
     <div class="slogan container container--90">
-        <div class="form-container">
+        <div class="login-style">
             <h2>Edit User Profile</h2>
             <form:form method="post" modelAttribute="user" action="/admin-profile-users/update?id=${user.id}" class="form-edit-user">
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="firstName">First name:</label>
-                        <form:input path="firstName" id="firstName" class="form-control"/>
+                    <div class="section--columns">
+                        <form:input placeholder="First name" path="firstName" id="firstName"/>
+
+                        <form:input placeholder="Last name" path="lastName" id="lastName"/>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <form:input path="email" id="email" class="form-control"/>
+                    <div class="section--columns">
+                        <form:input placeholder="Email" path="email" id="email"/>
+
+                        <form:input placeholder="Mobile number" path="mobileNumber" id="mobileNumber"/>
                     </div>
-                    <div class="form-group">
-                        <label for="username">User name:</label>
-                        <form:input path="username" id="username" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="role">Role:</label>
+                    <div class="section--columns">
                         <div class="form-group--radio">
                             <form:radiobutton path="role" value="ROLE_ADMIN" label="Admin"/>
                             <form:radiobutton path="role" value="ROLE_USER" label="User"/>
+
+                            <form:radiobutton path="active" value="true" label="Active"/>
+                            <form:radiobutton path="active" value="false" label="No Active"/>
                         </div>
                     </div>
-                </div>
-                <div class="form-column">
-                    <div class="form-group">
-                        <label for="lastName">Last name:</label>
-                        <form:input path="lastName" id="lastName" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobileNumber">Mobile number:</label>
-                        <form:input path="mobileNumber" id="mobileNumber" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="active">Active:</label>
-                        <div class="form-group--radio">
-                            <form:radiobutton path="active" value="true" label="Yes"/>
-                            <form:radiobutton path="active" value="false" label="No"/>
-                        </div>
-                    </div>
-                </div>
                 <div class="form-buttons" style="text-align: center;">
                     <form:button class="btn">Save</form:button>
                     <a href="/admin-profile-users" class="btn btn-secondary">Back</a>

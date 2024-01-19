@@ -26,17 +26,19 @@
     </ul>
   </nav>
   <div class="slogan container container--90">
-    <div class="form-container">
+    <div class="login-style">
       <form:form method="post" modelAttribute="user" class="form-edit-user">
-      <div class="form-column">
-        <h1>Do you want to delete the user ${user.firstName} ${user.lastName}?</h1><br>
-        <p>If you do this, you will also remove his donations from the list.</p>
+        <div class="section--columns">
+          <h1>Do you want to delete the user ${user.firstName} ${user.lastName}?</h1><br>
+        </div>
+        <div class="section--columns">
+          <h1>If you do this, you will also remove his donations from the list.</h1>
+        </div>
         <div style="text-align: center;" class="form-buttons">
           <form:button class="btn">Yes</form:button>
           <a href="/admin-profile-users" class="btn btn-secondary">No</a>
         </div>
         </form:form>
-      </div>
     </div>
   </div>
 </header>
