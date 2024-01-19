@@ -22,6 +22,70 @@ Header decoration for admin pages
   z-index: -1;
 }
 
+/* Styl dla formularza logowania */
+.login-style {
+  background-color: #f9f9f9; /* Tło formularza */
+  border-radius: 8px; /* Zaokrąglenie rogów */
+  padding: 20px; /* Wewnętrzny odstęp */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cień dla kontenera */
+  max-width: 800px; /* Maksymalna szerokość formularza */
+  margin: 0 auto; /* Wyśrodkowanie kontenera w poziomie */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-style h2 {
+  color: #3c3c3c; /* Kolor nagłówka */
+  margin-bottom: 40px; /* Odległość nagłówka od elementów formularza */
+}
+
+.login-style .section--columns {
+  display: flex; /* Użycie Flexbox */
+  justify-content: center; /* Wyrównanie do środka */
+  align-items: center; /* Centrowanie w pionie */
+  width: 100%;
+}
+
+.login-style .section--columns label {
+  margin-right: 10px; /* Odstęp między etykietą a inputem */
+}
+
+.login-style input[type="text"],
+.login-style input[type="textarea"],
+.login-style input[type="password"] {
+  flex-grow: 1; /* Input zajmuje dostępną przestrzeń */
+  padding: 10px; /* Wewnętrzny odstęp w polu */
+  border: 1px solid #ddd; /* Obramowanie pola */
+  border-radius: 4px; /* Zaokrąglenie rogów pola */
+  font-size: 15px; /* Rozmiar czcionki */
+}
+
+.login-style .form-buttons {
+  display: flex;
+  justify-content: flex-start; /* Wyrównanie przycisków do lewej */
+  width: 100%;
+  margin-top: 20px; /* Odległość przycisków od inputów */
+}
+
+.login-style input[type="submit"] {
+  padding: 10px; /* Wewnętrzny odstęp przycisku */
+  background-color: #4CAF50; /* Kolor tła przycisku */
+  color: white; /* Kolor tekstu */
+  border: none; /* Brak obramowania */
+  border-radius: 4px; /* Zaokrąglenie rogów przycisku */
+  cursor: pointer; /* Kursor 'ręka' */
+  transition: background-color 0.3s; /* Animacja zmiany koloru */
+}
+
+.login-style input[type="submit"]:hover {
+  background-color: #45a049; /* Kolor tła przycisku przy najechaniu */
+}
+
+
+
+
+
 /*
 Table for admin-user
 ==================================================================
