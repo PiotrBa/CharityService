@@ -36,27 +36,45 @@
   </nav>
 
   <div class="slogan container container--90">
+    <div class="table-container">
     <div class="login-style">
       <h2>Your details</h2>
       <div class="section--columns">
-        ${user.firstName}
-        ${user.lastName}
+        <div class="custom-font-size">
+          <span class="bold-text">Name: </span> ${user.firstName}
+          ${user.lastName}
+        </div>
       </div>
       <div class="section--columns">
-        ${user.email}
-        ${user.mobileNumber}
+        <div class="custom-font-size">
+          <span class="bold-text">Email: </span> ${user.email}
+        </div>
       </div>
       <div class="section--columns">
-        ${user.username}
+        <div class="custom-font-size">
+          <span class="bold-text">Mobile number: </span>${user.mobileNumber}
+        </div>
       </div>
-      <div "form-buttons">
-        <a href="/user-profile/edit?id=${user.id}"> Edit</a>
+      <div class="section--columns">
+        <div class="custom-font-size">
+          <span class="bold-text">User name: </span>${user.username}
+        </div>
       </div>
+      <div class="section--columns">
+        <div class="custom-font-size">
+          <span class="bold-text">Password: </span>********
+        </div>
+      </div>
+      <div class="form-buttons">
+        <a href="/user-profile/edit?id=${user.id}" class="btn btn-secondary"> Edit</a>
+      </div>
+    </div>
   </div>
   <div class="slogan container container--90">
+
       <div class="table-container">
         <c:if test="${not empty donations}">
-          <h1>Your donations</h1>
+          <h2>Your donations</h2>
           <table>
             <tr>
               <th>Quantity</th>
@@ -89,7 +107,7 @@
           </table>
         </c:if>
         <c:if test="${empty donations}">
-          <h1>You have not made any donations yet.</h1>
+          <h2>You have not made any donations yet.</h2>
         </c:if>
       </div>
     </div>
