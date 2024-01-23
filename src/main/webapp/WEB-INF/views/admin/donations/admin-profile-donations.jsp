@@ -18,7 +18,7 @@
       <li class="logged-user">
         Welcome ${user.username}
         <ul class="dropdown">
-          <li><a href="/admin-profile-users">Users</a></li>
+          <li><a href="/admin-profile-users/active">Users</a></li>
           <li><a href="/admin-profile-institutions">Institutions</a></li>
           <li><a href="/admin-profile-categories">Categories</a></li>
           <li><a href="/login">Log out</a></li>
@@ -28,11 +28,11 @@
   </nav>
   <h2 class="centered-h2-with-icon">Donations</h2>
   <section class="form--steps-container">
+    <c:if test="${empty donations}">
+      <h1 class="center-text">No donations found</h1>
+    </c:if>
     <div class="table-container">
       <div class="table-and-buttons-container">
-    <c:if test="${empty donations}">
-      <h1>No donations found</h1>
-    </c:if>
     <c:if test="${not empty donations}">
       <table>
         <tr>

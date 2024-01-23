@@ -326,6 +326,12 @@ Font size for special places
   font-weight: bold;
 }
 
+/*Text centering*/
+.center-text {
+  text-align: center;
+}
+
+
 
 
 

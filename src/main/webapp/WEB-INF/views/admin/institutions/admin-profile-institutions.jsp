@@ -17,7 +17,7 @@
       <li class="logged-user">
         Welcome ${user.username}
         <ul class="dropdown">
-          <li><a href="/admin-profile-users">Users</a></li>
+          <li><a href="/admin-profile-users/active">Users</a></li>
           <li><a href="/admin-profile-donations">Donations</a></li>
           <li><a href="/admin-profile-categories">Categories</a></li>
           <li><a href="/login">Log out</a></li>
@@ -29,7 +29,7 @@
   <section class="form--steps-container">
     <div class="table-container">
     <c:if test="${empty institutions}">
-      <p>No institutions found.</p>
+      <h1 class="center-text">No institutions found.</h1>
     </c:if>
     <c:if test="${not empty institutions}">
       <ul class="btn1">

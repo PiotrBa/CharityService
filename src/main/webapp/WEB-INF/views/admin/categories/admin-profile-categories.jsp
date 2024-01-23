@@ -17,7 +17,7 @@
       <li class="logged-user">
         Welcome ${user.username}
         <ul class="dropdown">
-          <li><a href="/admin-profile-users">Users</a></li>
+          <li><a href="/admin-profile-users/active">Users</a></li>
           <li><a href="/admin-profile-institutions">Institutions</a></li>
           <li><a href="/admin-profile-donations">Donations</a></li>
           <li><a href="/login">Log out</a></li>
@@ -29,7 +29,7 @@
   <section class="form--steps-container">
     <div class="table-container-categories">
       <c:if test="${empty categories}">
-      <p>No categories found.</p>
+      <h1 class="center-text">No categories found.</h1>
     </c:if>
     <c:if test="${not empty categories}">
       <ul class="btn">
