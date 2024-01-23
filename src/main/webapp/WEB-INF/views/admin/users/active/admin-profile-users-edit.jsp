@@ -28,7 +28,7 @@
     <div class="slogan container container--90">
         <div class="login-style">
             <h2>Edit User Profile</h2>
-            <form:form method="post" modelAttribute="user" action="/admin-profile-users/update?id=${user.id}" class="form-edit-user">
+            <form:form method="post" modelAttribute="user" action="/admin-profile-users/active/update?id=${user.id}">
                     <div class="section--columns">
                         <form:input placeholder="First name" path="firstName" id="firstName"/>
 
@@ -50,7 +50,7 @@
                     </div>
                 <div class="form-buttons" style="text-align: center;">
                     <form:button class="btn">Save</form:button>
-                    <a href="/admin-profile-users" class="btn btn-secondary">Back</a>
+                    <a href="/admin-profile-users/active" class="btn btn-secondary">Back</a>
                 </div>
             </form:form>
         </div>

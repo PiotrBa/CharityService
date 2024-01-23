@@ -1,4 +1,4 @@
-package com.piotrba.charity.viewController.admin;
+package com.piotrba.charity.viewController.admin.users;
 
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.DonationRepository;
@@ -16,10 +16,10 @@ import java.util.*;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/admin-profile-users")
-public class AdminUsersController {
+@RequestMapping("/admin-profile-users/active")
+public class AdminActiveUsersController {
 
-    private static final Logger logger = LoggerFactory.getLogger(AdminUsersController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminActiveUsersController.class);
 
     private final UserRepository userRepository;
     private final UserService userService;
@@ -27,11 +27,11 @@ public class AdminUsersController {
 
     @GetMapping()
     public String getAdminProfileView(Model model, Principal principal) {
-        logger.info("Accessing admin profile users page");
-        List<User> users = userRepository.findAll();
+        logger.info("Accessing admin profile activeUsers page");
+        List<User> activeUsers = userRepository.findByActiveTrue();
         List<User> admins = new ArrayList<>();
         List<User> regularUsers = new ArrayList<>();
-        for (User user : users) {
+        for (User user : activeUsers) {
             if (user.getRole().equals("ROLE_ADMIN")) {
                 admins.add(user);
             } else if (user.getRole().equals("ROLE_USER")) {
@@ -39,7 +39,7 @@ public class AdminUsersController {
             }
         }
         Map<Long, Integer> userDonationsSum = new HashMap<>();
-        for (User user : users) {
+        for (User user : activeUsers) {
             Integer sum = Math.toIntExact(donationRepository.countDonationsByUserUsername(user.getUsername()));
             userDonationsSum.put(user.getId(), sum);
         }
@@ -47,7 +47,7 @@ public class AdminUsersController {
         model.addAttribute("admins", admins);
         model.addAttribute("users", regularUsers);
         model.addAttribute("userDonationsSum", userDonationsSum);
-        return "admin/users/admin-profile-users";
+        return "admin/users/active/admin-profile-users";
     }
 
     @GetMapping("/update")
@@ -58,14 +58,14 @@ public class AdminUsersController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/users/admin-profile-users-edit";
+        return "admin/users/active/admin-profile-users-edit";
     }
 
     @PostMapping("/update")
     public String editUser(User user, @RequestParam Long id){
         logger.info("Updating user with ID: {}", id);
         userService.updateUserByAdmin(id, user);
-        return "redirect:/admin-profile-users";
+        return "redirect:/admin-profile-users/active";
     }
 
     @GetMapping("/delete")
@@ -76,13 +76,13 @@ public class AdminUsersController {
         if (userOptional.isPresent()){
             model.addAttribute("user", userOptional.get());
         }
-        return "admin/users/admin-profile-users-delete";
+        return "admin/users/active/admin-profile-users-delete";
     }
 
     @PostMapping("/delete")
     public String deleteUser(@RequestParam Long id){
         logger.info("Deleting user with ID: {}", id);
         userService.deleteUser(id);
-        return "redirect:/admin-profile-users";
+        return "redirect:/admin-profile-users/active";
     }
 }

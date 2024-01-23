@@ -36,7 +36,7 @@
         </div>
         <div style="text-align: center;" class="form-buttons">
           <form:button class="btn">Yes</form:button>
-          <a href="/admin-profile-users" class="btn btn-secondary">No</a>
+          <a href="/admin-profile-users/active" class="btn btn-secondary">No</a>
         </div>
         </form:form>
     </div>
