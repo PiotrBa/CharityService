@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findByActiveTrue();
     }
 
     @Override
@@ -72,13 +72,13 @@ public class UserServiceImpl implements UserService {
         Optional<User> optionalUserByAdmin = userRepository.findById(id);
         if (optionalUserByAdmin.isPresent()) {
             User user = optionalUserByAdmin.get();
-            user.setFirstName(newUser.getFirstName());
-            user.setLastName(newUser.getLastName());
-            user.setEmail(newUser.getEmail());
-            user.setMobileNumber(newUser.getMobileNumber());
-            user.setRole(newUser.getRole());
-            user.setActive(newUser.getActive());
-            user.setUsername(newUser.getUsername());
+            if (newUser.getFirstName() != null) user.setFirstName(newUser.getFirstName());
+            if (newUser.getLastName() != null) user.setLastName(newUser.getLastName());
+            if (newUser.getEmail() != null) user.setEmail(newUser.getEmail());
+            if (newUser.getMobileNumber() != null) user.setMobileNumber(newUser.getMobileNumber());
+            if (newUser.getRole() != null) user.setRole(newUser.getRole());
+            if (newUser.getActive() != null) user.setActive(newUser.getActive());
+            if (newUser.getUsername() != null) user.setUsername(newUser.getUsername());
             return Optional.of(userRepository.save(user));
         }
         return Optional.empty();
