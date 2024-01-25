@@ -6,6 +6,7 @@ import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.CategoryService;
 import com.piotrba.charity.service.DonationService;
 import com.piotrba.charity.service.InstitutionService;
+import com.piotrba.charity.service.impl.EmailSenderServiceImpl;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ public class DonationController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final UserRepository userRepository;
+    private final EmailSenderServiceImpl emailSenderService;
+
 
     @GetMapping("/form")
     public String showForm(Model model, Principal principal) {
@@ -46,7 +49,8 @@ public class DonationController {
             Optional<User> userOptional = Optional.ofNullable(userRepository.getByUsername(userName));
             if (userOptional.isPresent()) {
                 donation.setUser(userOptional.get());
-                donationService.saveDonation(donation, userOptional.get().getId());
+                Donation saveDonation = donationService.saveDonation(donation, userOptional.get().getId());
+                emailSenderService.sendConfirmationEmail(userOptional.get().getEmail(), saveDonation);
                 logger.info("Donation saved for user: {}", userName);
             } else {
                 logger.error("User not found: {}", userName);
