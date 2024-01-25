@@ -54,4 +54,18 @@ public class EmailSenderServiceImpl{
 
         javaMailSender.send(mimeMessage);
     }
+
+    public void sendThankYouEmail(String toMail){
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setFrom("balazyk.piotr@gmail.com");
+        message.setTo(toMail);
+        message.setSubject("Thank You!");
+        message.setText("We're glad that the package has been received :)\n\n" +
+                "Thank you also for helping those in need! :) \n" +
+                "We hope this is not your last donation. \n" +
+                "Best regards!");
+        javaMailSender.send(message);
+    }
 }
