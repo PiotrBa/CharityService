@@ -12,16 +12,15 @@ public class EmailSenderServiceImpl{
 
     private JavaMailSender javaMailSender;
 
-    public void sendConfirmationEmail(String toMail){
+    public void sendActivationEmail(String toMail, String activationLink){
 
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom("*****.*******@gmail.com");
+        message.setFrom("balazyk.piotr@gmail.com");
         message.setTo(toMail);
-        message.setSubject("Your Donation");
-        message.setText("The courier is already on the way to the provided address!");
-        message.setText("Please ensure that you are at home on the date and time you have selected.");
-        message.setText("Afterwards, please mark on our website that the package has been received; this is very important for us. :)");
+        message.setSubject("Account activation.");
+        message.setText("Hello!\n\n" +
+                " To activate your account, please click on this link: \n" + activationLink);
         javaMailSender.send(message);
     }
 }

@@ -23,6 +23,7 @@ public class SecurityConfig {
                 .antMatchers("/form").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register/user").permitAll()
+                .antMatchers("/register/activate/**").permitAll()
                 .antMatchers("/user-homepage").hasRole("USER")
                 .antMatchers("/user-profile/**").hasRole("USER")
                 .antMatchers("/admin-profile-categories/**").hasRole("ADMIN")

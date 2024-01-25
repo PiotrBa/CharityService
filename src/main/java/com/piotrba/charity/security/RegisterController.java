@@ -5,6 +5,7 @@ import com.piotrba.charity.repository.UserRepository;
 import com.piotrba.charity.service.DonationService;
 import com.piotrba.charity.service.InstitutionService;
 import com.piotrba.charity.service.UserService;
+import com.piotrba.charity.service.impl.EmailSenderServiceImpl;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -27,6 +31,11 @@ public class RegisterController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
     private final UserRepository userRepository;
+    private final EmailSenderServiceImpl emailSenderService;
+
+    private String getAppUrl(HttpServletRequest request){
+        return "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+    }
 
     @GetMapping("/user")
     public String registerUserView(Model model){
@@ -39,11 +48,28 @@ public class RegisterController {
     }
 
     @PostMapping("/user")
-    public String registerUser(User user){
+    public String registerUser(User user, HttpServletRequest request){
         logger.info("Registering new user: {}", user.getUsername());
         userService.registerUser(user);
-        return "redirect:/login";
+        String activationLink = getAppUrl(request) + "/register/activate?username=" + user.getUsername();
+        emailSenderService.sendActivationEmail(user.getEmail(), activationLink);
+        return "redirect:/accountActivated";
     }
+
+    @GetMapping("/activate")
+    public String activateAccount(@RequestParam String username) {
+        Optional<User> userOptional = Optional.ofNullable(userRepository.getByUsername(username));
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.getActive()) {
+                user.setActive(true);
+                userRepository.save(user);
+                return "/security/accountActivated";
+            }
+        }
+        return "/security/errorAccount";
+    }
+
 
     @GetMapping("/admin")
     public String registerAdminView(Model model, Principal principal){
