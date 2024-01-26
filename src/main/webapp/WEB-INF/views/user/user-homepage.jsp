@@ -48,7 +48,7 @@
             </c:if>
             <c:if test="${not empty donationsToReceived}">
                 <div class="form-container">
-                    <h2>Your donation</h2>
+                    <h2>Details for your courier</h2>
                     <c:forEach items="${donationsToReceived}" var="donation">
                         <div class="form-column">
                             <div class="form-group">
