@@ -51,7 +51,8 @@ public class DonationServiceImpl implements DonationService{
             Donation existingDonation = donationOptional.get();
             existingDonation.setPackageReceived(true);
             Donation savedDonation = donationRepository.save(existingDonation);
-            emailSenderService.sendThankYouEmail(existingDonation.getUser().getEmail());
+            String userEmail = existingDonation.getUser().getEmail();
+            emailSenderService.sendThankYouEmail(userEmail, existingDonation.getUser());
             return savedDonation;
         } else {
             throw new RuntimeException("Donation not found with ID: " + id);
