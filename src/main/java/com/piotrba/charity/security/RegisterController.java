@@ -50,9 +50,9 @@ public class RegisterController {
     @PostMapping("/user")
     public String registerUser(User user, HttpServletRequest request){
         logger.info("Registering new user: {}", user.getUsername());
-        userService.registerUser(user);
+        User savedUser = userService.registerUser(user);
         String activationLink = getAppUrl(request) + "/register/activate?username=" + user.getUsername();
-        emailSenderService.sendActivationEmail(user.getEmail(), activationLink);
+        emailSenderService.sendActivationEmail(savedUser.getEmail(), activationLink, savedUser);
         return "redirect:/accountActivated";
     }
 
