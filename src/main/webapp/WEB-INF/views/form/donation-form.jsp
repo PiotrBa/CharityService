@@ -246,20 +246,10 @@
         <h2>Contact us</h2>
         <h3>Contact form</h3>
         <form class="form--contact">
-            <div class="form-group form-group--50">
-                <input type="text" name="name" placeholder="First name" />
-            </div>
-            <div class="form-group form-group--50">
-                <input type="text" name="surname" placeholder="Last name" />
-            </div>
+            <div class="form-group form-group--50"><input type="text" name="name" placeholder="Name"/></div>
+            <div class="form-group form-group--50"><input type="text" name="email" placeholder="Email"/></div>
 
-            <div class="form-group">
-        <textarea
-                name="message"
-                placeholder="Message"
-                rows="1"
-        ></textarea>
-            </div>
+            <div class="form-group"><textarea name="message" placeholder="Message" rows="1"></textarea></div>
 
             <button class="btn" type="submit">Send</button>
         </form>
