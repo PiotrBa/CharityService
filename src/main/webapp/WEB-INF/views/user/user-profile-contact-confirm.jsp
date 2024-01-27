@@ -37,78 +37,47 @@
 
   <div class="slogan container container--90">
     <div class="table-container">
-    <div class="login-style">
-      <h2>Your details</h2>
-      <div class="section--columns">
-        <div class="custom-font-size">
-          <span class="bold-text">Name: </span> ${user.firstName}
-          ${user.lastName}
+      <div class="login-style">
+        <h2>Your details</h2>
+        <div class="section--columns">
+          <div class="custom-font-size">
+            <span class="bold-text">Name: </span> ${user.firstName}
+            ${user.lastName}
+          </div>
         </div>
-      </div>
-      <div class="section--columns">
-        <div class="custom-font-size">
-          <span class="bold-text">Email: </span> ${user.email}
+        <div class="section--columns">
+          <div class="custom-font-size">
+            <span class="bold-text">Email: </span> ${user.email}
+          </div>
         </div>
-      </div>
-      <div class="section--columns">
-        <div class="custom-font-size">
-          <span class="bold-text">Mobile number: </span>${user.mobileNumber}
+        <div class="section--columns">
+          <div class="custom-font-size">
+            <span class="bold-text">Mobile number: </span>${user.mobileNumber}
+          </div>
         </div>
-      </div>
-      <div class="section--columns">
-        <div class="custom-font-size">
-          <span class="bold-text">User name: </span>${user.username}
+        <div class="section--columns">
+          <div class="custom-font-size">
+            <span class="bold-text">User name: </span>${user.username}
+          </div>
         </div>
-      </div>
-      <div class="section--columns">
-        <div class="custom-font-size">
-          <span class="bold-text">Password: </span>********
+        <div class="section--columns">
+          <div class="custom-font-size">
+            <span class="bold-text">Password: </span>********
+          </div>
         </div>
-      </div>
-      <div class="form-buttons">
-        <a href="/user-profile/edit?id=${user.id}" class="btn btn-secondary"> Edit</a>
+        <div class="form-buttons">
+          <a href="/user-profile/edit?id=${user.id}" class="btn btn-secondary"> Edit</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="slogan container container--90">
-
-      <div class="table-container">
-        <c:if test="${not empty donations}">
-          <h2>Your donations</h2>
-          <table>
-            <tr>
-              <th>Quantity</th>
-              <th>Street</th>
-              <th>City</th>
-              <th>Post code</th>
-              <th>Category</th>
-              <th>Institution</th>
-              <th>Pick Up Date</th>
-              <th>Pick Up Time</th>
-              <th>Pick Up Comment</th>
-            </tr>
-            <c:forEach items="${donations}" var="userDonation">
-              <tr>
-                <td>${userDonation.quantity}</td>
-                <td>${userDonation.street}</td>
-                <td>${userDonation.city}</td>
-                <td>${userDonation.zipCode}</td>
-                <td>
-                  <c:forEach var="category" items="${userDonation.categories}" varStatus="status">
-                    ${category.name}<c:if test="${not status.last}">, </c:if>
-                  </c:forEach>
-                </td>
-                <td>${userDonation.institutions.name}</td>
-                <td>${userDonation.createPickApDateFormatted}</td>
-                <td>${userDonation.createPickApTimeFormatted}</td>
-                <td>${userDonation.pickUpComment}</td>
-              </tr>
-            </c:forEach>
-          </table>
-        </c:if>
-        <c:if test="${empty donations}">
-          <h2>You have not made any donations yet.</h2>
-        </c:if>
+    <div class="slogan container container--90">
+      <div class="login-style">
+        <h1 class="center-text">
+          Your message, ${user.firstName} has been sent.
+        </h1>
+        <div class="form-buttons">
+          <a href="/user-profile" class="btn btn-secondary">Ok</a>
+        </div>
       </div>
     </div>
   </div>

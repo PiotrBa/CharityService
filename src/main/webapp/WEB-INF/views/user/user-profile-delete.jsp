@@ -142,9 +142,8 @@
     <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
-        <form class="form--contact">
-            <div class="form-group form-group--50"><input type="text" name="name" placeholder="Name"/></div>
-            <div class="form-group form-group--50"><input type="text" name="email" placeholder="Email"/></div>
+        <form class="form--contact" action="/user-profile/contact" method="post">
+            <div class="form-group form-group--50"><input type="text" name="title" placeholder="Title"/></div>
 
             <div class="form-group"><textarea name="message" placeholder="Message" rows="1"></textarea></div>
 
