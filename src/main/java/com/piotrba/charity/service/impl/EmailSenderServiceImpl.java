@@ -1,8 +1,10 @@
 package com.piotrba.charity.service.impl;
 
+import com.piotrba.charity.entity.Contact;
 import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
 import lombok.AllArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -86,4 +88,14 @@ public class EmailSenderServiceImpl{
 
         javaMailSender.send(mimeMessage);
     }
+
+    public void sendContactEmail(Contact contactForm) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(contactForm.getEmail());
+        message.setTo("balazyk.piotr@gmail.com");
+        message.setSubject("Contact message");
+        message.setText("From: " + contactForm.getName() + "\nEmail: " + contactForm.getEmail() + "\nMessage: " + contactForm.getMessage());
+        javaMailSender.send(message);
+    }
+
 }

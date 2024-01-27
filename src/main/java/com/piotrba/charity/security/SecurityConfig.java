@@ -19,9 +19,10 @@ public class SecurityConfig {
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         return http.authorizeRequests()
                 .antMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
-                .antMatchers("/homepage").permitAll()
+                .antMatchers("/homepage/**").permitAll()
                 .antMatchers("/form").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/contact/**").permitAll()
                 .antMatchers("/register/user").permitAll()
                 .antMatchers("/register/activate/**").permitAll()
                 .antMatchers("/user-homepage").hasRole("USER")

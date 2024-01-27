@@ -128,7 +128,7 @@
     <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
-        <form class="form--contact">
+        <form class="form--contact" action="/homepage/contact" method="post">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="Name"/></div>
             <div class="form-group form-group--50"><input type="text" name="email" placeholder="Email"/></div>
 
