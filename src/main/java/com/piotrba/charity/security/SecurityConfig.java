@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .antMatchers("/contact/**").permitAll()
                 .antMatchers("/register/user").permitAll()
                 .antMatchers("/register/activate/**").permitAll()
-                .antMatchers("/user-homepage").hasRole("USER")
+                .antMatchers("/user-homepage/**").hasRole("USER")
                 .antMatchers("/user-profile/**").hasRole("USER")
                 .antMatchers("/admin-profile-categories/**").hasRole("ADMIN")
                 .antMatchers("/admin-profile-donations/**").hasRole("ADMIN")

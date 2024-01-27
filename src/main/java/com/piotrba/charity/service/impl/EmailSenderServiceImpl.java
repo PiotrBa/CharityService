@@ -3,7 +3,11 @@ package com.piotrba.charity.service.impl;
 import com.piotrba.charity.entity.Contact;
 import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
+import com.piotrba.charity.repository.UserRepository;
+import com.piotrba.charity.viewController.HomeController;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.security.Principal;
 
 
 @Service
@@ -18,6 +23,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailSenderServiceImpl{
 
     private JavaMailSender javaMailSender;
+    private UserRepository userRepository;
 
     public void sendActivationEmail(String toMail, String activationLink, User user) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -98,4 +104,13 @@ public class EmailSenderServiceImpl{
         javaMailSender.send(message);
     }
 
+    public void sendLoginUserContactEmail(Contact contactForm, Principal principal) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        User user = userRepository.getByUsername(principal.getName());
+        message.setFrom(user.getEmail());
+        message.setTo("balazyk.piotr@gmail.com");
+        message.setSubject("Contact message from user: " + user.getUsername());
+        message.setText("Title: " + contactForm.getTitle() + "\nMessage: " + contactForm.getMessage());
+        javaMailSender.send(message);
+    }
 }

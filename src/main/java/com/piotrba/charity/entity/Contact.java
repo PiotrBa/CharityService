@@ -5,6 +5,7 @@ import lombok.Data;
 public class Contact {
 
     private String name;
+    private String title;
     private String email;
     private String message;
 }

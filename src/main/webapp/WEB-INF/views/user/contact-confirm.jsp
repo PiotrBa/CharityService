@@ -39,53 +39,13 @@
     </nav>
 
     <div class="slogan container container--90">
-        <div class="slogan--item">
-            <c:if test="${empty donationsToReceived}">
-                <h1>
-                    Thank you for being with us ${user.firstName}!<br/>
-                    Put unwanted things in trusted hands
-                </h1>
-            </c:if>
-            <c:if test="${not empty donationsToReceived}">
-                <div class="form-container">
-                    <h2>Details for your courier</h2>
-                    <c:forEach items="${donationsToReceived}" var="donation">
-                        <div class="form-column">
-                            <div class="form-group">
-                                <label class="custom-font-size">Street: ${donation.street}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-font-size">City: ${donation.city}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-font-size">Post Code: ${donation.zipCode}</label>
-                            </div>
-                        </div>
-                        <div class="form-column">
-                            <div class="form-group">
-                                <label class="custom-font-size">Date: ${donation.createPickApDateFormatted}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-font-size">Time: ${donation.createPickApTimeFormatted}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-font-size">Comment for courier: ${donation.pickUpComment}</label>
-                            </div>
-                        </div>
-
-                        <div class="form-buttons-inline" style="text-align: center;">
-                            <form:form action="/user-homepage/package-received" method="post" modelAttribute="donationsToReceived">
-                                <input type="hidden" name="id" value="${donation.id}" />
-                                <form:button type="submit" class="btn">Package Received</form:button>
-                            </form:form>
-                            <form:form action="/user-homepage/delete-donation" method="post" modelAttribute="donationsToReceived">
-                                <input type="hidden" name="id" value="${donation.id}" />
-                                <form:button type="submit" class="btn btn-secondary">Delete Donation</form:button>
-                            </form:form>
-                        </div>
-                    </c:forEach>
-                </div>
-            </c:if>
+        <div class="login-style">
+            <h1 class="center-text">
+                Your message, ${user.firstName} has been sent.
+            </h1>
+            <div class="form-buttons">
+                <a href="/user-homepage" class="btn btn-secondary">Ok</a>
+            </div>
         </div>
     </div>
 </header>
