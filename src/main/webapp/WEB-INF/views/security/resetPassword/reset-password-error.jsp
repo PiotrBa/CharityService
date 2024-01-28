@@ -32,19 +32,12 @@
 
     <div class="slogan container container--90">
         <div class="login-style">
-            <h2>Login</h2>
-            <form method="post" action="/login">
-                <div class="section--columns">
-                    <input placeholder="User name" type="text" name="username" id="username"/>
-                    <input placeholder="Password" type="password" name="password" id="password"/>
-                </div>
-                <p class="password-reminder"><a href="/reset-password">Forgot your password?</a></p>
-
-                <div class="form-buttons">
-                    <button type="submit" class="btn">Login</button>
-                    <a href="/register/user" class="btn btn-secondary">Sign up</a>
-                </div>
-            </form>
+            <h1 class="center-text">
+                Error, user not found.
+            </h1>
+            <div class="form-buttons">
+                <a href="/login" class="btn btn-secondary">Login</a>
+            </div>
         </div>
     </div>
 

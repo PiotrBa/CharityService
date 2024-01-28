@@ -28,8 +28,8 @@ public class DataLoader implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         List<User> usersList = Arrays.asList(
-                new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, new ArrayList<>()),
-                new User(null, "emma", passwordEncoder.encode("1234"), "Emma", "Wath", "emma@gmail.com", "75123456234",  "ROLE_USER", true, new ArrayList<>())
+                new User(null, "adam", passwordEncoder.encode("1234"), "Adam", "Smith", "adam.smith@example.com", "07234567890", "ROLE_ADMIN", true, null, String.valueOf(new ArrayList<>())),
+                new User(null, "emma", passwordEncoder.encode("1234"), "Emma", "Wath", "fiolecik220@gmail.com", "75123456234", "ROLE_USER", true, null, String.valueOf(new ArrayList<>()))
         );
         userRepository.saveAll(usersList);
 

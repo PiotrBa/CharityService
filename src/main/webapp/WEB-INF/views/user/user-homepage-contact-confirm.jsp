@@ -3,13 +3,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
 <!DOCTYPE html>
 <html lang="com">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Home</title>
+    <title>User homepage</title>
 
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
@@ -17,52 +19,49 @@
 <header class="header--main-page">
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="/login" class="btn btn--small btn--without-border">Log in</a></li>
-            <li><a href="/register/user" class="btn btn--small btn--highlighted">Sign up</a></li>
+            <li class="logged-user">
+                Welcome ${user.username}
+                <ul class="dropdown">
+                    <li><a href="/user-profile">My profile</a></li>
+                    <li><a href="/login">Log out</a></li>
+                </ul>
+            </li>
         </ul>
 
         <ul>
-            <li><a href="/homepage" class="btn btn--without-border active">Home</a></li>
-            <li><a href="/login/#steps" class="btn btn--without-border">What is it about?</a></li>
-            <li><a href="/login/#about-us" class="btn btn--without-border">About us</a></li>
-            <li><a href="/login/#help" class="btn btn--without-border">Foundations and organizations</a></li>
-            <li><a href="/login/#contact" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/form" class="btn btn--without-border active">Start</a></li>
+            <li><a href="/user-profile/#steps" class="btn btn--without-border">What is it about?</a></li>
+            <li><a href="/user-profile/#about-us" class="btn btn--without-border">About us</a></li>
+            <li><a href="/user-profile/#help" class="btn btn--without-border">Foundations and organizations</a></li>
+            <li><a href="/user-profile/#contact" class="btn btn--without-border">Contact</a></li>
+            <li><a href="/user-profile/delete?id=${user.id}" class="btn btn--without-border">Delete Account</a></li>
         </ul>
     </nav>
 
     <div class="slogan container container--90">
         <div class="login-style">
-            <h2>Login</h2>
-            <form method="post" action="/login">
-                <div class="section--columns">
-                    <input placeholder="User name" type="text" name="username" id="username"/>
-                    <input placeholder="Password" type="password" name="password" id="password"/>
-                </div>
-                <p class="password-reminder"><a href="/reset-password">Forgot your password?</a></p>
-
-                <div class="form-buttons">
-                    <button type="submit" class="btn">Login</button>
-                    <a href="/register/user" class="btn btn-secondary">Sign up</a>
-                </div>
-            </form>
+            <h1 class="center-text">
+                Your message, ${user.firstName} has been sent.
+            </h1>
+            <div class="form-buttons">
+                <a href="/user-homepage" class="btn btn-secondary">Ok</a>
+            </div>
         </div>
     </div>
-
-
 </header>
 
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>${sumAllQuantities}</em>
-            <h3>Donated bags</h3>
+            <em>${sumQuantities}</em>
+            <h3>Your donated bags</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
         </div>
 
         <div class="stats--item">
-            <em>${countAllDonations}</em>
-            <h3>Gifts given</h3>
+            <em>${countDonations}</em>
+            <h3>Your gifts given</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
         </div>
@@ -96,7 +95,7 @@
         </div>
     </div>
 
-    <a href="/register/user" class="btn btn--large">Sign up</a>
+    <a href="/form" class="btn btn--large">START!</a>
 </section>
 
 <section id="about-us" class="about-us">
@@ -140,9 +139,8 @@
     <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
-        <form class="form--contact">
-            <div class="form-group form-group--50"><input type="text" name="name" placeholder="Name"/></div>
-            <div class="form-group form-group--50"><input type="text" name="email" placeholder="Email"/></div>
+        <form class="form--contact" action="/user-homepage/contact" method="post">
+            <div class="form-group form-group--50"><input type="text" name="title" placeholder="Title"/></div>
 
             <div class="form-group"><textarea name="message" placeholder="Message" rows="1"></textarea></div>
 

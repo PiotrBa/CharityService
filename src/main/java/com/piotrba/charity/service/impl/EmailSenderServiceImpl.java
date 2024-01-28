@@ -4,10 +4,7 @@ import com.piotrba.charity.entity.Contact;
 import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.UserRepository;
-import com.piotrba.charity.viewController.HomeController;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -112,5 +109,26 @@ public class EmailSenderServiceImpl{
         message.setSubject("Contact message from user: " + user.getUsername());
         message.setText("Title: " + contactForm.getTitle() + "\nMessage: " + contactForm.getMessage());
         javaMailSender.send(message);
+    }
+
+    public void sendResetPasswordEmail(String toMail, String activationLink, User user) {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+        String htmlMsg = "<div style='border: 1px solid #ddd; padding: 10px; font-family: Arial, sans-serif; width: 60%; margin: 20px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; padding: 20px; border-radius: 8px; text-align: center;'>"
+                + "<h2 style='color: #444; font-size: 2rem; margin-bottom: 20px;'>Hello, " + user.getFirstName() + "!"
+                + "<ul style='list-style-type: none; padding: 0;'>"
+                + "<li style='margin-bottom: 10px;'>To reset your password, please click on this link: " + activationLink + "</li>"
+                + "</ul></h2></div>";
+        try {
+            helper.setText(htmlMsg, true);
+            helper.setTo(toMail);
+            helper.setSubject("Reset password");
+            helper.setFrom("balazyk.piotr@gmail.com");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        javaMailSender.send(mimeMessage);
     }
 }

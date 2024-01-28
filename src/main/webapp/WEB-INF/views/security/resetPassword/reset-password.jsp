@@ -32,17 +32,14 @@
 
     <div class="slogan container container--90">
         <div class="login-style">
-            <h2>Login</h2>
-            <form method="post" action="/login">
+            <h2>Reset password</h2>
+            <form method="post" action="/reset-password">
                 <div class="section--columns">
-                    <input placeholder="User name" type="text" name="username" id="username"/>
-                    <input placeholder="Password" type="password" name="password" id="password"/>
+                    <input placeholder="User email" type="email" name="email" id="email"/>
                 </div>
-                <p class="password-reminder"><a href="/reset-password">Forgot your password?</a></p>
-
                 <div class="form-buttons">
-                    <button type="submit" class="btn">Login</button>
-                    <a href="/register/user" class="btn btn-secondary">Sign up</a>
+                    <button type="submit" class="btn">Reset password</button>
+                    <a href="/login" class="btn btn-secondary">Back</a>
                 </div>
             </form>
         </div>

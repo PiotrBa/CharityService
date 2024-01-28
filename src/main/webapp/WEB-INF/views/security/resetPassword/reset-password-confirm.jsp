@@ -32,18 +32,19 @@
 
     <div class="slogan container container--90">
         <div class="login-style">
-            <h2>Login</h2>
-            <form method="post" action="/login">
-                <div class="section--columns">
-                    <input placeholder="User name" type="text" name="username" id="username"/>
-                    <input placeholder="Password" type="password" name="password" id="password"/>
-                </div>
-                <p class="password-reminder"><a href="/reset-password">Forgot your password?</a></p>
+            <h2>Reset your password</h2>
+            <form action="<c:url value='/reset-password/confirm'/>" method="post">
+                <input type="hidden" name="token" value="${param.token}"/>
 
-                <div class="form-buttons">
-                    <button type="submit" class="btn">Login</button>
-                    <a href="/register/user" class="btn btn-secondary">Sign up</a>
+                <div class="section--columns">
+                    <input placeholder="New password" type="password" id="newPassword" name="newPassword" required>
+                    <input placeholder="Confirm password" type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn">Confirm</button>
+                </div>
+
+
             </form>
         </div>
     </div>
