@@ -17,7 +17,8 @@
             <li class="logged-user">
                 Welcome ${user.username}
                 <ul class="dropdown">
-                    <li><a href="user-profile">My profile</a></li>
+                    <li><a href="/user-homepage">My Home</a></li>
+                    <li><a href="/user-profile">My profile</a></li>
                     <li><a href="/login">Log out</a></li>
                 </ul>
             </li>
