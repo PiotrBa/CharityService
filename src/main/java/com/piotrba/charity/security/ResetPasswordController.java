@@ -81,7 +81,7 @@ public class ResetPasswordController {
     @GetMapping("/confirm")
     public String confirmReset(@RequestParam String token, Model model) {
         logger.info("Password reset confirmation with token: {}", token);
-        Optional<User> userOptional = userRepository.findByResetToken(token);
+        Optional<User> userOptional = userRepository.findByToken(token);
         if (userOptional.isPresent()) {
             model.addAttribute("token", token);
             return "security/resetPassword/reset-password-confirm";
@@ -94,7 +94,7 @@ public class ResetPasswordController {
     @PostMapping("/confirm")
     public String processReset(@RequestParam String token, @RequestParam String newPassword) {
         logger.info("Processing password reset with token: {}", token);
-        Optional<User> userOptional = userRepository.findByResetToken(token);
+        Optional<User> userOptional = userRepository.findByToken(token);
         if (userOptional.isPresent() && newPassword != null && !newPassword.isEmpty()) {
             User user = userOptional.get();
             user.setPassword(encodePassword(newPassword));
