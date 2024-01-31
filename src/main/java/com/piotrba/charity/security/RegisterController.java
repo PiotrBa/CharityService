@@ -53,11 +53,26 @@ public class RegisterController {
         User savedUser = userService.registerUser(user);
         String activationLink = getAppUrl(request) + "/register/activate?username=" + user.getUsername();
         emailSenderService.sendActivationEmail(savedUser.getEmail(), activationLink, savedUser);
-        return "redirect:/accountActivated";
+        return "redirect:/register/sent-email-inf";
     }
 
+    @GetMapping("/sent-email-inf")
+    public String sentEmailInf(Model model){
+        model.addAttribute("user", new User());
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("countAllDonations", donationService.countAllDonations());
+        model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
+        return "/security/sentEmail-inf";
+    }
+
+
+
     @GetMapping("/activate")
-    public String activateAccount(@RequestParam String username) {
+    public String activateAccount(Model model, @RequestParam String username) {
+        model.addAttribute("user", new User());
+        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("countAllDonations", donationService.countAllDonations());
+        model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         Optional<User> userOptional = Optional.ofNullable(userRepository.getByUsername(username));
         if (userOptional.isPresent()) {
             User user = userOptional.get();
