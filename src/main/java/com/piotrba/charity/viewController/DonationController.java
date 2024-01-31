@@ -1,5 +1,6 @@
 package com.piotrba.charity.viewController;
 
+import com.piotrba.charity.entity.Contact;
 import com.piotrba.charity.entity.Donation;
 import com.piotrba.charity.entity.User;
 import com.piotrba.charity.repository.UserRepository;
@@ -18,7 +19,7 @@ import java.security.Principal;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/form")
 @AllArgsConstructor
 public class DonationController {
 
@@ -31,7 +32,7 @@ public class DonationController {
     private final EmailSenderServiceImpl emailSenderService;
 
 
-    @GetMapping("/form")
+    @GetMapping()
     public String showForm(Model model, Principal principal) {
         logger.info("Accessing donation form");
         model.addAttribute("categoryList", categoryService.findAllCategories());
@@ -41,7 +42,7 @@ public class DonationController {
         return "/form/donation-form";
     }
 
-    @PostMapping("/form")
+    @PostMapping()
     public String saveForm(Donation donation, Principal principal) {
         logger.info("Saving donation form");
         String userName = principal.getName();
@@ -57,7 +58,7 @@ public class DonationController {
                 throw new RuntimeException("User not found");
             }
         }
-        return "redirect:/form-confirmation";
+        return "redirect:form/form-confirmation";
     }
 
     @GetMapping("/form-confirmation")
@@ -65,5 +66,17 @@ public class DonationController {
         logger.info("Accessing donation confirmation page");
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         return "form/form-confirmation";
+    }
+
+    @PostMapping("/donation-contact")
+    public String sendContactMessage(Contact contactForm, Principal principal) {
+        emailSenderService.sendLoginUserContactEmail(contactForm, principal);
+        return "redirect:/form/donation-contact-confirm";
+    }
+
+    @GetMapping("/donation-contact-confirm")
+    public String confirmSendContactMessageView(Model model, Principal principal){
+        model.addAttribute("user", userRepository.getByUsername(principal.getName()));
+        return "form/donation-contact-confirm";
     }
 }

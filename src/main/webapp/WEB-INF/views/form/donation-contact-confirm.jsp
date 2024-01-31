@@ -18,7 +18,7 @@
                 Welcome ${user.username}
                 <ul class="dropdown">
                     <li><a href="/user-homepage">My Home</a></li>
-                    <li><a href="user-profile">My Profile</a></li>
+                    <li><a href="/user-profile">My Profile</a></li>
                     <li><a href="/login">Log out</a></li>
                 </ul>
             </li>
@@ -34,17 +34,21 @@
     </nav>
 
     <div class="slogan container container--90">
-        <h2>
-            Thank you, ${user.firstName} for submitting the form. <br>
-            We will send all the information about the collection to your email.
-        </h2>
+        <div class="login-style">
+            <h1 class="center-text">
+                Your message, ${user.firstName} has been sent.
+            </h1>
+            <div class="form-buttons">
+                <a href="/form" class="btn btn-secondary">Ok</a>
+            </div>
+        </div>
     </div>
 </header>
 <footer>
     <div id="contact" class="contact">
         <h2>Contact us</h2>
         <h3>Contact form</h3>
-        <form class="form--contact" method="post" action="/form/donation-contact-confirm">
+        <form class="form--contact" method="post">
             <div class="form-group form-group--50"><input type="text" name="title" placeholder="Title"/></div>
 
             <div class="form-group"><textarea name="message" placeholder="Message" rows="1"></textarea></div>
