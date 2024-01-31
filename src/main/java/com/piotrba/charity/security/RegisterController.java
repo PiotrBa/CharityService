@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
@@ -50,9 +51,12 @@ public class RegisterController {
     @PostMapping("/user")
     public String registerUser(User user, HttpServletRequest request){
         logger.info("Registering new user: {}", user.getUsername());
+        String token = UUID.randomUUID().toString();
+        user.setToken(token);
         User savedUser = userService.registerUser(user);
-        String activationLink = getAppUrl(request) + "/register/activate?username=" + user.getUsername();
+        String activationLink = getAppUrl(request) + "/register/activate?token=" + token;
         emailSenderService.sendActivationEmail(savedUser.getEmail(), activationLink, savedUser);
+
         return "redirect:/register/sent-email-inf";
     }
 
@@ -68,19 +72,18 @@ public class RegisterController {
 
 
     @GetMapping("/activate")
-    public String activateAccount(Model model, @RequestParam String username) {
+    public String activateAccount(Model model, @RequestParam String token) {
         model.addAttribute("user", new User());
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
-        Optional<User> userOptional = Optional.ofNullable(userRepository.getByUsername(username));
+        Optional<User> userOptional = userRepository.findByToken(token);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            if (!user.getActive()) {
-                user.setActive(true);
-                userRepository.save(user);
-                return "/security/accountActivated";
-            }
+            user.setActive(true);
+            user.setToken(null);
+            userRepository.save(user);
+            return "/security/accountActivated";
         }
         return "/security/errorAccount";
     }
