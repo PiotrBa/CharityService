@@ -20,7 +20,7 @@ public class SecurityConfig {
         return http.authorizeRequests()
                 .antMatchers("/resources/css/**", "/resources/js/**", "/resources/images/**").permitAll()
                 .antMatchers("/homepage/**").permitAll()
-                .antMatchers("/form").permitAll()
+                .antMatchers("/form/**").permitAll()
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/reset-password/**").permitAll()
                 .antMatchers("/contact/**").permitAll()

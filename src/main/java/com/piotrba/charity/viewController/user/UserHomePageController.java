@@ -37,7 +37,7 @@ public class UserHomePageController {
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
-        return "user/user-homepage";
+        return "user/homepage/user-homepage";
     }
 
     @PostMapping("/package-received")
@@ -68,6 +68,6 @@ public class UserHomePageController {
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
-        return "user/contact-confirm";
+        return "user/homepage/homepage-contact-confirm";
     }
 }

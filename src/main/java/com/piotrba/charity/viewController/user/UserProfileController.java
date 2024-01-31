@@ -38,7 +38,7 @@ public class UserProfileController {
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
-        return "user/user-profile";
+        return "user/userprofile/user-profile";
     }
 
     @GetMapping("/edit")
@@ -51,7 +51,7 @@ public class UserProfileController {
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
         }
-        return "user/user-profile-edit";
+        return "user/userprofile/user-profile-edit";
     }
 
     @PostMapping("/edit")
@@ -72,7 +72,7 @@ public class UserProfileController {
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
         }
-        return "user/user-profile-delete";
+        return "user/userprofile/user-profile-delete";
     }
 
     @PostMapping("/delete")
@@ -97,6 +97,6 @@ public class UserProfileController {
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
         model.addAttribute("institutionsList", institutionService.findAllInstitutions());
-        return "user/user-profile-contact-confirm";
+        return "user/userprofile/user-profile-contact-confirm";
     }
 }
