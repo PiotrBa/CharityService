@@ -62,7 +62,7 @@ public class ResetPasswordController {
             User user = userOptional.get();
             if (user.getActive()) {
                 String resetToken = generateResetToken();
-                user.setResetToken(resetToken);
+                user.setToken(resetToken);
                 userRepository.save(user);
                 logger.info("Reset token generated and saved for user: {}", user.getUsername());
 
@@ -98,7 +98,7 @@ public class ResetPasswordController {
         if (userOptional.isPresent() && newPassword != null && !newPassword.isEmpty()) {
             User user = userOptional.get();
             user.setPassword(encodePassword(newPassword));
-            user.setResetToken(null);
+            user.setToken(null);
             userRepository.save(user);
             logger.info("Password reset successful for user: {}", user.getUsername());
             return "redirect:/reset-password/success";

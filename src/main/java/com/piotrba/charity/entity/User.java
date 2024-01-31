@@ -47,6 +47,6 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Donation> userDonations = new ArrayList<>();
 
-    private String resetToken;
+    private String token;
 
 }
