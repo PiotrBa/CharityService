@@ -44,11 +44,11 @@ public class DataLoader implements CommandLineRunner{
         institutionRepository.saveAll(institutionList);
 
         List<Category> categoryList = Arrays.asList(
-                new Category(null, "Clothes", null),
-                new Category(null, "Toys", null),
-                new Category(null, "Books", null),
-                new Category(null, "Electronics", null),
-                new Category(null, "Household Items", null)
+                new Category(null, "Clothes", null, true),
+                new Category(null, "Toys", null, true),
+                new Category(null, "Books", null, true),
+                new Category(null, "Electronics", null, true),
+                new Category(null, "Household Items", null,true)
         );
         categoryRepository.saveAll(categoryList);
     }

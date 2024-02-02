@@ -19,8 +19,13 @@ public class CategoryServiceImpl implements CategoryService {
     private final DonationRepository donationRepository;
 
     @Override
-    public List<Category> findAllCategories() {
-        return categoryRepository.findAll();
+    public List<Category> findAllActiveCategories() {
+        return categoryRepository.findByActiveTrue();
+    }
+
+    @Override
+    public List<Category> findAllInactiveCategories() {
+        return categoryRepository.findByActiveFalse();
     }
 
     @Override
@@ -30,6 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category saveCategory(Category category) {
+        category.setActive(true);
         return categoryRepository.save(category);
     }
 
@@ -39,10 +45,12 @@ public class CategoryServiceImpl implements CategoryService {
         if (optionalCategory.isPresent()) {
             Category category = optionalCategory.get();
             category.setName(newCategory.getName());
+            category.setActive(newCategory.getActive());
             return Optional.of(categoryRepository.save(category));
         }
         return Optional.empty();
     }
+
 
     @Override
     public void deleteCategory(Long id) {

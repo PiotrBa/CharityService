@@ -27,13 +27,16 @@
   </nav>
   <h2 class="centered-h2-with-icon">Categories</h2>
   <section class="form--steps-container">
+    <ul class="btn1">
+      <a href="/admin-profile-categories/inactive">Inactive Categories</a>
+    </ul>
     <div class="table-container-categories">
       <c:if test="${empty categories}">
-      <h1 class="center-text">No categories found.</h1>
+      <h1 class="center-text">No active categories found.</h1>
     </c:if>
     <c:if test="${not empty categories}">
       <ul class="btn">
-        <a href="/admin-profile-categories/add">Add</a>
+        <a href="/admin-profile-categories/active/add">Add</a>
       </ul>
       <table>
         <tr>
@@ -43,10 +46,10 @@
           <tr>
             <td>${category.name}</td>
             <td class="buttons-container">
-              <a href="/admin-profile-categories/update?id=${category.id}">Update</a>
+              <a href="/admin-profile-categories/active/edit?id=${category.id}">Update</a>
             </td>
             <td class="buttons-container">
-              <a href="/admin-profile-categories/delete?id=${category.id}">Delete</a>
+              <a href="/admin-profile-categories/active/delete?id=${category.id}">Delete</a>
             </td>
           </tr>
         </c:forEach>

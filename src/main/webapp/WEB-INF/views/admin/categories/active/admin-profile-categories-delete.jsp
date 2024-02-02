@@ -17,7 +17,7 @@
             <li class="logged-user">
                 Welcome ${user.username}
                 <ul class="dropdown">
-                    <li><a href="/admin-profile-users">Users</a></li>
+                    <li><a href="/admin-profile-users/active">Users</a></li>
                     <li><a href="/admin-profile-institutions">Institutions</a></li>
                     <li><a href="/admin-profile-donations">Donations</a></li>
                     <li><a href="/login">Log out</a></li>
@@ -36,7 +36,7 @@
                 </div>
                 <div style="text-align: center;" class="form-buttons">
                     <form:button class="btn">Yes</form:button>
-                    <a href="/admin-profile-categories" class="btn btn-secondary">No</a>
+                    <a href="/admin-profile-categories/active" class="btn btn-secondary">No</a>
                 </div>
                 </form:form>
         </div>

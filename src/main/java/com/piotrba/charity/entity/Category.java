@@ -22,4 +22,5 @@ public class Category {
     private String name;
     @ManyToMany(mappedBy = "categories")
     private List<Donation> donations;
+    private Boolean active;
 }
