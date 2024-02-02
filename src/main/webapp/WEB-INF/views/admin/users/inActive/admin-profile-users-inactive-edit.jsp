@@ -19,7 +19,7 @@
                 <ul class="dropdown">
                     <li><a href="/admin-profile-donations">Donations</a></li>
                     <li><a href="/admin-profile-institutions">Institutions</a></li>
-                    <li><a href="/admin-profile-categories">Categories</a></li>
+                    <li><a href="/admin-profile-categories/active">Categories</a></li>
                     <li><a href="/login">Log out</a></li>
                 </ul>
             </li>
