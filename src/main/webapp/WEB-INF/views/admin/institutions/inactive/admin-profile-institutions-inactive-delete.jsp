@@ -17,7 +17,7 @@
             <li class="logged-user">
                 Welcome ${user.username}
                 <ul class="dropdown">
-                    <li><a href="/admin-profile-users">Users</a></li>
+                    <li><a href="/admin-profile-users/active">Users</a></li>
                     <li><a href="/admin-profile-donations">Donations</a></li>
                     <li><a href="/admin-profile-categories/active">Categories</a></li>
                     <li><a href="/login">Log out</a></li>
@@ -27,17 +27,16 @@
     </nav>
     <div class="slogan container container--90">
         <div class="login-style">
-            <h2>Add institution</h2>
-            <form:form method="post" modelAttribute="institution">
+            <form:form method="post" modelAttribute="institution" class="form-edit-user">
                 <div class="section--columns">
-                    <form:input placeholder="Institution name" path="name" id="name"/>
+                    <h1>Do you want to delete the ${institution.name} inactive institution?</h1>
                 </div>
                 <div class="section--columns">
-                    <form:textarea placeholder="Description" path="description" id="description" rows="6" cols="70"/>
+                    <h1>The deletion of ${institution.name} will result in the removal of donations associated with it.</h1>
                 </div>
                 <div style="text-align: center;" class="form-buttons">
-                    <form:button class="btn">Save</form:button>
-                    <a href="/admin-profile-institutions" class="btn btn-secondary">Back</a>
+                    <form:button class="btn">Yes</form:button>
+                    <a href="/admin-profile-institutions/inactive" class="btn btn-secondary">No</a>
                 </div>
             </form:form>
         </div>

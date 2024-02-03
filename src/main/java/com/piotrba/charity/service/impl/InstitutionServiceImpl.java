@@ -20,9 +20,12 @@ public class InstitutionServiceImpl implements InstitutionService {
     private final DonationRepository donationRepository;
 
     @Override
-    public List<Institution> findAllInstitutions() {
-        return institutionRepository.findAll();
+    public List<Institution> findAllActiveInstitutions() {
+        return institutionRepository.findByActiveTrue();
     }
+
+    @Override
+    public List<Institution> findAllInactiveInstitutions() {return institutionRepository.findByActiveFalse();}
 
     @Override
     public Optional<Institution> findInstitutionsById(Long id) {
@@ -31,6 +34,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public Institution saveInstitution(Institution institution) {
+        institution.setActive(true);
         return institutionRepository.save(institution);
     }
 
@@ -41,6 +45,7 @@ public class InstitutionServiceImpl implements InstitutionService {
             Institution institution = optionalInstitution.get();
             institution.setName(newInstitution.getName());
             institution.setDescription(newInstitution.getDescription());
+            institution.setActive(newInstitution.getActive());
             return Optional.of(institutionRepository.save(institution));
         }
         return Optional.empty();

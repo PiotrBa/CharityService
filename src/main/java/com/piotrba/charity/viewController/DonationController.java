@@ -36,7 +36,7 @@ public class DonationController {
     public String showForm(Model model, Principal principal) {
         logger.info("Accessing donation form");
         model.addAttribute("categoryList", categoryService.findAllActiveCategories());
-        model.addAttribute("institutionList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionList", institutionService.findAllActiveInstitutions());
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("donation", new Donation());
         return "/form/donation-form";

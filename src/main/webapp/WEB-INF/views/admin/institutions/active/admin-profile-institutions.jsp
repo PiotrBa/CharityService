@@ -27,28 +27,31 @@
   </nav>
   <h2 class="centered-h2-with-icon">Institutions</h2>
   <section class="form--steps-container">
+    <ul class="btn1">
+      <a href="/admin-profile-institutions/inactive">Inactive Institutions</a>
+    </ul>
     <div class="table-container">
-    <c:if test="${empty institutions}">
+    <c:if test="${empty institution}">
       <h1 class="center-text">No institutions found.</h1>
     </c:if>
-    <c:if test="${not empty institutions}">
+    <c:if test="${not empty institution}">
       <ul class="btn1">
-        <a href="/admin-profile-institutions/add">Add</a>
+        <a href="/admin-profile-institutions/active/add">Add</a>
       </ul>
       <table>
         <tr>
           <th>Name</th>
           <th>Description</th>
         </tr>
-        <c:forEach items="${institutions}" var="institution">
+        <c:forEach items="${institution}" var="institution">
           <tr>
             <td>${institution.name}</td>
             <td>${institution.description}</td>
             <td class="buttons-container">
-              <a href="/admin-profile-institutions/update?id=${institution.id}">Update</a>
+              <a href="/admin-profile-institutions/active/edit?id=${institution.id}">Update</a>
             </td>
             <td class="buttons-container">
-              <a href="/admin-profile-institutions/delete?id=${institution.id}">Delete</a>
+              <a href="/admin-profile-institutions/active/delete?id=${institution.id}">Delete</a>
             </td>
           </tr>
         </c:forEach>

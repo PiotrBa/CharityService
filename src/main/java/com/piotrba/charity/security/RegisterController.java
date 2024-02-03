@@ -42,7 +42,7 @@ public class RegisterController {
     public String registerUserView(Model model){
         logger.info("Accessing user registration page");
         model.addAttribute("user", new User());
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         return "/security/register";
@@ -63,7 +63,7 @@ public class RegisterController {
     @GetMapping("/sent-email-inf")
     public String sentEmailInf(Model model){
         model.addAttribute("user", new User());
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         return "/security/sentEmail-inf";
@@ -74,7 +74,7 @@ public class RegisterController {
     @GetMapping("/activate")
     public String activateAccount(Model model, @RequestParam String token) {
         model.addAttribute("user", new User());
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         Optional<User> userOptional = userRepository.findByToken(token);

@@ -27,16 +27,23 @@
   </nav>
   <div class="slogan container container--90">
     <div class="login-style">
+      <h2>Edit institution</h2>
       <form:form method="post" modelAttribute="institution" class="form-edit-user">
         <div class="section--columns">
-          <h1>Do you want to delete the ${institution.name} institution?</h1>
+          <form:input placeholder="Institution name" path="name" id="name"/>
         </div>
         <div class="section--columns">
-          <h1>The deletion of ${institution.name} will result in the removal of donations associated with it.</h1>
+          <form:textarea placeholder="Description" path="description" id="description" rows="6" cols="70"/>
+        </div>
+        <div class="section--columns">
+          <div class="form-group--radio">
+            <form:radiobutton path="active" value="true" label="Active"/>
+            <form:radiobutton path="active" value="false" label="No Active"/>
+          </div>
         </div>
         <div style="text-align: center;" class="form-buttons">
-          <form:button class="btn">Yes</form:button>
-          <a href="/admin-profile-institutions" class="btn btn-secondary">No</a>
+          <form:button class="btn">Save</form:button>
+          <a href="/admin-profile-institutions/active" class="btn btn-secondary">Back</a>
         </div>
         </form:form>
     </div>

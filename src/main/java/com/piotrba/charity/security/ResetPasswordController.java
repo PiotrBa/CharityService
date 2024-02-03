@@ -50,7 +50,7 @@ public class ResetPasswordController {
         logger.info("Displaying reset password view");
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "security/resetPassword/reset-password";
     }
 

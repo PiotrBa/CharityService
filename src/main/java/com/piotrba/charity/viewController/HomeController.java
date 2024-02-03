@@ -28,7 +28,7 @@ public class HomeController {
     @GetMapping
     public String homeAction(Model model){
         logger.info("Accessing home page");
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         logger.info("Home page attributes set");
@@ -43,7 +43,7 @@ public class HomeController {
 
     @GetMapping("/contact-confirm")
     public String confirmSendContactMessageView(Model model){
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         model.addAttribute("sumAllQuantities", donationService.sumAllQuantities());
         model.addAttribute("countAllDonations", donationService.countAllDonations());
         return "/homepage/contact-confirm";

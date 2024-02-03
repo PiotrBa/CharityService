@@ -34,14 +34,14 @@ public class AdminInstitutionsController {
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("institutions", institutionRepository.findAll());
-        return "admin/institutions/admin-profile-institutions";
+        return "admin/institutions/active/admin-profile-institutions";
     }
 
     @GetMapping("/add")
     public String addInstitutionView(Model model, Principal principal){
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("institution", new Institution());
-        return "admin/institutions/admin-profile-institutions-add";
+        return "admin/institutions/active/admin-profile-institutions-add";
     }
 
     @PostMapping("/add")
@@ -59,7 +59,7 @@ public class AdminInstitutionsController {
         if (optionalInstitution.isPresent()){
             model.addAttribute("institution", optionalInstitution.get());
         }
-        return "admin/institutions/admin-profile-institutions-edit";
+        return "admin/institutions/active/admin-profile-institutions-edit";
     }
 
     @PostMapping("/update")
@@ -76,7 +76,7 @@ public class AdminInstitutionsController {
         if (optionalInstitution.isPresent()){
             model.addAttribute("institution", optionalInstitution.get());
         }
-        return "admin/institutions/admin-profile-institutions-delete";
+        return "admin/institutions/active/admin-profile-institutions-delete";
     }
 
     @PostMapping("/delete")

@@ -37,7 +37,7 @@ public class UserProfileController {
         model.addAttribute("donations", donationRepository.findDonationsByUserWithApprovalAndPackageReceived(principal.getName()));
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "user/userprofile/user-profile";
     }
 
@@ -46,7 +46,7 @@ public class UserProfileController {
         logger.info("Editing profile view for user: {}", principal.getName());
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         Optional<User> userOptional = userService.findUserById(id);
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
@@ -67,7 +67,7 @@ public class UserProfileController {
         model.addAttribute("user", userRepository.getByUsername(principal.getName()));
         model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
         model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         Optional<User> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             model.addAttribute("user", userOptional.get());
@@ -96,7 +96,7 @@ public class UserProfileController {
         model.addAttribute("donationsToReceived", donationRepository.findDonationsByUserWithApprovalAndPackageNotReceived(userName));
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "user/userprofile/user-profile-contact-confirm";
     }
 }

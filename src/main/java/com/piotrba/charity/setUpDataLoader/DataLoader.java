@@ -34,12 +34,12 @@ public class DataLoader implements CommandLineRunner{
         userRepository.saveAll(usersList);
 
         List<Institution> institutionList = Arrays.asList(
-                new Institution(1L, "British Red Cross", "Humanitarian organization providing emergency assistance."),
-                new Institution(2L, "Cancer Research UK", "Charity dedicated to cancer research."),
-                new Institution(3L, "Great Ormond Street Hospital Charity", "Supporting a hospital for children's healthcare."),
-                new Institution(4L, "RSPCA", "Organization working for animal welfare."),
-                new Institution(5L, "Mind", "Charity focused on mental health support and care."),
-                new Institution(6L, "The National Trust", "Charity focused on preserving historical places and natural beauty in the UK.")
+                new Institution(1L, "British Red Cross", "Humanitarian organization providing emergency assistance.", true),
+                new Institution(2L, "Cancer Research UK", "Charity dedicated to cancer research.", true),
+                new Institution(3L, "Great Ormond Street Hospital Charity", "Supporting a hospital for children's healthcare.", true),
+                new Institution(4L, "RSPCA", "Organization working for animal welfare.", true),
+                new Institution(5L, "Mind", "Charity focused on mental health support and care.", true),
+                new Institution(6L, "The National Trust", "Charity focused on preserving historical places and natural beauty in the UK.", true)
         );
         institutionRepository.saveAll(institutionList);
 

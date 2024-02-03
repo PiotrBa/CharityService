@@ -36,7 +36,7 @@ public class UserHomePageController {
         model.addAttribute("donationsToReceived", donationRepository.findDonationsByUserWithApprovalAndPackageNotReceived(userName));
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "user/homepage/user-homepage";
     }
 
@@ -67,7 +67,7 @@ public class UserHomePageController {
         model.addAttribute("donationsToReceived", donationRepository.findDonationsByUserWithApprovalAndPackageNotReceived(userName));
         model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
         model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
-        model.addAttribute("institutionsList", institutionService.findAllInstitutions());
+        model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "user/homepage/homepage-contact-confirm";
     }
 }
