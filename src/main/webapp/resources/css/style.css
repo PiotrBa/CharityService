@@ -55,6 +55,7 @@ Form style for login
 }
 
 .login-style input[type="text"],
+.login-style input[type="email"],
 .login-style input[type="textarea"],
 .login-style input[type="password"] {
   flex-grow: 1;
