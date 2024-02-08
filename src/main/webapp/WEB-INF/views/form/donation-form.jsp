@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Zip code <form:input path="zipCode" id="zipCode"/></label>
+                            <label> Post code <form:input path="zipCode" id="zipCode"/></label>
                         </div>
                         <input type="hidden" id="hiddenStreet" name="hiddenStreet" />
                         <input type="hidden" id="hiddenCity" name="hiddenCity" />

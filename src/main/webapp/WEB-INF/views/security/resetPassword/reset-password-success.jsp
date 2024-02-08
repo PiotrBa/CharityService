@@ -34,6 +34,8 @@
         <div class="login-style">
             <h1 class="center-text">
                 Your password has been reset.
+            </h1>
+            <h1 class="center-text">
                 Go to the login page.
             </h1>
             <div class="form-buttons">

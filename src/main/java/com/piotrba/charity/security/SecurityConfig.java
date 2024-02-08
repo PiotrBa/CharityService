@@ -25,6 +25,7 @@ public class SecurityConfig {
                 .antMatchers("/reset-password/**").permitAll()
                 .antMatchers("/contact/**").permitAll()
                 .antMatchers("/register/user").permitAll()
+                .antMatchers("/register/sent-email-inf").permitAll()
                 .antMatchers("/register/activate/**").permitAll()
                 .antMatchers("/user-homepage/**").hasRole("USER")
                 .antMatchers("/user-profile/**").hasRole("USER")

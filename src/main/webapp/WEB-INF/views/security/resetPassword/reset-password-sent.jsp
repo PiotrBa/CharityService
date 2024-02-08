@@ -34,6 +34,8 @@
         <div class="login-style">
             <h1 class="center-text">
                 Check your email.
+            </h1>
+            <h1 class="center-text">
                 We have sent you a link to reset your password.
             </h1>
             <div class="form-buttons">

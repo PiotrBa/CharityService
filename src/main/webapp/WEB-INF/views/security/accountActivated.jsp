@@ -34,11 +34,13 @@
         <div class="login-style">
             <h1 class="center-text">
                 Your account has been activated.
-                You can now log in.
             </h1>
-                <div class="form-buttons">
-                    <a href="/login" class="btn btn-secondary">Ok</a>
-                </div>
+            <h1 class="center-text">
+                You can proceed to the login page.
+            </h1>
+            <div class="form-buttons">
+                <a href="/login" class="btn btn-secondary">Ok</a>
+            </div>
         </div>
     </div>
 </header>

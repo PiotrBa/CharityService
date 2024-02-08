@@ -33,7 +33,7 @@
     <div class="slogan container container--90">
         <div class="login-style">
             <h1 class="center-text">
-                Check your mailbox. We have sent you an account activation link.
+                The activation link has been sent to your mailbox.
             </h1>
             <div class="form-buttons">
                 <a href="/homepage" class="btn btn-secondary">Ok</a>

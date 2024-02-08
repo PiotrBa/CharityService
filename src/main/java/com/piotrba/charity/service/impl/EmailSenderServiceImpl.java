@@ -35,7 +35,7 @@ public class EmailSenderServiceImpl{
             helper.setText(htmlMsg, true);
             helper.setTo(toMail);
             helper.setSubject("Account activation.");
-            helper.setFrom("balazyk.piotr@gmail.com");
+            helper.setFrom("fiolecik220@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -61,7 +61,7 @@ public class EmailSenderServiceImpl{
             helper.setText(htmlMsg, true);
             helper.setTo(toMail);
             helper.setSubject("Your Donation Confirmation");
-            helper.setFrom("balazyk.piotr@gmail.com");
+            helper.setFrom("fiolecik220@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class EmailSenderServiceImpl{
             helper.setText(htmlMsg, true);
             helper.setTo(toMail);
             helper.setSubject("Thank You!");
-            helper.setFrom("balazyk.piotr@gmail.com");
+            helper.setFrom("fiolecik220@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class EmailSenderServiceImpl{
     public void sendContactEmail(Contact contactForm) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(contactForm.getEmail());
-        message.setTo("balazyk.piotr@gmail.com");
+        message.setTo("fiolecik220@gmail.com");
         message.setSubject("Contact message");
         message.setText("From: " + contactForm.getName() + "\nEmail: " + contactForm.getEmail() + "\nMessage: " + contactForm.getMessage());
         javaMailSender.send(message);
@@ -105,7 +105,7 @@ public class EmailSenderServiceImpl{
         SimpleMailMessage message = new SimpleMailMessage();
         User user = userRepository.getByUsername(principal.getName());
         message.setFrom(user.getEmail());
-        message.setTo("balazyk.piotr@gmail.com");
+        message.setTo("fiolecik220@gmail.com");
         message.setSubject("Contact message from user: " + user.getUsername());
         message.setText("Title: " + contactForm.getTitle() + "\nMessage: " + contactForm.getMessage());
         javaMailSender.send(message);
@@ -124,7 +124,7 @@ public class EmailSenderServiceImpl{
             helper.setText(htmlMsg, true);
             helper.setTo(toMail);
             helper.setSubject("Reset password");
-            helper.setFrom("balazyk.piotr@gmail.com");
+            helper.setFrom("fiolecik220@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
