@@ -58,7 +58,7 @@ public class UserProfileController {
     public String editProfile(User user, @RequestParam Long id) {
         logger.info("Updating profile for user ID: {}", id);
         userService.updateUser(id, user);
-        return "redirect:/user-profile";
+        return "redirect:/login";
     }
 
     @GetMapping("/delete")
@@ -79,7 +79,7 @@ public class UserProfileController {
     public String deleteProfile(@RequestParam Long id) {
         logger.info("Deleting profile for user ID: {}", id);
         userService.deleteUser(id);
-        return "redirect:/user-homepage";
+        return "redirect:/login";
     }
 
     @PostMapping("/contact")
