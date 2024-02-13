@@ -84,9 +84,9 @@ public class DonationServiceImpl implements DonationService{
     }
 
     @Override
-    public Integer sumAllQuantities() {
+    public Long sumAllQuantities() {
         Integer sum = donationRepository.sumAllQuantities();
-        return sum != null ? sum : 0;
+        return (long) (sum != null ? sum : 0);
     }
 
     @Override
@@ -97,11 +97,13 @@ public class DonationServiceImpl implements DonationService{
 
     @Override
     public Long countDonationsByUser(String username) {
-        return donationRepository.countDonationsByUserUsername(username);
+        Long count2 = donationRepository.countDonationsByUserUsername(username);
+        return count2 != null ? count2 : 0;
     }
 
     @Override
-    public Integer sumQuantitiesByUser(String username) {
-        return donationRepository.sumQuantitiesByUserUsername(username);
+    public Long sumQuantitiesByUser(String username) {
+       Integer sum2 = donationRepository.sumQuantitiesByUserUsername(username);
+        return (long) (sum2 != null ? sum2 : 0);
     }
 }

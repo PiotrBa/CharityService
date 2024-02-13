@@ -13,10 +13,10 @@ public interface DonationService {
     Donation setPackageReceived(Long userId);
     Optional<Donation> updateDonation(Long id, Donation donation);
     void deleteDonation(Long id);
-    Integer sumAllQuantities();
+    Long sumAllQuantities();
     Long countAllDonations();
     Long countDonationsByUser(String username);
 
-    Integer sumQuantitiesByUser(String username);
+    Long sumQuantitiesByUser(String username);
 
 }
