@@ -85,25 +85,21 @@ public class DonationServiceImpl implements DonationService{
 
     @Override
     public Long sumAllQuantities() {
-        Integer sum = donationRepository.sumAllQuantities();
-        return (long) (sum != null ? sum : 0);
+        return donationRepository.sumAllQuantities();
     }
 
     @Override
     public Long countAllDonations() {
-        Long count = donationRepository.count();
-        return count != null ? count : 0;
+        return donationRepository.count();
     }
 
     @Override
     public Long countDonationsByUser(String username) {
-        Long count2 = donationRepository.countDonationsByUserUsername(username);
-        return count2 != null ? count2 : 0;
+        return donationRepository.countDonationsByUserUsername(username);
     }
 
     @Override
     public Long sumQuantitiesByUser(String username) {
-       Integer sum2 = donationRepository.sumQuantitiesByUserUsername(username);
-        return (long) (sum2 != null ? sum2 : 0);
+        return donationRepository.sumQuantitiesByUserUsername(username);
     }
 }

@@ -53,14 +53,14 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>${sumQuantities}</em>
+            <em>${user.sumQuantities}</em>
             <h3>Your donated bags</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
         </div>
 
         <div class="stats--item">
-            <em>${countDonations}</em>
+            <em>${user.sumQuantities}</em>
             <h3>Your gifts given</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>

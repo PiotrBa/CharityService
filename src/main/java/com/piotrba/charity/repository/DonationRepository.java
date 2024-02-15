@@ -10,13 +10,13 @@ import java.util.List;
 public interface DonationRepository extends JpaRepository<Donation, Long> {
 
     @Query("SELECT SUM (d.quantity) FROM Donation d")
-    Integer sumAllQuantities();
+    Long sumAllQuantities();
 
-    @Query("SELECT COUNT(d) FROM Donation d WHERE d.user.username = :username")
+    @Query("SELECT COUNT(d) FROM Donation d WHERE d.user.username = :username AND d.awaitingApproval = true AND d.packageReceived = true")
     Long countDonationsByUserUsername(String username);
 
-    @Query("SELECT SUM(d.quantity) FROM Donation d WHERE d.user.username = :username")
-    Integer sumQuantitiesByUserUsername(String username);
+    @Query("SELECT SUM(d.quantity) FROM Donation d WHERE d.user.username = :username AND d.awaitingApproval = true AND d.packageReceived = true")
+    Long sumQuantitiesByUserUsername(String username);
 
     @Query("SELECT d FROM Donation d")
     @EntityGraph(attributePaths = {"user"})

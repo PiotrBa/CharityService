@@ -34,8 +34,8 @@ public class UserHomePageController {
         String userName = principal.getName();
         model.addAttribute("user", userRepository.getByUsername(userName));
         model.addAttribute("donationsToReceived", donationRepository.findDonationsByUserWithApprovalAndPackageNotReceived(userName));
-        model.addAttribute("countDonations", donationRepository.countDonationsByUserUsername(userName));
-        model.addAttribute("sumQuantities", donationRepository.sumQuantitiesByUserUsername(userName));
+        model.addAttribute("countUserDonations", donationRepository.countDonationsByUserUsername(principal.getName()));
+        model.addAttribute("sumUserQuantities", donationRepository.sumQuantitiesByUserUsername(principal.getName()));
         model.addAttribute("institutionsList", institutionService.findAllActiveInstitutions());
         return "user/homepage/user-homepage";
     }
