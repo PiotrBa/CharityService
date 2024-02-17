@@ -48,3 +48,23 @@ Only an admin can permanently delete a user's account.
 These functionalities are crucial for maintaining the smooth operation and integrity of our platform. Admins play a vital role in overseeing the platform's activities and ensuring that users' experiences are positive and impactful.
 
 
+
+
+## Technical Details
+
+- **Java Version**: 16
+
+### Frameworks & Libraries:
+- **Spring Boot**:
+    - **Spring Data JPA**
+    - **Spring Validation**
+    - **Spring Web MVC**
+    - **Spring DevTools**
+    - **Spring Security**
+    - **Spring Mail**
+- **Hibernate**
+- **MySQL Connector/J**
+- **Lombok**
+- **JUnit**
+- **JSTL**
+- **Tomcat Embed Jasper**
