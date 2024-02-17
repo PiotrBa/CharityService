@@ -65,6 +65,15 @@ Form style for login
   font-size: 15px;
 }
 
+.login-style textarea {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+
 .login-style .form-buttons {
   display: flex;
   justify-content: flex-start;
