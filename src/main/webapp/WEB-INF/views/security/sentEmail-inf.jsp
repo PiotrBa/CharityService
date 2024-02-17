@@ -45,14 +45,14 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>${sumAllQuantities}</em>
+            <em>${empty sumAllQuantities ? '0' : sumAllQuantities}</em>
             <h3>Donated bags</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
         </div>
 
         <div class="stats--item">
-            <em>${countAllDonations}</em>
+            <em>${empty countAllDonations ? '0' : countAllDonations}</em>
             <h3>Gifts given</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
