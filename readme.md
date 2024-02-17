@@ -19,7 +19,7 @@ The Spring Boot application is designed to facilitate charitable donations and t
 Our platform is dedicated to facilitating charitable actions and making a positive impact in the community. Join us in our mission to help and support those in need. 
 
 
-[[Homepage](https://youtu.be/Ss4MP5nDsX8)](https://youtu.be/Ss4MP5nDsX8)
+[Homepage](https://youtu.be/Ss4MP5nDsX8)](https://youtu.be/Ss4MP5nDsX8)
 
 
 
@@ -36,3 +36,21 @@ Only an admin can permanently delete a user's account.
 
 
 [User Page](https://youtu.be/tGDSS1TqooU)https://youtu.be/tGDSS1TqooU
+
+
+
+## Administrator Page
+
+- **Insight into All Donations**: Administrators have access to view all the donations made within the application, enabling them to effectively monitor and manage the donation process.
+
+- **User Management**: This includes editing user details, changing user roles, deactivating user accounts, and the ability to permanently delete user accounts.
+
+- **Charity Institutions Management**: Admins can edit information about charity institutions, deactivate listings, and permanently remove them from the platform if necessary.
+
+- **Donation Categories Management**: This feature allows admins to edit, deactivate, or permanently delete donation categories to ensure the categorization remains relevant and helpful.
+
+These functionalities are crucial for maintaining the smooth operation and integrity of our platform. Admins play a vital role in overseeing the platform's activities and ensuring that users' experiences are positive and impactful.
+
+
+[Administrator Page](https://youtu.be/4BWy6Y2mopE)https://youtu.be/4BWy6Y2mopE
+
