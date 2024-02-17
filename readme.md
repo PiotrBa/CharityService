@@ -4,7 +4,7 @@
 The Spring Boot application is designed to facilitate charitable donations and the distribution of gifts to those in need. It provides a platform for donors to contribute financially and in-kind, helping to make a positive impact on the community. Additionally, both users and administrators have their accounts, allowing full control over functions tailored to their roles, ensuring convenience and alignment with the individual needs of each.
 
 
-## Homepage
+## [Homepage](https://youtu.be/Ss4MP5nDsX8)
 
 - **User Registration and Login**: A straightforward process for users to create and access their accounts.
 
@@ -19,11 +19,9 @@ The Spring Boot application is designed to facilitate charitable donations and t
 Our platform is dedicated to facilitating charitable actions and making a positive impact in the community. Join us in our mission to help and support those in need. 
 
 
-[Homepage](https://youtu.be/Ss4MP5nDsX8)](https://youtu.be/Ss4MP5nDsX8)
 
 
-
-## User Page
+## [User Page](https://youtu.be/tGDSS1TqooU)
 
 - **Making Charitable Donations**: Users can easily make donations to their chosen causes or institutions. The process is streamlined for simplicity and efficiency.
 
@@ -35,11 +33,9 @@ The user does not have the option to delete their account, and clicking "Delete 
 Only an admin can permanently delete a user's account.
 
 
-[User Page](https://youtu.be/tGDSS1TqooU)https://youtu.be/tGDSS1TqooU
 
 
-
-## Administrator Page
+## [Administrator Page](https://youtu.be/4BWy6Y2mopE)
 
 - **Insight into All Donations**: Administrators have access to view all the donations made within the application, enabling them to effectively monitor and manage the donation process.
 
@@ -51,6 +47,4 @@ Only an admin can permanently delete a user's account.
 
 These functionalities are crucial for maintaining the smooth operation and integrity of our platform. Admins play a vital role in overseeing the platform's activities and ensuring that users' experiences are positive and impactful.
 
-
-[Administrator Page](https://youtu.be/4BWy6Y2mopE)https://youtu.be/4BWy6Y2mopE
 
