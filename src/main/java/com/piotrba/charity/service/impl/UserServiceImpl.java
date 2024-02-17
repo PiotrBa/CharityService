@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUserByAdmin(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -95,6 +95,17 @@ public class UserServiceImpl implements UserService {
             donationRepository.delete(donation);
         }
         userRepository.delete(user);
+    }
+
+    @Override
+    public Optional<User> deleteUserByUser(Long id, User newUser) {
+        Optional<User> optionalUserByUser = userRepository.findById(id);
+            if (optionalUserByUser.isPresent()){
+                User user = optionalUserByUser.get();
+                if (newUser.getActive() != null) user.setActive(false);
+                return Optional.of(userRepository.save(user));
+            }
+        return Optional.empty();
     }
 
     @Override

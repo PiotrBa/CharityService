@@ -76,9 +76,9 @@ public class UserProfileController {
     }
 
     @PostMapping("/delete")
-    public String deleteProfile(@RequestParam Long id) {
+    public String deleteProfile(@RequestParam Long id, User newUser) {
         logger.info("Deleting profile for user ID: {}", id);
-        userService.deleteUser(id);
+        userService.deleteUserByUser(id, newUser);
         return "redirect:/login";
     }
 

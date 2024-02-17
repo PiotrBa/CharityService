@@ -14,6 +14,7 @@ public interface UserService {
     User registerAdmin(User user);
     Optional<User> updateUser(Long id, User user);
     Optional<User> updateUserByAdmin(Long id, User user);
-    void deleteUser(Long id);
+    void deleteUserByAdmin(Long id);
+    Optional<User> deleteUserByUser(Long id, User newUser);
     List<Donation> getUserDonations(String username);
 }
