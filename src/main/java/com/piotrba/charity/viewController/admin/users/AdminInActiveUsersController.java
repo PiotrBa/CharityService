@@ -84,7 +84,7 @@ public class AdminInActiveUsersController {
     @PostMapping("/delete")
     public String deleteUser(@RequestParam Long id){
         logger.info("Deleting user with ID: {}", id);
-        userService.deleteUser(id);
+        userService.deleteUserByAdmin(id);
         return "redirect:/admin-profile-users/inactive";
     }
 }
