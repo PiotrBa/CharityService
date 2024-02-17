@@ -18,7 +18,7 @@ The Spring Boot application is designed to facilitate charitable donations and t
 
 Our platform is dedicated to facilitating charitable actions and making a positive impact in the community. Join us in our mission to help and support those in need. 
 
-
+---
 
 
 ## [User Page](https://youtu.be/tGDSS1TqooU)
